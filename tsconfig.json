@@ -13,21 +13,37 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
     "target": "ES2022",
     "module": "preserve",
     "useDefineForClassFields": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "lib": ["ES2022", "dom"],
-    "types": ["node", "jest"],
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ],
     "paths": {
-      "@app/*": ["./src/app/*"],
-      "@environments/*": ["./src/environments/*"],
-      "@model/*": ["./src/app/models/*"],
-      "@service/*": ["./src/app/service/*"],
-      "@shared/*": ["./src/app/components/shared/*"]
-    }
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@environments/*": [
+        "./src/environments/*"
+      ],
+      "@model/*": [
+        "./src/app/models/*"
+      ],
+      "@service/*": [
+        "./src/app/service/*"
+      ],
+      "@shared/*": [
+        "./src/app/components/shared/*"
+      ]
+    },
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -37,7 +53,9 @@
     "strictTemplates": true
   },
   "ts-node": {
-    "require": ["tsconfig-paths/register"],
+    "require": [
+      "tsconfig-paths/register"
+    ],
     "compilerOptions": {
       "module": "NodeNext"
     },

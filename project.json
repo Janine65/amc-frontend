@@ -11,19 +11,38 @@
   },
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular/build:application",
+      "defaultConfiguration": "production",
+      "outputs": [
+        "{options.outputPath.base}"
+      ],
       "options": {
         "verbose": false,
-        "outputPath": "dist",
+        "outputPath": {
+          "base": "dist"
+        },
         "index": "src/index.html",
-        "main": "src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["src/favicon.ico", "src/assets"],
-        "styles": ["src/styles.scss"],
-        "scripts": ["node_modules/chart.js/dist/chart.umd.js"],
-        "allowedCommonJsDependencies": ["lodash", "quill-delta"]
+        "assets": [
+          "src/favicon.ico",
+          "src/assets"
+        ],
+        "styles": [
+          "src/styles.scss",
+          "src/styles.css"
+        ],
+        "scripts": [
+          "node_modules/chart.js/dist/chart.umd.js"
+        ],
+        "allowedCommonJsDependencies": [
+          "lodash",
+          "quill-delta"
+        ],
+        "browser": "src/main.ts"
       },
       "configurations": {
         "production": {
@@ -36,19 +55,17 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
         }
-      },
-      "defaultConfiguration": "production",
-      "outputs": ["{options.outputPath}"]
+      }
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@angular/build:dev-server",
+      "defaultConfiguration": "development",
+      "continuous": true,
       "configurations": {
         "production": {
           "buildTarget": "amc-interna:build:production"
@@ -63,36 +80,48 @@
           "proxyConfig": "src/proxy.local.json",
           "port": 4201
         }
-      },
-      "defaultConfiguration": "development",
-      "continuous": true
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "@angular/build:extract-i18n",
       "options": {
         "buildTarget": "amc-interna:build"
       }
     },
     "test": {
-      "executor": "@angular-devkit/build-angular:karma",
+      "executor": "@angular/build:karma",
       "options": {
-        "polyfills": ["zone.js", "zone.js/testing"],
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ],
         "tsConfig": "tsconfig.spec.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["src/favicon.ico", "src/assets"],
+        "assets": [
+          "src/favicon.ico",
+          "src/assets"
+        ],
         "styles": [
           "@angular/material/prebuilt-themes/pink-bluegrey.css",
-          "src/styles.scss"
+          "src/styles.scss",
+          "src/styles.css"
         ],
-        "scripts": ["node_modules/chart.js/dist/chart.umd.js"]
+        "scripts": [
+          "node_modules/chart.js/dist/chart.umd.js"
+        ]
       }
     },
     "lint": {
       "executor": "@angular-eslint/builder:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-      },
-      "outputs": ["{options.outputFile}"]
+        "lintFilePatterns": [
+          "src/**/*.ts",
+          "src/**/*.html"
+        ]
+      }
     }
   }
 }

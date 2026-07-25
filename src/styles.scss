@@ -1,16 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/* Sass-Anteil der globalen Styles. Reine CSS-Regeln + Tailwind-Direktiven
+ * stehen in styles.css (wird parallel via project.json geladen). */
+
 /* @use muss vor allen anderen Regeln stehen (SCSS-Anforderung) */
 @use "assets/layout/styles/layout/layout.scss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import "../node_modules/primeicons/primeicons.css";
-@import "app/components/shared/input-validation/input.css";
-// import Quill styles in styles.scss
-@import "../node_modules/quill/dist/quill.core.css";
-@import "../node_modules/quill/dist/quill.snow.css";
 html,
 body {
   height: 100%;
@@ -20,31 +13,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* PrimeNG Design Token Utilities (PrimeFlex-Kompatibilität) */
-@layer utilities {
-  .surface-overlay {
-    background-color: var(--surface-overlay);
-  }
-  .surface-card {
-    background-color: var(--surface-card);
-  }
-  .surface-border {
-    border-color: var(--surface-border);
-  }
-  .text-color {
-    color: var(--text-color);
-  }
-  .text-900 {
-    color: var(--surface-900);
-  }
-  .border-round {
-    border-radius: var(--border-radius, 6px);
-  }
-}
-
 /* Formular-Feld Beschriftungen (PrimeFlex-Kompatibilität) */
 .mb-4 > label:first-child {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 500;
 }
+

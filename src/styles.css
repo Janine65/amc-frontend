@@ -1,0 +1,31 @@
+/* Globale CSS-Styles (nicht-Sass) — von Tailwind/PostCSS verarbeitet. */
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@import "primeicons/primeicons.css";
+@import "./app/components/shared/input-validation/input.css";
+@import "quill/dist/quill.core.css";
+@import "quill/dist/quill.snow.css";
+
+/* PrimeNG Design Token Utilities (PrimeFlex-Kompatibilität) */
+@layer utilities {
+  .surface-overlay {
+    background-color: var(--surface-overlay);
+  }
+  .surface-card {
+    background-color: var(--surface-card);
+  }
+  .surface-border {
+    border-color: var(--surface-border);
+  }
+  .text-color {
+    color: var(--text-color);
+  }
+  .text-900 {
+    color: var(--surface-900);
+  }
+  .border-round {
+    border-radius: var(--border-radius, 6px);
+  }
+}

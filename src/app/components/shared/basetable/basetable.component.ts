@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DecimalPipe } from '@angular/common';
 import {
   Component,
@@ -104,14 +103,14 @@ export class BaseTableComponent implements OnInit, OnDestroy {
   readonly tableToolbar = input<TableToolbar[]>([]);
   readonly localStorage = input('basetable');
   readonly diffCalcHight = input(300);
-  readonly editableInput = input(true, { alias: 'editable' });
+  readonly editable = input(true);
   readonly rowClassField = input('');
 
   readonly selectedRecord = signal<TableData | undefined>(undefined);
   readonly filteredRows = signal<TableData[]>([]);
   readonly objHeight$ = signal('500px');
-  readonly editable = computed(
-    () => this.editableInput() && !!this.getEditFunc(),
+  readonly isEditable = computed(
+    () => this.editable() && !!this.getEditFunc(),
   );
   getScreenWidth = 0;
   getScreenHeight = 0;
@@ -181,7 +180,6 @@ export class BaseTableComponent implements OnInit, OnDestroy {
     return;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   filterEvent(event: any) {
     this.filteredRows.set(event.filteredValue ?? []);
   }
