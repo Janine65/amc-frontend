@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription, from, map, zip } from 'rxjs';
 import { BackendService } from '@app/service';
 import { Fiscalyear, OverviewData, ParamData } from '@model/datatypes';
@@ -10,6 +10,7 @@ import { Fieldset } from 'primeng/fieldset';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, Fieldset],
 })
 export class DashboardComponent implements OnInit, OnDestroy {

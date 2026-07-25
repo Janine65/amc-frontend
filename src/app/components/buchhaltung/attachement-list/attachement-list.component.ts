@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Receipt } from '@model/datatypes';
 import { BackendService } from '@app/service';
 import {
@@ -9,7 +9,6 @@ import {
 import {
   ConfirmationService,
   MessageService,
-  PrimeTemplate,
 } from 'primeng/api';
 import {
   DialogService,
@@ -31,12 +30,12 @@ import { Button } from 'primeng/button';
   templateUrl: './attachement-list.component.html',
   styleUrls: ['./attachement-list.component.scss'],
   providers: [DialogService, ConfirmationService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     BaseTableComponent,
     Bind,
     ConfirmDialog,
     Dialog,
-    PrimeTemplate,
     FormsModule,
     InputText,
     Button,

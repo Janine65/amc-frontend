@@ -1,5 +1,5 @@
 <p-splitter [panelSizes]="[70, 30]" styleClass="mb-1">
-  <ng-template pTemplate>
+  <ng-template #panel>
     <div class="card" style="width: 100%">
       <app-basetable
         [tableOptions]="cols()"
@@ -13,7 +13,7 @@
       </app-basetable>
     </div>
   </ng-template>
-  <ng-template pTemplate>
+  <ng-template #panel>
     <div class="card" style="width: 100%">
       <div class="mb-2">
         <label for="jahre" class="mr-3">Jahr wählen</label>
@@ -43,7 +43,7 @@
               >Konto Soll</label
             >
             <div class="w-full md:w-10/12">
-              <p-autoComplete
+              <p-auto-complete
                 name="fromAcc"
                 [(ngModel)]="selJournal.account_journal_from_accountToaccount"
                 [disabled]="!editMode() && !addMode()"
@@ -54,7 +54,7 @@
                 (onSelect)="fromAccountSel($event.value)"
                 [forceSelection]="false"
               >
-              </p-autoComplete>
+              </p-auto-complete>
             </div>
           </div>
           <div class="mb-4 flex flex-wrap">
@@ -62,7 +62,7 @@
               >Konto Haben</label
             >
             <div class="w-full md:w-10/12">
-              <p-autoComplete
+              <p-auto-complete
                 name="toAcc"
                 [(ngModel)]="selJournal.account_journal_to_accountToaccount"
                 [disabled]="!editMode() && !addMode()"
@@ -73,7 +73,7 @@
                 (onSelect)="toAccountSel($event.value)"
                 [forceSelection]="false"
               >
-              </p-autoComplete>
+              </p-auto-complete>
             </div>
           </div>
           <div class="mb-4 flex flex-wrap">
@@ -96,7 +96,7 @@
               >Betrag</label
             >
             <div class="w-full md:w-10/12">
-              <p-inputNumber
+              <p-input-number
                 name="amount"
                 mode="currency"
                 currency="CHF"
@@ -106,28 +106,28 @@
                 [required]="true"
                 [(ngModel)]="selJournal.amount"
                 [disabled]="!editMode() && !addMode()"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
           </div>
           <div class="mb-4 flex flex-wrap">
-            <button
-              pButton
+            <p-button
               type="button"
               label="Sichern"
               icon="pi pi-save"
-              class="p-button-primary p-button-outlined"
+              severity="primary"
+              [outlined]="true"
               (click)="save()"
               [disabled]="!editMode() && !addMode()"
-            ></button>
-            <button
-              pButton
+            ></p-button>
+            <p-button
               type="button"
               label="Verwerfen"
               icon="pi pi-refresh"
-              class="p-button-secondary p-button-outlined"
+              severity="secondary"
+              [outlined]="true"
               (click)="reset()"
               [disabled]="!editMode() && !addMode()"
-            ></button>
+            ></p-button>
           </div>
         </form>
       </div>

@@ -1,13 +1,13 @@
-import { Component, HostListener, OnInit, inject, signal } from '@angular/core';
+import { Component, HostListener, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Clubmeister, Kegelmeister, ParamData } from '@model/datatypes';
 import { BackendService } from '@app/service';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { map, zip } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { Select } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { Splitter } from 'primeng/splitter';
 import { TableModule } from 'primeng/table';
 
@@ -15,14 +15,14 @@ import { TableModule } from 'primeng/table';
   selector: 'app-meisterschaft',
   templateUrl: './meisterschaft.component.html',
   styleUrls: ['./meisterschaft.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toast,
     Select,
     FormsModule,
-    ButtonDirective,
+    Button,
     Splitter,
-    PrimeTemplate,
     TableModule,
   ],
 })

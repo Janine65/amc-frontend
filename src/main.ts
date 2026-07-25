@@ -25,6 +25,7 @@ import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
   withInterceptorsFromDi,
+  withXhr
 } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from './app/service';
 import { MessageService } from 'primeng/api';
@@ -138,10 +139,11 @@ bootstrapApplication(AppComponent, {
       useExisting: forwardRef(() => CrInputPartial),
       multi: true,
     },
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withXhr(), withInterceptorsFromDi()),
     provideAnimationsAsync(),
     providePrimeNG({
       ripple: true,
+      license: 'eyJpZCI6IjkyYzFjYTlmLWY0NDQtNDA1Yy1iZThjLTliYWViZTM2MDJhNiIsInByb2R1Y3QiOiJwcmltZXVpIiwidGllciI6ImNvbW11bml0eSIsInR5cGUiOiJkZXYiLCJpYXQiOjE3ODQ5NzkyODksImV4cCI6MTgxNjUxNTI4OX0.hZ_pHnFRtNmqGT9u2C-335MBsqeLIiiO0MsDJAQCAqPwklSQY44M8_UHHJ-pzsis3NKdsNyxDyPOSCNwmNnDBw',
       theme: {
         preset: MyTheme2,
         options: {

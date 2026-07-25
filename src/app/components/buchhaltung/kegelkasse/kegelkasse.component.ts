@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -22,7 +22,7 @@ import { Toast } from 'primeng/toast';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
 import { Ripple } from 'primeng/ripple';
 import { Toolbar } from 'primeng/toolbar';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { Select } from 'primeng/select';
 import { InputNumber } from 'primeng/inputnumber';
 import { BaseTableComponent } from '../../shared/basetable/basetable.component';
@@ -32,6 +32,7 @@ import { DynamicPipe } from '@shared/basetable/dynamicpipe';
   selector: 'app-kegelkasse',
   templateUrl: './kegelkasse.component.html',
   styleUrls: ['./kegelkasse.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toast,
@@ -42,7 +43,7 @@ import { DynamicPipe } from '@shared/basetable/dynamicpipe';
     TabPanels,
     TabPanel,
     Toolbar,
-    ButtonDirective,
+    Button,
     FormsModule,
     ReactiveFormsModule,
     Select,

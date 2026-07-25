@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 import { Anlass } from '@model/datatypes';
 import { BackendService } from '@app/service';
@@ -17,13 +17,14 @@ import { InputText } from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
 import { Select } from 'primeng/select';
 import { Toolbar } from 'primeng/toolbar';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-anlaesse-edit',
   templateUrl: './anlaesse-edit.component.html',
   styleUrls: ['./anlaesse-edit.component.scss'],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     ScrollPanel,
@@ -34,7 +35,7 @@ import { ButtonDirective } from 'primeng/button';
     InputNumber,
     Select,
     Toolbar,
-    ButtonDirective,
+    Button,
   ],
 })
 export class AnlaesseEditComponent implements OnInit {

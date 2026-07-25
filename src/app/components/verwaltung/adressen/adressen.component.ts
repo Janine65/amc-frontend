@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { from, Subscription } from 'rxjs';
 import { BackendService } from '@app/service';
 import { Adresse } from '@model/datatypes';
@@ -39,6 +39,7 @@ export class AdresseFilter {
   templateUrl: './adressen.component.html',
   styles: [],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [BaseTableComponent],
 })
 export class AdressenComponent implements OnInit {

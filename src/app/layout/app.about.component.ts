@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Package } from '@model/user';
 import { Bind } from 'primeng/bind';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
@@ -9,6 +9,7 @@ import { KeyValuePipe } from '@angular/common';
     selector: 'app-app.about',
     templateUrl: './app.about.component.html',
     styleUrls: ['./app.about.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [Bind, Tabs, TabList, Ripple, Tab, TabPanels, TabPanel, KeyValuePipe]
 })
 export class AppAboutComponent implements OnInit{

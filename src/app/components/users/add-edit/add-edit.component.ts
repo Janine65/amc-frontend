@@ -24,7 +24,7 @@ import { InputText } from 'primeng/inputtext';
 import { RadioButton } from 'primeng/radiobutton';
 import { PasswordDirective } from 'primeng/password';
 import { Toolbar } from 'primeng/toolbar';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 
 @Component({
@@ -44,7 +44,7 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
     RadioButton,
     PasswordDirective,
     Toolbar,
-    ButtonDirective,
+    Button,
     ConfirmDialog,
   ],
 })

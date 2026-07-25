@@ -1,23 +1,23 @@
 <p-toolbar>
-  <button
-    pButton
+  <p-button
     icon="pi pi-back"
     (click)="back()"
     label="Abbruch"
-    class="p-button-secondary p-button-outlined"
-  ></button>
-  <button
-    pButton
+    severity="secondary"
+    [outlined]="true"
+  ></p-button>
+  <p-button
     icon="pi pi-send"
     (click)="submit()"
     label="Senden"
-    cass="p-button-primary p-button-outlined"
-  ></button>
+    severity="primary"
+    [outlined]="true"
+  ></p-button>
 </p-toolbar>
 <div class="card">
   @if (loading()) {
     <div class="progress-spinner">
-      <p-progressSpinner></p-progressSpinner>
+      <p-progress-spinner></p-progress-spinner>
     </div>
   }
   <div class="mb-4 flex flex-wrap">
@@ -99,7 +99,7 @@
         [style]="{ height: '150px' }"
         class=""
       >
-        <ng-template pTemplate="header"></ng-template>
+        <ng-template #header></ng-template>
       </p-editor>
     </div>
   </div>
@@ -107,7 +107,7 @@
     <div class="mb-4 flex flex-wrap">
       <label for="uploadfiles" class="w-full md:w-1/6 md:mb-0">Anhänge:</label>
       <div class="w-full md:w-10/12">
-        <p-fileUpload
+        <p-fileupload
           id="uploadfiles"
           name="uploadfiles[]"
           [multiple]="true"
@@ -120,30 +120,22 @@
           [customUpload]="true"
           (uploadHandler)="prepareFiles($any($event).files)"
         >
-          <ng-template pTemplate="file">
+          <ng-template #file>
             @for (file of uploadFiles(); track file; let ind = $index) {
               <div class="p-fileupload-row ng-star-inserted">
                 <div class="p-fileupload-filename">{{ file.name }}</div>
                 <div>{{ file.size }}</div>
                 <div>
-                  <button
+                  <p-button
                     type="button"
                     icon="pi pi-times"
-                    pbutton=""
                     (click)="removeUploadFile(ind)"
-                    class="p-element p-button p-component p-button-icon-only"
-                    ng-reflect-icon="pi pi-times"
-                  >
-                    <span
-                      class="p-button-icon pi pi-times"
-                      aria-hidden="true"
-                    ></span>
-                  </button>
+                  ></p-button>
                 </div>
               </div>
             }
           </ng-template>
-        </p-fileUpload>
+        </p-fileupload>
       </div>
     </div>
   </div>

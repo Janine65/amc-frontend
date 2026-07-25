@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   TableData,
   TableOptions,
@@ -21,6 +21,7 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   providers: [DialogService, ConfirmationService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [BaseTableComponent, Bind, ConfirmDialog],
 })
 export class ListComponent implements OnInit {

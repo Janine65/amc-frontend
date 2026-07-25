@@ -6,28 +6,28 @@
       [(ngModel)]="selJahr"
       (onChange)="chgJahr()"
     ></p-select>
-    <button
-      pButton
+    <p-button
       pRipple
       type="button"
       icon="pi pi-plus"
+      label="Neuen Eintrag hinzufügen"
       (click)="onAddNewRow()"
       [disabled]="!isEditable()"
-      class="ml-5 p-button-secondary p-button-outline"
-    >
-      Neuen Eintrag hinzufügen
-    </button>
-    <button
-      pButton
+      severity="secondary"
+      [outlined]="true"
+      styleClass="ml-5"
+    ></p-button>
+    <p-button
       pRipple
       type="button"
       icon="pi pi-copy"
+      label="Auf nächstes Jahr kopieren"
       (click)="copyYear()"
       [disabled]="!isEditable()"
-      class="ml-5 p-button-secondary p-button-outline"
-    >
-      Auf nächstes Jahr kopieren
-    </button>
+      severity="secondary"
+      [outlined]="true"
+      styleClass="ml-5"
+    ></p-button>
     <hr />
   </div>
   @if (!loading()) {
@@ -39,7 +39,7 @@
       [scrollHeight]="objHeight$()"
       [scrollable]="true"
     >
-      <ng-template pTemplate="header">
+      <ng-template #header>
         <tr>
           <th style="width: 10%">No.</th>
           <th style="width: 30%">Konto</th>
@@ -49,7 +49,7 @@
         </tr>
       </ng-template>
       <ng-template
-        pTemplate="body"
+        #body
         let-data
         let-editing="editing"
         let-ri="rowIndex"
@@ -69,8 +69,8 @@
               </div>
             }
             @if (rowIsEditing(data)) {
-              <p-cellEditor>
-                <ng-template pTemplate="input">
+              <p-cell-editor>
+                <ng-template #input>
                   <p-select
                     [options]="lstAccounts()"
                     [(ngModel)]="data.acc_id"
@@ -84,10 +84,10 @@
                   >
                   </p-select>
                 </ng-template>
-                <ng-template pTemplate="output">
+                <ng-template #output>
                   {{ data.acc_name }}
                 </ng-template>
-              </p-cellEditor>
+              </p-cell-editor>
             }
           </td>
           <td
@@ -102,18 +102,18 @@
               </div>
             }
             @if (rowIsEditing(data)) {
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <p-inputNumber
+              <p-cell-editor>
+                <ng-template #input>
+                  <p-input-number
                     [(ngModel)]="data.amount"
                     [required]="true"
                     [style]="{ width: '100%' }"
-                  ></p-inputNumber>
+                  ></p-input-number>
                 </ng-template>
-                <ng-template pTemplate="output">
+                <ng-template #output>
                   {{ data.amount | number: "1.2-2" }}
                 </ng-template>
-              </p-cellEditor>
+              </p-cell-editor>
             }
           </td>
           <td
@@ -127,66 +127,69 @@
               </div>
             }
             @if (rowIsEditing(data)) {
-              <p-cellEditor>
-                <ng-template pTemplate="input">
+              <p-cell-editor>
+                <ng-template #input>
                   <input
                     pInputText
                     [(ngModel)]="data.memo"
                     [style]="{ width: '100%' }"
                   />
                 </ng-template>
-                <ng-template pTemplate="output">
+                <ng-template #output>
                   {{ data.memo }}
                 </ng-template>
-              </p-cellEditor>
+              </p-cell-editor>
             }
           </td>
           <td>
             @if (!rowIsEditing(data)) {
-              <button
-                pButton
+              <p-button
                 pRipple
                 type="button"
                 pInitEditableRow
                 icon="pi pi-pencil"
                 (click)="onRowEditInit(data)"
                 [disabled]="!isEditable()"
-                class="p-button-rounded p-button-text"
-              ></button>
+                [rounded]="true"
+                [text]="true"
+              ></p-button>
             }
             @if (rowIsEditing(data)) {
-              <button
-                pButton
+              <p-button
                 pRipple
                 type="button"
                 pSaveEditableRow
                 icon="pi pi-check"
                 (click)="onRowEditSave(data)"
                 [disabled]="!isEditable()"
-                class="p-button-rounded p-button-text p-button-success mr-2"
-              ></button>
+                [rounded]="true"
+                [text]="true"
+                severity="success"
+                styleClass="mr-2"
+              ></p-button>
             }
             @if (rowIsEditing(data)) {
-              <button
-                pButton
+              <p-button
                 pRipple
                 type="button"
                 pCancelEditableRow
                 icon="pi pi-times"
                 (click)="onRowEditCancel(data, ri)"
-                class="p-button-rounded p-button-text p-button-danger"
-              ></button>
+                [rounded]="true"
+                [text]="true"
+                severity="danger"
+              ></p-button>
             }
             @if (!rowIsEditing(data)) {
-              <button
-                pButton
+              <p-button
                 pRipple
                 type="button"
                 [disabled]="!isEditable()"
                 icon="pi pi-times"
                 (click)="onRowEditDelete(data)"
-                class="p-button-rounded p-button-text"
-              ></button>
+                [rounded]="true"
+                [text]="true"
+              ></p-button>
             }
           </td>
         </tr>
@@ -194,7 +197,7 @@
     </p-table>
   }
 </div>
-<p-confirmDialog
+<p-confirm-dialog
   header="Confirmation"
   icon="pi pi-exclamation-triangle"
-></p-confirmDialog>
+></p-confirm-dialog>

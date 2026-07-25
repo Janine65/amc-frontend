@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { LayoutService } from "../service/app.layout.service";
 import { Package } from '@model/user';
 import pkg from './../../../package.json';
@@ -10,6 +10,7 @@ import { BackendService } from '@service/backend.service';
 @Component({
     selector: 'app-footer',
     templateUrl: './app.footer.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterLink]
 })
 export class AppFooterComponent implements OnInit {

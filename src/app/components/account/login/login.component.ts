@@ -22,7 +22,7 @@ import { InputDirective } from '../../shared/input-validation/input.directive';
 import { Bind } from 'primeng/bind';
 import { InputText } from 'primeng/inputtext';
 import { PasswordDirective } from 'primeng/password';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 
 @Component({
@@ -39,7 +39,7 @@ import { Ripple } from 'primeng/ripple';
     Bind,
     InputText,
     PasswordDirective,
-    ButtonDirective,
+    Button,
     Ripple,
   ],
 })

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BackendService } from '@app/service';
 import { MessageService } from 'primeng/api';
 import { from } from 'rxjs';
@@ -23,6 +23,7 @@ import { BaseTableComponent } from '../../shared/basetable/basetable.component';
   templateUrl: './anlaesse.component.html',
   styles: [],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, Select, FormsModule, BaseTableComponent],
 })
 export class AnlaesseComponent implements OnInit {

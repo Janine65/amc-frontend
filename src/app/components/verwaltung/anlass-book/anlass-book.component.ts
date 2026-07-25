@@ -10,6 +10,7 @@ import {
   Renderer2,
   signal,
   viewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -21,7 +22,7 @@ import {
 } from '@angular/forms';
 import { Adresse, Anlass, Meisterschaft } from '@model/datatypes';
 import { BackendService } from '@app/service';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { AutoComplete } from 'primeng/autocomplete';
 import {
   DialogService,
@@ -32,7 +33,7 @@ import { Subscription, map, zip } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { Splitter } from 'primeng/splitter';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { Toolbar } from 'primeng/toolbar';
 
@@ -46,13 +47,13 @@ interface AutoCompleteCompleteEvent {
   templateUrl: './anlass-book.component.html',
   styleUrls: ['./anlass-book.component.scss'],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toast,
     Splitter,
-    PrimeTemplate,
     FormsModule,
-    ButtonDirective,
+    Button,
     TableModule,
     ReactiveFormsModule,
     AutoComplete,
@@ -192,9 +193,9 @@ export class AnlassBookComponent implements OnInit {
   }
   private focusTeilnehmer() {
     const ac = this.teilnehmerObject();
-    const el = ac.inputEL?.nativeElement as HTMLInputElement | undefined;
+    const el = ac.inputEL()?.nativeElement as HTMLInputElement | undefined;
     if (el) el.focus();
-    ac.focused = true;
+    ac.focused.set(true);
   }
 
   ngOnInit(): void {

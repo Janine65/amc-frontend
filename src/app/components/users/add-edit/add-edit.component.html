@@ -1,4 +1,4 @@
-<p-scrollPanel [style]="{ width: '100%', height: '80%' }">
+<p-scroll-panel [style]="{ width: '100%', height: '80%' }">
   <form [formGroup]="fg" autocomplete="off" (ngSubmit)="save()">
     <div class="card">
       <div class="flex flex-wrap">
@@ -35,27 +35,27 @@
         @if (withRole) {
           <div class="flex items-center flex-wrap mb-4 w-full">
             <div class="flex items-center gap-2 mb-2">
-              <p-radioButton
+              <p-radio-button
                 formControlName="role"
                 value="user"
                 inputId="user"
-              ></p-radioButton>
+              ></p-radio-button>
               <label for="user">User</label>
             </div>
             <div class="flex items-center gap-2 mb-2">
-              <p-radioButton
+              <p-radio-button
                 formControlName="role"
                 value="revisor"
                 inputId="revisor"
-              ></p-radioButton>
+              ></p-radio-button>
               <label for="revisor">Revisor</label>
             </div>
             <div class="flex items-center gap-2 mb-2">
-              <p-radioButton
+              <p-radio-button
                 formControlName="role"
                 value="admin"
                 inputId="admin"
-              ></p-radioButton>
+              ></p-radio-button>
               <label for="admin">Admin</label>
             </div>
           </div>
@@ -89,7 +89,7 @@
                 toggleMask="true"
                 type="password"
                 validator="matchPassword"
-                [params]="fg?.get('passwordN')"
+                [params]="$safeNavigationMigration(fg?.get('passwordN'))"
                 formControlName="passwordV"
                 autocomplete="off"
                 required
@@ -102,36 +102,36 @@
       </div>
     </div>
   </form>
-</p-scrollPanel>
+</p-scroll-panel>
 <p-toolbar>
-  <button
-    pButton
+  <p-button
     type="button"
     label="Zurück"
     icon="pi pi-back"
-    class="p-button-secondary p-button-outlined"
+    severity="secondary"
+    [outlined]="true"
     (click)="back()"
-  ></button>
+  ></p-button>
   @if (!wihtPwd && user.id! > 0) {
-    <button
-      pButton
+    <p-button
       type="button"
       label="Neues Passwort"
       icon="pi pi-slack"
-      class="p-button-secondary p-button-outlined"
+      severity="secondary"
+      [outlined]="true"
       (click)="newPwd()"
-    ></button>
+    ></p-button>
   }
-  <button
-    pButton
+  <p-button
     type="button"
     label="Sichern"
     icon="pi pi-save"
-    class="p-button-primary p-button-outlined"
+    severity="primary"
+    [outlined]="true"
     (click)="save()"
-  ></button>
+  ></p-button>
 </p-toolbar>
-<p-confirmDialog
+<p-confirm-dialog
   header="Confirmation"
   icon="pi pi-exclamation-triangle"
-></p-confirmDialog>
+></p-confirm-dialog>

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Fiscalyear } from '@model/datatypes';
 import { BackendService, RetData } from '@app/service';
 import {
   TableOptions,
   TableToolbar,
 } from '@shared/basetable/basetable.component';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Observable, from, map, timer, zip } from 'rxjs';
 import { Bind } from 'primeng/bind';
@@ -16,7 +16,7 @@ import { BaseTableComponent } from '../../shared/basetable/basetable.component';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
 import { ProgressBar } from 'primeng/progressbar';
 import { Tag } from 'primeng/tag';
@@ -35,15 +35,15 @@ type Severity =
   templateUrl: './geschaeftsjahr.component.html',
   styleUrls: ['./geschaeftsjahr.component.scss'],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Splitter,
-    PrimeTemplate,
     BaseTableComponent,
     FormsModule,
     InputText,
     Select,
-    ButtonDirective,
+    Button,
     Dialog,
     ProgressBar,
     Tag,

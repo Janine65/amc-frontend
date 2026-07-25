@@ -9,12 +9,12 @@
   >
   </app-basetable>
 </div>
-<p-confirmDialog
+<p-confirm-dialog
   header="Confirmation"
   icon="pi pi-exclamation-triangle"
-></p-confirmDialog>
+></p-confirm-dialog>
 <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }">
-  <ng-template pTemplate="header">
+  <ng-template #header>
     <span class="text-xl font-bold"
       >Attachmenet {{ selAtt.receipt }}: Bezeichnung ändern</span
     >
@@ -26,7 +26,7 @@
     class="p-inputtext-lg"
     style="width: 100%"
   />
-  <ng-template pTemplate="footer">
+  <ng-template #footer>
     <p-button
       icon="pi pi-save"
       (click)="editAttBez()"

@@ -1,5 +1,5 @@
 <p-splitter [panelSizes]="[60, 40]" styleClass="mb-1">
-  <ng-template pTemplate>
+  <ng-template #panel>
     <div class="card" style="width: 100%">
       <app-basetable
         [tableOptions]="cols()"
@@ -11,7 +11,7 @@
       </app-basetable>
     </div>
   </ng-template>
-  <ng-template pTemplate="">
+  <ng-template #panel>
     <div class="card" style="width: 100%">
       <form autocomplete="off" (ngSubmit)="save()">
         <div class="flex flex-wrap">
@@ -55,15 +55,15 @@
             ></p-select>
           </div>
           <div class="mb-4 w-full md:w-full mt-4">
-            <button
-              pButton
+            <p-button
               type="button"
               label="Sichern"
               icon="pi pi-save"
-              class="p-button-primary p-button-outlined"
+              severity="primary"
+              [outlined]="true"
               (click)="save()"
               [disabled]="!editMode() && !addMode()"
-            ></button>
+            ></p-button>
           </div>
         </div>
       </form>
@@ -75,13 +75,13 @@
   [modal]="true"
   [style]="{ width: '50vw' }"
 >
-  <ng-template pTemplate="header">
+  <ng-template #header>
     Der Download dauert einen Moment.
   </ng-template>
-  <p-progressBar
+  <p-progress-bar
     mode="indeterminate"
     [style]="{ height: '6px' }"
-  ></p-progressBar>
+  ></p-progress-bar>
   <div class="flex flex-wrap mt-2">
     <div class="w-2/3">Bilanz- und Erfolgsrechnung</div>
     <div class="w-1/3">

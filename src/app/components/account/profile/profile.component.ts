@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AccountService } from '@app/service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AddEditComponent } from '../../users/add-edit/add-edit.component';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [DialogService]
 })
 export class ProfileComponent implements OnInit {

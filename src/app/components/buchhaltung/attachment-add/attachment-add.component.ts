@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BackendService } from '@app/service';
 import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -12,6 +12,7 @@ import { Button } from 'primeng/button';
   selector: 'app-attachment-add',
   templateUrl: './attachment-add.component.html',
   styleUrls: ['./attachment-add.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, FileUpload, Toolbar, Button],
 })
 export class AttachmentAddComponent {

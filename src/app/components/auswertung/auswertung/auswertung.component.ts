@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MeisterschaftAuswertung, ParamData } from '@model/datatypes';
 import { BackendService } from '@app/service';
 import { MessageService } from 'primeng/api';
@@ -8,11 +8,13 @@ import { Bind } from 'primeng/bind';
 import { Select } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { UIChart } from 'primeng/chart';
+import type { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-auswertung',
   templateUrl: './auswertung.component.html',
   styleUrls: ['./auswertung.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, Select, FormsModule, UIChart],
 })
 export class AuswertungComponent implements OnInit {
@@ -24,8 +26,8 @@ export class AuswertungComponent implements OnInit {
     { value: 2, label: '2' },
     { value: 3, label: '3' },
   ]);
-  readonly data = signal<Record<string, unknown> | undefined>(undefined);
-  readonly options = signal<Record<string, unknown> | undefined>(undefined);
+  readonly data = signal<ChartData<'bar'> | undefined>(undefined);
+  readonly options = signal<ChartOptions<'bar'> | undefined>(undefined);
 
   selJahr = 2;
   jahr: number;
@@ -118,7 +120,9 @@ export class AuswertungComponent implements OnInit {
               },
               grid: {
                 color: surfaceBorder,
-                drawBorder: false,
+              },
+              border: {
+                display: false,
               },
             },
             x2: {
@@ -133,7 +137,9 @@ export class AuswertungComponent implements OnInit {
               },
               grid: {
                 color: surfaceBorder,
-                drawBorder: false,
+              },
+              border: {
+                display: false,
               },
               min: 0,
               max: data.datasets.reduce(
@@ -143,15 +149,17 @@ export class AuswertungComponent implements OnInit {
             },
             y: {
               stacked: true,
+              min: 0,
               ticks: {
                 color: textColorSecondary,
                 stepSize: 0,
-                min: 0,
                 autoSkip: false,
               },
               grid: {
                 color: surfaceBorder,
-                drawBorder: false,
+              },
+              border: {
+                display: false,
               },
             },
           },

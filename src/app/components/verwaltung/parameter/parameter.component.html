@@ -1,18 +1,18 @@
 <div class="card">
   <p-toast key="local"></p-toast>
-  <button
-    pButton
+  <p-button
     pRipple
     type="button"
     icon="pi pi-plus"
+    label="Neuen Eintrag hinzufügen"
     (click)="onAddNewRow()"
-    class="mb-2 p-button-secondary p-button-outlined"
-  >
-    Neuen Eintrag hinzufügen
-  </button>
+    severity="secondary"
+    [outlined]="true"
+    styleClass="mb-2"
+  ></p-button>
   @if (!loading()) {
     <p-table [value]="parameters()" dataKey="id" editMode="row" showGridlines>
-      <ng-template pTemplate="header">
+      <ng-template #header>
         <tr>
           <th style="width: 20%">Key</th>
           <th style="width: 70%">Value</th>
@@ -20,7 +20,7 @@
         </tr>
       </ng-template>
       <ng-template
-        pTemplate="body"
+        #body
         let-parameter
         let-editing="editing"
         let-ri="rowIndex"
@@ -30,8 +30,8 @@
           [pEditableRowDisabled]="parameter.id === 0"
         >
           <td [pEditableColumn]="parameter.key" pEditableColumnField="key">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
+            <p-cell-editor>
+              <ng-template #input>
                 <input
                   pInputText
                   type="text"
@@ -40,14 +40,14 @@
                   required
                 />
               </ng-template>
-              <ng-template pTemplate="output">
+              <ng-template #output>
                 {{ parameter.key }}
               </ng-template>
-            </p-cellEditor>
+            </p-cell-editor>
           </td>
           <td [pEditableColumn]="parameter.value" pEditableColumnField="value">
-            <p-cellEditor>
-              <ng-template pTemplate="input">
+            <p-cell-editor>
+              <ng-template #input>
                 <textarea
                   pTextarea
                   [autoResize]="true"
@@ -56,55 +56,58 @@
                   [style]="{ width: '100%' }"
                 ></textarea>
               </ng-template>
-              <ng-template pTemplate="output">
+              <ng-template #output>
                 {{ parameter.value }}
               </ng-template>
-            </p-cellEditor>
+            </p-cell-editor>
           </td>
           <td>
             <div class="flex items-center justify-center gap-2">
               @if (!editing) {
-                <button
-                  pButton
+                <p-button
                   pRipple
                   type="button"
                   pInitEditableRow
                   icon="pi pi-pencil"
                   (click)="onRowEditInit(parameter)"
-                  class="p-button-rounded p-button-text"
-                ></button>
+                  [rounded]="true"
+                  [text]="true"
+                ></p-button>
               }
               @if (!editing) {
-                <button
-                  pButton
+                <p-button
                   pRipple
                   type="button"
                   icon="pi pi-trash"
                   (click)="onRowDelete(parameter, ri)"
-                  class="p-button-rounded p-button-text"
-                ></button>
+                  [rounded]="true"
+                  [text]="true"
+                ></p-button>
               }
               @if (editing) {
-                <button
-                  pButton
+                <p-button
                   pRipple
                   type="button"
                   pSaveEditableRow
                   icon="pi pi-check"
                   (click)="onRowEditSave(parameter, ri)"
-                  class="p-button-rounded p-button-text p-button-success mr-2"
-                ></button>
+                  [rounded]="true"
+                  [text]="true"
+                  severity="success"
+                  styleClass="mr-2"
+                ></p-button>
               }
               @if (editing) {
-                <button
-                  pButton
+                <p-button
                   pRipple
                   type="button"
                   pCancelEditableRow
                   icon="pi pi-times"
                   (click)="onRowEditCancel(parameter, ri)"
-                  class="p-button-rounded p-button-text p-button-danger"
-                ></button>
+                  [rounded]="true"
+                  [text]="true"
+                  severity="danger"
+                ></p-button>
               }
             </div>
           </td>

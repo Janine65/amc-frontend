@@ -4,6 +4,7 @@ import {
   inject,
   signal,
   viewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { LayoutService } from '../service/app.layout.service';
 import { Bind } from 'primeng/bind';
@@ -14,6 +15,7 @@ import { Button } from 'primeng/button';
 @Component({
   selector: 'app-topbar',
   templateUrl: './app.topbar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, Toast, RouterLink, Button],
 })
 export class AppTopBarComponent {

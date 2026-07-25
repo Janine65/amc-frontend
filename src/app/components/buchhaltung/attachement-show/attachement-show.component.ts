@@ -4,6 +4,7 @@ import {
   OnDestroy,
   inject,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { BackendService } from '@app/service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -14,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
   selector: 'app-attachement-show',
   templateUrl: './attachement-show.component.html',
   styleUrls: ['./attachement-show.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ButtonModule],
 })
 export class AttachementShowComponent implements AfterViewInit, OnDestroy {

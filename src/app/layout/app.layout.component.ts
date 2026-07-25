@@ -6,6 +6,7 @@ import {
   inject,
   OnInit,
   viewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -22,6 +23,7 @@ import { AppFooterComponent } from './app.footer.component';
   selector: 'app-layout',
   templateUrl: './app.layout.component.html',
   providers: [MessageService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NgClass,
     AppTopBarComponent,

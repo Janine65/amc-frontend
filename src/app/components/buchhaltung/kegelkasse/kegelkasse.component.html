@@ -8,38 +8,38 @@
     <p-tabpanel value="0">
       <div class="pb-2">
         <p-toolbar>
-          <button
-            pButton
+          <p-button
             label="Zwischenspeichern"
-            class="p-button-secondary p-button-outlined"
+            severity="secondary"
+            [outlined]="true"
             (click)="saveJournal(false)"
             [disabled]="isButtonAllowed('user') || kegelkasse.journal"
-          ></button>
-          <button
-            pButton
+          ></p-button>
+          <p-button
             label="Leeren"
-            class="p-button-secondary p-button-outlined"
+            severity="secondary"
+            [outlined]="true"
             (click)="clearTotal()"
             [disabled]="isButtonAllowed('user') || kegelkasse.journal"
-          ></button>
-          <button
-            pButton
+          ></p-button>
+          <p-button
             [label]="
               kegelkasse.journal
                 ? 'Journaleintrag ändern'
                 : 'Journaleintrag erstellen'
             "
-            class="p-button-primary p-button-outlined"
+            severity="primary"
+            [outlined]="true"
             (click)="saveJournal(true)"
             [disabled]="isButtonAllowed('admin')"
-          ></button>
-          <button
-            pButton
+          ></p-button>
+          <p-button
             label="Beleg erstellen"
-            class="p-button-secondary p-button-outlined"
+            severity="secondary"
+            [outlined]="true"
             (click)="createReceipt()"
             [disabled]="isButtonAllowed('admin') || !kegelkasse.journal"
-          ></button>
+          ></p-button>
         </p-toolbar>
       </div>
       <form [formGroup]="fgKasse" autocomplete="off">
@@ -62,7 +62,7 @@
               <label for="kasse" class="text-right pr-2" style="width: 210px"
                 >Kasse</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="kasse"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -71,26 +71,26 @@
                 id="kasse"
                 size="small"
                 formControlName="kasse"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="rappen5" class="text-right pr-2" style="width: 80px"
                 >0.05 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen5"
                 id="rappen5"
                 size="small"
                 formControlName="rappen5"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="rappen5_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen5_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -100,26 +100,26 @@
                 size="small"
                 formControlName="rappen5_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="rappen10" class="text-right pr-2" style="width: 80px"
                 >0.10 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen10"
                 id="rappen10"
                 size="small"
                 formControlName="rappen10"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="rappen10_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen10_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -129,26 +129,26 @@
                 size="small"
                 formControlName="rappen10_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="rappen20" class="text-right pr-2" style="width: 80px"
                 >0.20 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen20"
                 id="rappen20"
                 size="small"
                 formControlName="rappen20"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="rappen20_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen20_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -158,26 +158,26 @@
                 size="small"
                 formControlName="rappen20_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="rappen50" class="text-right pr-2" style="width: 80px"
                 >0.50 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen50"
                 id="rappen50"
                 size="small"
                 formControlName="rappen50"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="rappen50_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="rappen50_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -187,26 +187,26 @@
                 size="small"
                 formControlName="rappen50_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="franken1" class="text-right pr-2" style="width: 80px"
                 >1.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken1"
                 id="franken1"
                 size="small"
                 formControlName="franken1"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken1_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken1_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -216,7 +216,7 @@
                 size="small"
                 formControlName="franken1_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
           </div>
           <div class="w-1/2">
@@ -224,20 +224,20 @@
               <label for="franken2" class="text-right pr-2" style="width: 80px"
                 >2.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken2"
                 id="franken2"
                 size="small"
                 formControlName="franken2"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken2_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken2_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -247,26 +247,26 @@
                 size="small"
                 formControlName="franken2_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="franken5" class="text-right pr-2" style="width: 80px"
                 >5.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken5"
                 id="franken5"
                 size="small"
                 formControlName="franken5"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken5_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken5_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -276,26 +276,26 @@
                 size="small"
                 formControlName="franken5_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="franken10" class="text-right pr-2" style="width: 80px"
                 >10.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken10"
                 id="franken10"
                 size="small"
                 formControlName="franken10"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken10_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken10_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -305,26 +305,26 @@
                 size="small"
                 formControlName="franken10_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="franken20" class="text-right pr-2" style="width: 80px"
                 >20.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken20"
                 id="franken20"
                 size="small"
                 formControlName="franken20"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken20_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken20_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -334,26 +334,26 @@
                 size="small"
                 formControlName="franken20_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="franken50" class="text-right pr-2" style="width: 80px"
                 >50.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken50"
                 id="franken50"
                 size="small"
                 formControlName="franken50"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken50_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken50_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -363,7 +363,7 @@
                 size="small"
                 formControlName="franken50_sum"
                 class="text-right"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label
@@ -372,19 +372,19 @@
                 style="width: 80px"
                 >100.00 x</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken100"
                 id="franken100"
                 size="small"
                 formControlName="franken100"
-              ></p-inputNumber>
+              ></p-input-number>
               <label
                 for="franken100_sum"
                 class="text-right pr-2 pl-2"
                 style="width: 40px"
                 >=</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="franken100_sum"
                 locale="de-CH"
                 minFractionDigits="2"
@@ -393,31 +393,31 @@
                 id="franken100_sum"
                 size="small"
                 formControlName="franken100_sum"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0">
               <label for="total" class="pr-2" style="width: 210px">Total</label>
-              <p-inputNumber
+              <p-input-number
                 inputId="total"
                 locale="de-CH"
                 [minFractionDigits]="2"
                 id="total"
                 size="small"
                 formControlName="total"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
             <div class="mb-4 flex flex-wrap pb-0 text-lg">
               <label for="differenz" class="pr-2" style="width: 210px"
                 >Differenz</label
               >
-              <p-inputNumber
+              <p-input-number
                 inputId="differenz"
                 locale="de-CH"
                 [minFractionDigits]="2"
                 id="differenz"
                 size="small"
                 formControlName="differenz"
-              ></p-inputNumber>
+              ></p-input-number>
             </div>
           </div>
         </div>
@@ -434,7 +434,7 @@
         }}</span>
         <span class="w-1/6">{{ kegelkasse.journal?.memo }}</span>
         <span class="w-1/6">{{
-          kegelkasse.journal?.amount | dynamicPipe: decimalPipe : "1.2-2"
+          $safeNavigationMigration(kegelkasse.journal?.amount) | dynamicPipe: decimalPipe : "1.2-2"
         }}</span>
       </div>
     </p-tabpanel>

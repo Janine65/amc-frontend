@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DecimalPipe, NgClass } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import {
   Component,
   HostListener,
@@ -9,13 +9,13 @@ import {
   inject,
   input,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { AccountService } from '@app/service';
 import { Table, TableModule } from 'primeng/table';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
-import { ButtonDirective } from 'primeng/button';
-import { PrimeTemplate } from 'primeng/api';
+import { Button } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 import { DynamicPipe } from '@shared/basetable/dynamicpipe';
 
@@ -79,13 +79,12 @@ export class TableToolbar {
   selector: 'app-basetable',
   templateUrl: './basetable.component.html',
   styleUrls: ['./basetable.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toast,
-    ButtonDirective,
-    NgClass,
+    Button,
     TableModule,
-    PrimeTemplate,
     Ripple,
     DynamicPipe,
   ],

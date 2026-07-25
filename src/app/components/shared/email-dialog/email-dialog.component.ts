@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AccountService, BackendService } from '@app/service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmailBody, EmailSignature } from './email-dialog.types';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { environment } from '@environments/environment';
 import { Subscription } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toolbar } from 'primeng/toolbar';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { ProgressSpinner } from 'primeng/progressspinner';
 import { FormsModule } from '@angular/forms';
 import { Textarea } from 'primeng/textarea';
@@ -19,16 +19,16 @@ import { FileUpload } from 'primeng/fileupload';
   selector: 'app-email-dialog',
   templateUrl: './email-dialog.component.html',
   styleUrls: ['./email-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toolbar,
-    ButtonDirective,
+    Button,
     ProgressSpinner,
     FormsModule,
     Textarea,
     Select,
     Editor,
-    PrimeTemplate,
     FileUpload,
   ],
 })

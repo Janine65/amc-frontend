@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Journal, ParamData } from '@model/datatypes';
 import { BackendService } from '@app/service';
 import {
@@ -20,6 +20,7 @@ import { BaseTableComponent } from '../../shared/basetable/basetable.component';
   selector: 'app-konto-bewegungen',
   templateUrl: './konto-bewegungen.component.html',
   styleUrls: ['./konto-bewegungen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, Select, FormsModule, BaseTableComponent],
 })
 export class KontoBewegungenComponent implements OnInit {

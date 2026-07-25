@@ -1,11 +1,11 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ParamData } from '@model/datatypes';
 import { BackendService, RetData } from '@app/service';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
@@ -16,13 +16,13 @@ import { Textarea } from 'primeng/textarea';
   selector: 'app-parameter',
   templateUrl: './parameter.component.html',
   styles: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toast,
-    ButtonDirective,
+    Button,
     Ripple,
     TableModule,
-    PrimeTemplate,
     FormsModule,
     InputText,
     Textarea,

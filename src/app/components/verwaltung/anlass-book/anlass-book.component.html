@@ -1,16 +1,16 @@
 <p-toast key="local"></p-toast>
 <p-toolbar>
-  <button
-    pButton
+  <p-button
     type="button"
     label="Zurück"
     icon="pi pi-back"
-    class="p-button-secondary p-button-outlined"
+    severity="secondary"
+    [outlined]="true"
     (click)="back()"
-  ></button>
+  ></p-button>
 </p-toolbar>
 <p-splitter [panelSizes]="[40, 60]" class="mb-1">
-  <ng-template pTemplate>
+  <ng-template #panel>
     <div
       class="card border-0"
       [style]="'width: 100%; height: ' + objHeight$() + ';'"
@@ -24,14 +24,15 @@
           class="wurf mb-1"
           [(ngModel)]="anlass.gaeste"
         />
-        <button
-          pButton
+        <p-button
           type="button"
           label="Sichern"
           icon="pi pi-save"
-          class="p-button-secondary p-button-outlined ml-6"
+          severity="secondary"
+          [outlined]="true"
+          styleClass="ml-6"
           (click)="saveGaeste()"
-        ></button>
+        ></p-button>
       </div>
       <div class="row w-full">
         <p-table
@@ -47,7 +48,7 @@
           [tableStyle]="{ 'min-width': '100%' }"
           (onRowSelect)="selTeilnehmerTable()"
         >
-          <ng-template pTemplate="header">
+          <ng-template #header>
             <tr>
               <th>
                 {{ lstMeisterschaft() ? lstMeisterschaft().length : 0 }}
@@ -55,7 +56,7 @@
               </th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-data>
+          <ng-template #body let-data>
             <tr style="height: 36px" [pSelectableRow]="data">
               <td>{{ data.punkte }} - {{ data.adressen.fullname }}</td>
             </tr>
@@ -63,25 +64,25 @@
         </p-table>
       </div>
       <div class="row w-full mt-1">
-        <button
-          pButton
+        <p-button
           type="button"
           label="Löschen"
           icon="pi pi-file-delete"
-          class="p-button-secondary p-button-outlined"
+          severity="secondary"
+          [outlined]="true"
           (click)="deleteEntry()"
           [disabled]="!selMeisterschaft || !selMeisterschaft.id"
-        ></button>
+        ></p-button>
       </div>
     </div>
   </ng-template>
-  <ng-template pTemplate>
+  <ng-template #panel>
     <div class="card" [style]="'width: 100%; height: ' + objHeight$() + ';'">
       <form [formGroup]="fgMeisterschaft" autocomplete="off">
         <div class="flex items-center flex-wrap">
           <div class="mb-4 pb-2">
             <label for="teilnehmer" class="pr-2">Teilnehmer wählen</label>
-            <p-autoComplete
+            <p-auto-complete
               #teilnehmername
               id="teilnehmername"
               formControlName="teilnehmername"
@@ -95,7 +96,7 @@
               [forceSelection]="true"
               [autofocus]="true"
             >
-            </p-autoComplete>
+            </p-auto-complete>
           </div>
           <div class="mb-4 pb-2 w-full md:w-full">
             <label for="punkte" class="pr-2">Punkte</label>
@@ -237,26 +238,26 @@
           }
         </div>
         <div class="mb-4 w-full md:w-full md:mb-0">
-          <button
-            pButton
+          <p-button
             type="submit"
             label="Sichern"
             icon="pi pi-save"
             [disabled]="teilnehmername.value === null"
-            class="p-button-primary p-button-outlined"
+            severity="primary"
+            [outlined]="true"
             id="save"
             (click)="save()"
-          ></button>
-          <button
-            pButton
+          ></p-button>
+          <p-button
             type="reset"
             label="Reset"
             icon="pi pi-reset"
             [disabled]="teilnehmername.value === null"
-            class="p-button-secondary p-button-outlined"
+            severity="secondary"
+            [outlined]="true"
             id="reset"
             (click)="reset()"
-          ></button>
+          ></p-button>
         </div>
       </form>
     </div>

@@ -1,5 +1,5 @@
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MeisterAdresse, Meisterschaft } from '@model/datatypes';
 import { BackendService } from '@app/service';
 import {
@@ -18,6 +18,7 @@ import { BaseTableComponent } from '../../shared/basetable/basetable.component';
   selector: 'app-adresse-show',
   templateUrl: './adresse-show.component.html',
   styleUrls: ['./adresse-show.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Tabs,

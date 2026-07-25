@@ -45,24 +45,24 @@
       </cr-input>
     </div>
     <div class="mt-3">
-      <button
-        pButton
+      <p-button
         pRipple
         type="submit"
+        label="Login"
         [disabled]="loading()"
-        class="p-button-primary p-button-outlined p-2 mr-4"
-      >
-        Login
-      </button>
-      <button
-        pButton
+        severity="primary"
+        [outlined]="true"
+        styleClass="p-2 mr-4"
+      ></p-button>
+      <p-button
         pRipple
+        label="Neues Passwot senden"
         [disabled]="loading()"
-        class="p-button-secondary p-button-outlined p-2"
+        severity="secondary"
+        [outlined]="true"
+        styleClass="p-2"
         (click)="onReset()"
-      >
-        Neues Passwot senden
-      </button>
+      ></p-button>
     </div>
   </form>
 </div>

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Account, ParamData } from '@model/datatypes';
 import { BackendService, RetData } from '@app/service';
 import {
   TableOptions,
   TableToolbar,
 } from '@shared/basetable/basetable.component';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Observable, from } from 'rxjs';
 import { KontoBewegungenComponent } from '../konto-bewegungen/konto-bewegungen.component';
@@ -16,22 +16,22 @@ import { BaseTableComponent } from '../../shared/basetable/basetable.component';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-konten',
   templateUrl: './konten.component.html',
   styleUrls: ['./konten.component.scss'],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Splitter,
-    PrimeTemplate,
     BaseTableComponent,
     FormsModule,
     InputText,
     Select,
-    ButtonDirective,
+    Button,
   ],
 })
 export class KontenComponent implements OnInit {

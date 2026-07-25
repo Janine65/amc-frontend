@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import {
@@ -24,13 +24,14 @@ import { InputIcon } from 'primeng/inputicon';
 import { DatePicker } from 'primeng/datepicker';
 import { Select } from 'primeng/select';
 import { Toolbar } from 'primeng/toolbar';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-adresse-edit',
   templateUrl: './adresse-edit.component.html',
   styleUrls: ['./adresse-edit.component.scss'],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     ScrollPanel,
@@ -42,7 +43,7 @@ import { ButtonDirective } from 'primeng/button';
     DatePicker,
     Select,
     Toolbar,
-    ButtonDirective,
+    Button,
   ],
 })
 export class AdresseEditComponent {

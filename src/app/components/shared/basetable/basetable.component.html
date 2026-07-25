@@ -1,23 +1,23 @@
 <p-toast key="local"></p-toast>
 <div class="mb-1">
   @if (checkFiltering()) {
-    <button
-      pButton
+    <p-button
       label="Clear"
-      class="p-button-secondary p-button-outlined mb-1"
+      severity="secondary"
+      [outlined]="true"
+      styleClass="mb-1"
       icon="pi pi-filter-slash"
       (click)="clear(basetable)"
-    ></button>
+    ></p-button>
   }
   @for (but of tableToolbar(); track but; let ind = $index) {
-    <button
-      pButton
+    <p-button
       [label]="but.label!"
       [icon]="but.icon!"
-      [ngClass]="but.btnClass! + ' mb-1'"
+      [styleClass]="but.btnClass! + ' mb-1'"
       (click)="clickOnToolbar(ind)"
       [disabled]="isButtonDisabled(ind)"
-    ></button>
+    ></p-button>
   }
 </div>
 <p-table
@@ -38,31 +38,31 @@
   stateStorage="local"
   showGridlines
 >
-  <ng-template pTemplate="header" let-columns>
+  <ng-template #header>
     <tr>
-      @for (col of columns; track col) {
+      @for (col of tableOptions(); track col) {
         <th
           [pSortableColumnDisabled]="!col.sortable"
           [pSortableColumn]="col.field"
         >
           {{ col.header }}
           @if (col.sortable) {
-            <p-sortIcon field="col.field"></p-sortIcon>
+            <p-sort-icon field="col.field"></p-sort-icon>
           }
           @if (col.filtering) {
-            <p-columnFilter
+            <p-column-filter
               [field]="col.field"
               [type]="col.filter"
               display="menu"
-            ></p-columnFilter>
+            ></p-column-filter>
           }
         </th>
       }
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-data let-columns="columns">
+  <ng-template #body let-data>
     <tr [pSelectableRow]="data" (dblclick)="selectData(data)">
-      @for (col of columns; track col) {
+      @for (col of tableOptions(); track col) {
         <td [class]="data.classRow">
           @if (col.filter === "boolean") {
             <div class="p-text-secondary text-center font-bold">
@@ -94,23 +94,24 @@
       }
       @if (editable()) {
         <td>
-          <button
+          <p-button
             type="button"
-            pButton
             pRipple
             icon="pi pi-file-edit"
+            [rounded]="true"
+            [text]="true"
             (click)="editData(data)"
-          ></button>
+          ></p-button>
         </td>
       }
     </tr>
   </ng-template>
-  <ng-template pTemplate="emptymessage">
+  <ng-template #emptymessage>
     <tr>
       <td [colSpan]="tableOptions().length">Keine Datensaätze gefunden.</td>
     </tr>
   </ng-template>
-  <ng-template pTemplate="summary">
+  <ng-template #summary>
     <div class="flex items-center justify-between">
       {{ tableData() ? tableData().length : 0 }} Datensätze.
     </div>

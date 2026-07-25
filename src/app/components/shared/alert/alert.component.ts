@@ -5,6 +5,7 @@ import {
   inject,
   input,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, NavigationStart } from '@angular/router';
@@ -18,6 +19,7 @@ import { Button } from 'primeng/button';
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Bind, Button],
 })
 export class AlertComponent implements OnInit {

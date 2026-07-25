@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Account, Fiscalyear, Journal, ParamData } from '@model/datatypes';
 import { BackendService, RetData } from '@app/service';
 import {
   TableOptions,
   TableToolbar,
 } from '@shared/basetable/basetable.component';
-import { MessageService, PrimeTemplate } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Observable, map, zip } from 'rxjs';
 import { AttachementListComponent } from '../attachement-list/attachement-list.component';
@@ -21,7 +21,7 @@ import { DatePicker } from 'primeng/datepicker';
 import { AutoComplete } from 'primeng/autocomplete';
 import { InputText } from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -33,10 +33,10 @@ interface AutoCompleteCompleteEvent {
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.scss'],
   providers: [DialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Splitter,
-    PrimeTemplate,
     BaseTableComponent,
     Select,
     FormsModule,
@@ -44,7 +44,7 @@ interface AutoCompleteCompleteEvent {
     AutoComplete,
     InputText,
     InputNumber,
-    ButtonDirective,
+    Button,
   ],
 })
 export class JournalComponent implements OnInit {

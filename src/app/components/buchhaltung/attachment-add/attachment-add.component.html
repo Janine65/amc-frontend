@@ -2,10 +2,10 @@
     <div class="mb-4 flex flex-wrap">
     <label for="uploadfiles" class="w-full md:w-1/6 md:mb-0">Anhänge:</label>
     <div class="w-full md:w-10/12">
-        <p-fileUpload id="uploadfiles" name="uploadfiles[]" [multiple]="true" [maxFileSize]="500 * 1024 * 1024"
+        <p-fileupload id="uploadfiles" name="uploadfiles[]" [multiple]="true" [maxFileSize]="500 * 1024 * 1024"
             [auto]="true" chooseLabel="Wählen" [showCancelButton]="false" [showUploadButton]="false" mode="advanced"
             accept="application/pdf" [customUpload]="true" (uploadHandler)="prepareFiles($event.files)">
-        </p-fileUpload>
+        </p-fileupload>
     </div>
 </div>
 </div>

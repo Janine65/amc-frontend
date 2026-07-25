@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, ChangeDetectionStrategy } from '@angular/core';
 import { TableData } from '../basetable/basetable.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Bind } from 'primeng/bind';
@@ -8,7 +8,7 @@ import { InputText } from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
 import { DatePicker } from 'primeng/datepicker';
 import { Toolbar } from 'primeng/toolbar';
-import { ButtonDirective } from 'primeng/button';
+import { Button } from 'primeng/button';
 
 export class EditOptions {
   public title?: string;
@@ -49,6 +49,7 @@ export class EditToolbar {
   selector: 'app-baseedit',
   templateUrl: './baseedit.component.html',
   styleUrls: ['./baseedit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     ScrollPanel,
@@ -57,7 +58,7 @@ export class EditToolbar {
     InputNumber,
     DatePicker,
     Toolbar,
-    ButtonDirective,
+    Button,
     NgClass,
   ],
 })

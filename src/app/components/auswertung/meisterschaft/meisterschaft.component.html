@@ -10,16 +10,17 @@
     class="mr-2 mb-1"
     (onChange)="readMeisterschaft()"
   ></p-select>
-  <button
-    pButton
+  <p-button
     type="button"
     label="Refresh"
     icon="pi pi-spin"
-    class="p-button-primary p-button-outlined ml-8"
+    severity="primary"
+    [outlined]="true"
+    styleClass="ml-8"
     (click)="refresh()"
-  ></button>
+  ></p-button>
   <p-splitter [panelSizes]="[50, 50]">
-    <ng-template pTemplate>
+    <ng-template #panel>
       <div
         class="card border-0"
         style="width: 100%; height: 100%"
@@ -38,7 +39,7 @@
             [tableStyle]="{ 'min-width': '100%' }"
             [loading]="loading()"
           >
-            <ng-template pTemplate="header">
+            <ng-template #header>
               <tr>
                 <th>Rang</th>
                 <th>Vorname</th>
@@ -46,7 +47,7 @@
                 <th>Punkte</th>
               </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-data>
+            <ng-template #body let-data>
               <tr style="height: 36px">
                 <td [class]="data.status ? '' : 'inactive'">{{ data.rang }}</td>
                 <td [class]="data.status ? '' : 'inactive'">
@@ -60,7 +61,7 @@
                 </td>
               </tr>
             </ng-template>
-            <ng-template pTemplate="summary">
+            <ng-template #summary>
               <div class="flex items-center justify-between">
                 {{ lstClubmeister() ? lstClubmeister().length : 0 }} Teilnehmer
               </div>
@@ -69,7 +70,7 @@
         </div>
       </div>
     </ng-template>
-    <ng-template pTemplate>
+    <ng-template #panel>
       <div
         class="card border-0"
         style="width: 100%; height: 100%"
@@ -87,7 +88,7 @@
           [tableStyle]="{ 'min-width': '100%' }"
           [loading]="loading()"
         >
-          <ng-template pTemplate="header">
+          <ng-template #header>
             <tr>
               <th>Rang</th>
               <th>Vorname</th>
@@ -95,7 +96,7 @@
               <th>Punkte</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-data>
+          <ng-template #body let-data>
             <tr style="height: 36px">
               <td [class]="data.status ? '' : 'inactive'">{{ data.rang }}</td>
               <td [class]="data.status ? '' : 'inactive'">
@@ -107,7 +108,7 @@
               <td [class]="data.status ? '' : 'inactive'">{{ data.punkte }}</td>
             </tr>
           </ng-template>
-          <ng-template pTemplate="summary">
+          <ng-template #summary>
             <div class="flex items-center justify-between">
               {{ lstKegelmeister() ? lstKegelmeister().length : 0 }} Teilnehmer
             </div>

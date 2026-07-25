@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AccountAuswertung, ParamData } from '@model/datatypes';
 import { BackendService } from '@app/service';
 import { MessageService } from 'primeng/api';
@@ -16,6 +16,7 @@ import { NgClass, DecimalPipe } from '@angular/common';
   selector: 'app-kto-auswertung',
   templateUrl: './kto-auswertung.component.html',
   styleUrls: ['./kto-auswertung.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
     Toolbar,

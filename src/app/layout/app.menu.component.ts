@@ -5,6 +5,7 @@ import {
   OnInit,
   inject,
   signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { LayoutService } from '../service/app.layout.service';
@@ -17,6 +18,7 @@ import { AppMenuitemComponent } from './app.menuitem.component';
 @Component({
   selector: 'app-menu',
   templateUrl: './app.menu.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [AppMenuitemComponent],
 })
 export class AppMenuComponent implements OnInit, OnChanges {

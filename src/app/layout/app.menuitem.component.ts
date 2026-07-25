@@ -7,6 +7,7 @@ import {
   OnInit,
   inject,
   input,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -127,6 +128,7 @@ export interface AppMenuItem extends MenuItem {
       ),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Ripple, NgClass, RouterLinkActive, RouterLink],
 })
 export class AppMenuitemComponent implements OnInit {
