@@ -22,7 +22,7 @@ describe('AppComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have title "amc-interna"', () => {
-    expect(component.title).toBe('amc-interna');
+  it('should have title "amc-frontend"', () => {
+    expect(component.title).toBe('amc-frontend');
   });
 });

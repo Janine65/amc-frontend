@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
     imports: [RouterOutlet],
 })
 export class AppComponent implements OnInit {
-  title = 'amc-interna';
+  title = 'amc-frontend';
 
   constructor() {}
 

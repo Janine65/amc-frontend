@@ -2,7 +2,7 @@
 import type { Config } from 'jest';
 
 const config: Config = {
-  displayName: 'amc-interna',
+  displayName: 'amc-frontend',
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testEnvironment: 'jsdom',

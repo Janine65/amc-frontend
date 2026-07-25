@@ -1,5 +1,5 @@
 {
-  "name": "amc-interna",
+  "name": "amc-frontend",
   "version": "4.5.2",
   "description": "Auto-Moto-Club Administration: Frontend für die interne Applikation des Vereins.",
   "scripts": {

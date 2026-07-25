@@ -34,7 +34,7 @@ describe('BackendService', () => {
 
   describe('getAbout()', () => {
     it('sendet GET auf /about', () => {
-      const dummy = { name: 'amc-interna', version: '4.5.0' };
+      const dummy = { name: 'amc-frontend', version: '4.5.0' };
       service.getAbout().subscribe((data) => {
         expect(data).toEqual(dummy);
       });
