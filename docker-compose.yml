@@ -20,15 +20,15 @@ services:
       - back-tier
       - front-tier
 
-  amcinternal:
-    container_name: amcinternal
-    image: janine65/amcinternal
+  amcfrontend:
+    container_name: amcfrontend
+    image: janine65/amcfrontend
     platform: linux/amd64
     build:
       context: ./
       dockerfile: ./Dockerfile
       tags:
-        - "janine65/amcinternal:${APP_VERSION:-latest}"
+        - "janine65/amcfrontend:${APP_VERSION:-latest}"
     depends_on:
       - amcbackend
     environment:
@@ -38,7 +38,7 @@ services:
       - 4200:4200
     links:
       - amcbackend
-    hostname: amcinternal
+    hostname: amcfrontend
     networks:
       - front-tier
 
