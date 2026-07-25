@@ -55,15 +55,7 @@
             ></p-select>
           </div>
           <div class="mb-4 w-full md:w-full mt-4">
-            <p-button
-              type="button"
-              label="Sichern"
-              icon="pi pi-save"
-              severity="primary"
-              [outlined]="true"
-              (click)="save()"
-              [disabled]="!editMode() && !addMode()"
-            ></p-button>
+            <button pButton type="button" severity="primary" [outlined]="true" (click)="save()" [disabled]="!editMode() && !addMode()"><i class="pi pi-save"></i> Sichern</button>
           </div>
         </div>
       </form>

@@ -13,14 +13,14 @@ import { Router, NavigationStart } from '@angular/router';
 import { Alert, AlertType } from '@app/models';
 import { AlertService } from '@app/service';
 import { Bind } from 'primeng/bind';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss'],
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [Bind, Button],
+  imports: [Bind, ButtonDirective],
 })
 export class AlertComponent implements OnInit {
   private router = inject(Router);

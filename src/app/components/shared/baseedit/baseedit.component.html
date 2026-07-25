@@ -1,4 +1,6 @@
-<p-scroll-panel [style]="{ width: '100%', height: '100%' }">
+<p-scrollarea style="width: 100%; height: 100%">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
   @for (fld of editFields(); track fld; let ind = $index) {
     <span class="p-float-label">
       <label [for]="'float-input_' + ind">{{ fld.label }}</label>
@@ -20,12 +22,12 @@
   }
   <p-toolbar>
     @for (but of editToolbar(); track but; let ind = $index) {
-      <p-button
-        [label]="but.label!"
-        [icon]="but.icon!"
-        [styleClass]="but.btnClass!"
-        (click)="clickOnToolbar(ind)"
-      ></p-button>
+      <button pButton [class]="but.btnClass!" (click)="clickOnToolbar(ind)"><i [class]="but.icon!"></i> {{ but.label! }}</button>
     }
   </p-toolbar>
-</p-scroll-panel>
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical">
+    <p-scrollarea-handle />
+  </p-scrollarea-scrollbar>
+</p-scrollarea>

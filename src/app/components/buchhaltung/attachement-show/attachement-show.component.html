@@ -1,10 +1,5 @@
 <div class="flex justify-end mt-3">
-  <p-button
-    label="Schliessen"
-    icon="pi pi-times"
-    severity="secondary"
-    (onClick)="ref.close()"
-  />
+  <button pButton severity="secondary" (click)="ref.close()"><i class="pi pi-times"></i> Schliessen</button>
 </div>
 @if (pdfFile()) {
   <div>

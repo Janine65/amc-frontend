@@ -6,7 +6,7 @@ import { Bind } from 'primeng/bind';
 import { Toolbar } from 'primeng/toolbar';
 import { Select } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
 import { Ripple } from 'primeng/ripple';
 import { DataView } from 'primeng/dataview';
@@ -22,7 +22,7 @@ import { NgClass, DecimalPipe } from '@angular/common';
     Toolbar,
     Select,
     FormsModule,
-    Button,
+    ButtonDirective,
     Tabs,
     TabList,
     Ripple,

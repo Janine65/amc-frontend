@@ -23,7 +23,7 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
 import { Dialog } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-attachement-list',
@@ -38,7 +38,7 @@ import { Button } from 'primeng/button';
     Dialog,
     FormsModule,
     InputText,
-    Button,
+    ButtonDirective,
   ],
 })
 export class AttachementListComponent {

@@ -17,14 +17,14 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
 import { Bind } from 'primeng/bind';
-import { ScrollPanel } from 'primeng/scrollpanel';
+import { ScrollArea, ScrollAreaViewport, ScrollAreaContent, ScrollAreaScrollbar, ScrollAreaHandle } from 'primeng/scrollarea';
 import { CrInputPartial } from '../../shared/input-validation/input.partial';
 import { InputDirective } from '../../shared/input-validation/input.directive';
 import { InputText } from 'primeng/inputtext';
 import { RadioButton } from 'primeng/radiobutton';
 import { PasswordDirective } from 'primeng/password';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 
 @Component({
@@ -35,7 +35,11 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
   providers: [ConfirmationService],
   imports: [
     Bind,
-    ScrollPanel,
+    ScrollArea,
+    ScrollAreaViewport,
+    ScrollAreaContent,
+    ScrollAreaScrollbar,
+    ScrollAreaHandle,
     FormsModule,
     ReactiveFormsModule,
     CrInputPartial,
@@ -44,7 +48,7 @@ import { ConfirmDialog } from 'primeng/confirmdialog';
     RadioButton,
     PasswordDirective,
     Toolbar,
-    Button,
+    ButtonDirective,
     ConfirmDialog,
   ],
 })

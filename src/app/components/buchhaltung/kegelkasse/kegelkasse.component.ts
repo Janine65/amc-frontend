@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormControl,
@@ -22,7 +22,7 @@ import { Toast } from 'primeng/toast';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
 import { Ripple } from 'primeng/ripple';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { Select } from 'primeng/select';
 import { InputNumber } from 'primeng/inputnumber';
 import { BaseTableComponent } from '../../shared/basetable/basetable.component';
@@ -43,7 +43,7 @@ import { DynamicPipe } from '@shared/basetable/dynamicpipe';
     TabPanels,
     TabPanel,
     Toolbar,
-    Button,
+    ButtonDirective,
     FormsModule,
     ReactiveFormsModule,
     Select,

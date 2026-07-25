@@ -1,18 +1,6 @@
 <p-toolbar>
-  <p-button
-    icon="pi pi-back"
-    (click)="back()"
-    label="Abbruch"
-    severity="secondary"
-    [outlined]="true"
-  ></p-button>
-  <p-button
-    icon="pi pi-send"
-    (click)="submit()"
-    label="Senden"
-    severity="primary"
-    [outlined]="true"
-  ></p-button>
+  <button pButton (click)="back()" severity="secondary" [outlined]="true"><i class="pi pi-back"></i> Abbruch</button>
+  <button pButton (click)="submit()" severity="primary" [outlined]="true"><i class="pi pi-send"></i> Senden</button>
 </p-toolbar>
 <div class="card">
   @if (loading()) {
@@ -126,11 +114,7 @@
                 <div class="p-fileupload-filename">{{ file.name }}</div>
                 <div>{{ file.size }}</div>
                 <div>
-                  <p-button
-                    type="button"
-                    icon="pi pi-times"
-                    (click)="removeUploadFile(ind)"
-                  ></p-button>
+                  <button pButton type="button" (click)="removeUploadFile(ind)"><i class="pi pi-times"></i></button>
                 </div>
               </div>
             }

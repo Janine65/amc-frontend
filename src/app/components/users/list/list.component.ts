@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   TableData,

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BackendService } from '@app/service';
@@ -266,7 +266,7 @@ export class AnlaesseComponent implements OnInit {
   }
 
   addAnlass = (_selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     thisRef.messageService.clear();
     const newAnl = new Anlass();
@@ -298,7 +298,7 @@ export class AnlaesseComponent implements OnInit {
   };
 
   editAnlass = (selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     thisRef.messageService.clear();
 
@@ -328,7 +328,7 @@ export class AnlaesseComponent implements OnInit {
   };
 
   copyAnlass = (selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     thisRef.messageService.clear();
     const newAnl = structuredClone(selRec);
@@ -365,7 +365,7 @@ export class AnlaesseComponent implements OnInit {
   };
 
   delAnlass = (selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     thisRef.messageService.clear();
 
@@ -387,7 +387,7 @@ export class AnlaesseComponent implements OnInit {
   };
 
   doAnlass = (selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     thisRef.messageService.clear();
 
@@ -410,7 +410,7 @@ export class AnlaesseComponent implements OnInit {
   };
 
   exportOne = (_selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     from(
       this.backendService.getSheet({ jahr: this.selJahr, type: 0, id: null }),
@@ -434,7 +434,7 @@ export class AnlaesseComponent implements OnInit {
   };
 
   exportAllEmpty = (_selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     from(
       this.backendService.getSheet({ jahr: this.selJahr, type: 1, id: 0 }),
@@ -457,7 +457,7 @@ export class AnlaesseComponent implements OnInit {
     });
   };
   exportAllFull = (_selRec?: Anlass, _lstData?: Anlass[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AnlaesseComponent = this;
     from(
       this.backendService.getSheet({ jahr: this.selJahr, type: 2, id: 0 }),

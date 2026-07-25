@@ -110,24 +110,8 @@
             </div>
           </div>
           <div class="mb-4 flex flex-wrap">
-            <p-button
-              type="button"
-              label="Sichern"
-              icon="pi pi-save"
-              severity="primary"
-              [outlined]="true"
-              (click)="save()"
-              [disabled]="!editMode() && !addMode()"
-            ></p-button>
-            <p-button
-              type="button"
-              label="Verwerfen"
-              icon="pi pi-refresh"
-              severity="secondary"
-              [outlined]="true"
-              (click)="reset()"
-              [disabled]="!editMode() && !addMode()"
-            ></p-button>
+            <button pButton type="button" severity="primary" [outlined]="true" (click)="save()" [disabled]="!editMode() && !addMode()"><i class="pi pi-save"></i> Sichern</button>
+            <button pButton type="button" severity="secondary" [outlined]="true" (click)="reset()" [disabled]="!editMode() && !addMode()"><i class="pi pi-refresh"></i> Verwerfen</button>
           </div>
         </form>
       </div>

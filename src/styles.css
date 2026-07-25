@@ -8,24 +8,28 @@
 @import "quill/dist/quill.core.css";
 @import "quill/dist/quill.snow.css";
 
-/* PrimeNG Design Token Utilities (PrimeFlex-Kompatibilität) */
-@layer utilities {
-  .surface-overlay {
-    background-color: var(--surface-overlay);
-  }
-  .surface-card {
-    background-color: var(--surface-card);
-  }
-  .surface-border {
-    border-color: var(--surface-border);
-  }
-  .text-color {
-    color: var(--text-color);
-  }
-  .text-900 {
-    color: var(--surface-900);
-  }
-  .border-round {
-    border-radius: var(--border-radius, 6px);
-  }
+/*
+ * Feine Umrandung fuer native Formularelemente, damit sie visuell den PrimeNG-
+ * Feldern gleichen (analog PrimeNG 21). Wichtig: `:where()` sorgt fuer Spez. 0,
+ * so dass PrimeNG-eigene Regeln (pInputText, p-inputtext, p-datepicker, ...)
+ * problemlos ueberschreiben.
+ */
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="file"]):not([type="hidden"]):not([type="range"]):not([type="color"]):not([pinputtext]):not(.p-inputtext)),
+:where(textarea:not([pinputtext]):not(.p-inputtext)),
+:where(select:not([pinputtext]):not(.p-inputtext)) {
+  border: 1px solid var(--p-form-field-border-color, #cbd5e1);
+  border-radius: var(--p-form-field-border-radius, var(--p-border-radius, 6px));
+  background-color: var(--p-form-field-background, transparent);
+  color: var(--p-form-field-color, inherit);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="file"]):not([type="hidden"]):not([type="range"]):not([type="color"]):not([pinputtext]):not(.p-inputtext)):focus-visible,
+:where(textarea:not([pinputtext]):not(.p-inputtext)):focus-visible,
+:where(select:not([pinputtext]):not(.p-inputtext)):focus-visible {
+  outline: none;
+  border-color: var(--p-primary-color, #0056d6);
+}
+

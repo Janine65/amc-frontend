@@ -1,4 +1,4 @@
-import { TableData } from '../components/shared/basetable/basetable.component';
+import { TableData } from '../components/shared/basetable/basetable-types';
 import { User } from './user';
 
 type NumberEmpty = number | null | undefined;

@@ -2,13 +2,13 @@ import { Component, inject, input, ChangeDetectionStrategy } from '@angular/core
 import { TableData } from '../basetable/basetable.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Bind } from 'primeng/bind';
-import { ScrollPanel } from 'primeng/scrollpanel';
+import { ScrollArea, ScrollAreaViewport, ScrollAreaContent, ScrollAreaScrollbar, ScrollAreaHandle } from 'primeng/scrollarea';
 import { NgSwitch, NgClass } from '@angular/common';
 import { InputText } from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
 import { DatePicker } from 'primeng/datepicker';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 export class EditOptions {
   public title?: string;
@@ -52,13 +52,17 @@ export class EditToolbar {
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
-    ScrollPanel,
+    ScrollArea,
+    ScrollAreaViewport,
+    ScrollAreaContent,
+    ScrollAreaScrollbar,
+    ScrollAreaHandle,
     NgSwitch,
     InputText,
     InputNumber,
     DatePicker,
     Toolbar,
-    Button,
+    ButtonDirective,
     NgClass,
   ],
 })

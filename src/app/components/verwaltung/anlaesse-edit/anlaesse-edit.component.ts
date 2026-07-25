@@ -10,14 +10,14 @@ import {
 } from 'primeng/dynamicdialog';
 import { Subscription, from } from 'rxjs';
 import { Bind } from 'primeng/bind';
-import { ScrollPanel } from 'primeng/scrollpanel';
+import { ScrollArea, ScrollAreaViewport, ScrollAreaContent, ScrollAreaScrollbar, ScrollAreaHandle } from 'primeng/scrollarea';
 import { DatePicker } from 'primeng/datepicker';
 import { SelectButton } from 'primeng/selectbutton';
 import { InputText } from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
 import { Select } from 'primeng/select';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-anlaesse-edit',
@@ -27,7 +27,11 @@ import { Button } from 'primeng/button';
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
-    ScrollPanel,
+    ScrollArea,
+    ScrollAreaViewport,
+    ScrollAreaContent,
+    ScrollAreaScrollbar,
+    ScrollAreaHandle,
     FormsModule,
     DatePicker,
     SelectButton,
@@ -35,7 +39,7 @@ import { Button } from 'primeng/button';
     InputNumber,
     Select,
     Toolbar,
-    Button,
+    ButtonDirective,
   ],
 })
 export class AnlaesseEditComponent implements OnInit {

@@ -1,4 +1,6 @@
-<p-scroll-panel [style]="{ width: '100%', height: '80%' }">
+<p-scrollarea style="width: 100%; height: 80%">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
   <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
     <div class="card">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-x-4 gap-y-4">
@@ -277,66 +279,29 @@
       </div>
     </div>
   </form>
-</p-scroll-panel>
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical">
+    <p-scrollarea-handle />
+  </p-scrollarea-scrollbar>
+</p-scrollarea>
 <p-toolbar>
   <div class="flex flex-wrap items-center gap-2">
-    <p-button
-      type="button"
-      label="Zurück"
-      icon="pi pi-back"
-      severity="secondary"
-      [outlined]="true"
-      (click)="back()"
-    ></p-button>
+    <button pButton type="button" severity="secondary" [outlined]="true" (click)="back()"><i class="pi pi-back"></i> Zurück</button>
     @if (adresse.sam_mitglied) {
-      <p-button
-        type="button"
-        label="SAM Adressänderung"
-        icon="pi pi-send"
-        severity="secondary"
-        [outlined]="true"
-        (click)="emailSAM(f)"
-      ></p-button>
+      <button pButton type="button" severity="secondary" [outlined]="true" (click)="emailSAM(f)"><i class="pi pi-send"></i> SAM Adressänderung</button>
     }
     @if (
       adresse.sam_mitglied && adresse.austritt_date?.getFullYear() !== 3000
     ) {
-      <p-button
-        type="button"
-        label="SAM Austritt"
-        icon="pi pi-send"
-        severity="secondary"
-        [outlined]="true"
-        (click)="emailSAMAustritt(f)"
-      ></p-button>
+      <button pButton type="button" severity="secondary" [outlined]="true" (click)="emailSAMAustritt(f)"><i class="pi pi-send"></i> SAM Austritt</button>
     }
     @if (adresse.austritt_date?.getFullYear() === 3000) {
-      <p-button
-        type="button"
-        label="leeres Datenblatt"
-        icon="pi pi-file-excel"
-        severity="secondary"
-        [outlined]="true"
-        (click)="exportEmpty()"
-      ></p-button>
+      <button pButton type="button" severity="secondary" [outlined]="true" (click)="exportEmpty()"><i class="pi pi-file-excel"></i> leeres Datenblatt</button>
     }
     @if (adresse.austritt_date?.getFullYear() === 3000) {
-      <p-button
-        type="button"
-        label="volles Datenblatt"
-        icon="pi pi-file-export"
-        severity="secondary"
-        [outlined]="true"
-        (click)="exportFull()"
-      ></p-button>
+      <button pButton type="button" severity="secondary" [outlined]="true" (click)="exportFull()"><i class="pi pi-file-export"></i> volles Datenblatt</button>
     }
-    <p-button
-      type="button"
-      label="Sichern"
-      icon="pi pi-save"
-      severity="primary"
-      [outlined]="true"
-      (click)="save(f)"
-    ></p-button>
+    <button pButton type="button" severity="primary" [outlined]="true" (click)="save(f)"><i class="pi pi-save"></i> Sichern</button>
   </div>
 </p-toolbar>

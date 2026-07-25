@@ -103,7 +103,7 @@ export class InputDirective implements Validator {
 
       this.errorText.set('Invalid format');
       // if pattern exists in our list, use validators
-      let _pattern = InputPatterns.get(crpattern);
+      const _pattern = InputPatterns.get(crpattern);
       if (_pattern) {
         this.errorText.set(`Invalid ${crpattern} format`);
 

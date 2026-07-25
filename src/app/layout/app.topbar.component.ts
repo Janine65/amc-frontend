@@ -10,13 +10,13 @@ import { LayoutService } from '../service/app.layout.service';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { RouterLink } from '@angular/router';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './app.topbar.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [Bind, Toast, RouterLink, Button],
+  imports: [Bind, Toast, RouterLink, ButtonDirective],
 })
 export class AppTopBarComponent {
   layoutService = inject(LayoutService);

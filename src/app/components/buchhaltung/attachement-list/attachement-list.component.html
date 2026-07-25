@@ -27,17 +27,7 @@
     style="width: 100%"
   />
   <ng-template #footer>
-    <p-button
-      icon="pi pi-save"
-      (click)="editAttBez()"
-      label="Speichern"
-      styleClass="p-button-text"
-    ></p-button>
-    <p-button
-      icon="pi pi-check"
-      (click)="visible = false"
-      label="Abbrechen"
-      styleClass="p-button-text"
-    ></p-button>
+    <button pButton (click)="editAttBez()" class="p-button-text"><i class="pi pi-save"></i> Speichern</button>
+    <button pButton (click)="visible = false" class="p-button-text"><i class="pi pi-check"></i> Abbrechen</button>
   </ng-template>
 </p-dialog>

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Account, Fiscalyear, Journal, ParamData } from '@model/datatypes';
 import { BackendService, RetData } from '@app/service';
@@ -21,7 +21,7 @@ import { DatePicker } from 'primeng/datepicker';
 import { AutoComplete } from 'primeng/autocomplete';
 import { InputText } from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -44,7 +44,7 @@ interface AutoCompleteCompleteEvent {
     AutoComplete,
     InputText,
     InputNumber,
-    Button,
+    ButtonDirective,
   ],
 })
 export class JournalComponent implements OnInit {

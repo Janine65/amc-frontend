@@ -6,14 +6,14 @@ import { Subscription } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { FileUpload } from 'primeng/fileupload';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-attachment-add',
   templateUrl: './attachment-add.component.html',
   styleUrls: ['./attachment-add.component.scss'],
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [Bind, FileUpload, Toolbar, Button],
+  imports: [Bind, FileUpload, Toolbar, ButtonDirective],
 })
 export class AttachmentAddComponent {
   private backendService = inject(BackendService);

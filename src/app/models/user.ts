@@ -1,4 +1,4 @@
-﻿import { TableData } from "@app/components/shared/basetable/basetable.component";
+﻿import { TableData } from "@app/components/shared/basetable/basetable-types";
 
 export class User extends TableData {
     email!: string;

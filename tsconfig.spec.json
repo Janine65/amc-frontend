@@ -3,15 +3,17 @@
   "compilerOptions": {
     "outDir": "./dist",
     "types": [
-      "jasmine",
+      "jest",
       "node"
     ],
     "moduleResolution": "bundler",
+    "esModuleInterop": true,
     "isolatedModules": true
   },
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "setup-jest.ts"
   ],
   "angularCompilerOptions": {
     "extendedDiagnostics": {

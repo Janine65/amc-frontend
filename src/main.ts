@@ -1,8 +1,5 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import {
   ApplicationRef,
-  provideZoneChangeDetection,
   ErrorHandler,
   forwardRef,
   importProvidersFrom,

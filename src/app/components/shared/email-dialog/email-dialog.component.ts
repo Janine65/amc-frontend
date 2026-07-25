@@ -7,7 +7,7 @@ import { environment } from '@environments/environment';
 import { Subscription } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { ProgressSpinner } from 'primeng/progressspinner';
 import { FormsModule } from '@angular/forms';
 import { Textarea } from 'primeng/textarea';
@@ -23,7 +23,7 @@ import { FileUpload } from 'primeng/fileupload';
   imports: [
     Bind,
     Toolbar,
-    Button,
+    ButtonDirective,
     ProgressSpinner,
     FormsModule,
     Textarea,

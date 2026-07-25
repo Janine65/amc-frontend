@@ -89,26 +89,13 @@
       }
     },
     "test": {
-      "executor": "@angular/build:karma",
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectName}"
+      ],
       "options": {
-        "polyfills": [
-          "zone.js",
-          "zone.js/testing"
-        ],
-        "tsConfig": "tsconfig.spec.json",
-        "inlineStyleLanguage": "scss",
-        "assets": [
-          "src/favicon.ico",
-          "src/assets"
-        ],
-        "styles": [
-          "@angular/material/prebuilt-themes/pink-bluegrey.css",
-          "src/styles.scss",
-          "src/styles.css"
-        ],
-        "scripts": [
-          "node_modules/chart.js/dist/chart.umd.js"
-        ]
+        "jestConfig": "jest.config.ts",
+        "passWithNoTests": true
       }
     },
     "lint": {

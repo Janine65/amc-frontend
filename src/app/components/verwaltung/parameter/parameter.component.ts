@@ -5,7 +5,7 @@ import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { Textarea } from 'primeng/textarea';
   imports: [
     Bind,
     Toast,
-    Button,
+    ButtonDirective,
     Ripple,
     TableModule,
     FormsModule,

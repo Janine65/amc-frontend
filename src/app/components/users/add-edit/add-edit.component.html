@@ -1,4 +1,6 @@
-<p-scroll-panel [style]="{ width: '100%', height: '80%' }">
+<p-scrollarea style="width: 100%; height: 80%">
+  <p-scrollarea-viewport>
+    <p-scrollarea-content>
   <form [formGroup]="fg" autocomplete="off" (ngSubmit)="save()">
     <div class="card">
       <div class="flex flex-wrap">
@@ -102,34 +104,18 @@
       </div>
     </div>
   </form>
-</p-scroll-panel>
+    </p-scrollarea-content>
+  </p-scrollarea-viewport>
+  <p-scrollarea-scrollbar orientation="vertical">
+    <p-scrollarea-handle />
+  </p-scrollarea-scrollbar>
+</p-scrollarea>
 <p-toolbar>
-  <p-button
-    type="button"
-    label="Zurück"
-    icon="pi pi-back"
-    severity="secondary"
-    [outlined]="true"
-    (click)="back()"
-  ></p-button>
+  <button pButton type="button" severity="secondary" [outlined]="true" (click)="back()"><i class="pi pi-back"></i> Zurück</button>
   @if (!wihtPwd && user.id! > 0) {
-    <p-button
-      type="button"
-      label="Neues Passwort"
-      icon="pi pi-slack"
-      severity="secondary"
-      [outlined]="true"
-      (click)="newPwd()"
-    ></p-button>
+    <button pButton type="button" severity="secondary" [outlined]="true" (click)="newPwd()"><i class="pi pi-slack"></i> Neues Passwort</button>
   }
-  <p-button
-    type="button"
-    label="Sichern"
-    icon="pi pi-save"
-    severity="primary"
-    [outlined]="true"
-    (click)="save()"
-  ></p-button>
+  <button pButton type="button" severity="primary" [outlined]="true" (click)="save()"><i class="pi pi-save"></i> Sichern</button>
 </p-toolbar>
 <p-confirm-dialog
   header="Confirmation"

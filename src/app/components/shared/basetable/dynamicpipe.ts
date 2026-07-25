@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { Injector, Pipe, PipeTransform, Type, inject } from '@angular/core';
 
 @Pipe({ name: 'dynamicPipe' })

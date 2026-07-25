@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 import { Component, HostListener, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Account, Budget, Fiscalyear, ParamData } from '@model/datatypes';
 import { AlertService, BackendService } from '@app/service';
@@ -11,7 +11,7 @@ import { map, zip } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Select } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { InputNumber } from 'primeng/inputnumber';
@@ -29,7 +29,7 @@ import { DecimalPipe } from '@angular/common';
     Bind,
     Select,
     FormsModule,
-    Button,
+    ButtonDirective,
     Ripple,
     TableModule,
     InputNumber,

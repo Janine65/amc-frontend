@@ -1,13 +1,6 @@
 <p-toast key="local"></p-toast>
 <p-toolbar>
-  <p-button
-    type="button"
-    label="Zurück"
-    icon="pi pi-back"
-    severity="secondary"
-    [outlined]="true"
-    (click)="back()"
-  ></p-button>
+  <button pButton type="button" severity="secondary" [outlined]="true" (click)="back()"><i class="pi pi-back"></i> Zurück</button>
 </p-toolbar>
 <p-splitter [panelSizes]="[40, 60]" class="mb-1">
   <ng-template #panel>
@@ -16,7 +9,7 @@
       [style]="'width: 100%; height: ' + objHeight$() + ';'"
       id="table-box"
     >
-      <div class="row w-full mb-3 p-1 border-1 border-round">
+      <div class="row w-full mb-3 p-1 border border-round">
         <label for="gaeste" class="mr-2 mb-1">Gäste</label>
         <input
           type="number"
@@ -24,15 +17,7 @@
           class="wurf mb-1"
           [(ngModel)]="anlass.gaeste"
         />
-        <p-button
-          type="button"
-          label="Sichern"
-          icon="pi pi-save"
-          severity="secondary"
-          [outlined]="true"
-          styleClass="ml-6"
-          (click)="saveGaeste()"
-        ></p-button>
+        <button pButton type="button" severity="secondary" [outlined]="true" class="ml-6" (click)="saveGaeste()"><i class="pi pi-save"></i> Sichern</button>
       </div>
       <div class="row w-full">
         <p-table
@@ -64,15 +49,7 @@
         </p-table>
       </div>
       <div class="row w-full mt-1">
-        <p-button
-          type="button"
-          label="Löschen"
-          icon="pi pi-file-delete"
-          severity="secondary"
-          [outlined]="true"
-          (click)="deleteEntry()"
-          [disabled]="!selMeisterschaft || !selMeisterschaft.id"
-        ></p-button>
+        <button pButton type="button" severity="secondary" [outlined]="true" (click)="deleteEntry()" [disabled]="!selMeisterschaft || !selMeisterschaft.id"><i class="pi pi-file-delete"></i> Löschen</button>
       </div>
     </div>
   </ng-template>
@@ -104,7 +81,7 @@
               type="number"
               id="punkte"
               formControlName="punkte"
-              class="wurf input-styling"
+              class="wurf"
             />
             @if (punkte.invalid && (punkte.dirty || punkte.touched)) {
               <div class="alert alert-danger">
@@ -129,7 +106,7 @@
                   formControlName="wurf1"
                   [min]="0"
                   [max]="9"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                   (input)="inputWurf(1)"
                 />
                 <input
@@ -138,7 +115,7 @@
                   formControlName="wurf2"
                   [min]="0"
                   [max]="9"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                   (input)="inputWurf(2)"
                 />
                 <input
@@ -147,7 +124,7 @@
                   formControlName="wurf3"
                   [min]="0"
                   [max]="9"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                   (input)="inputWurf(3)"
                 />
                 <input
@@ -156,7 +133,7 @@
                   formControlName="wurf4"
                   [min]="0"
                   [max]="9"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                   (input)="inputWurf(4)"
                 />
                 <input
@@ -165,14 +142,14 @@
                   formControlName="wurf5"
                   [min]="0"
                   [max]="9"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                   (input)="inputWurf(5)"
                 />
                 <input
                   type="number"
                   id="zusatz"
                   formControlName="zusatz"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                 />
               </div>
               @if (wurf1.invalid && (wurf1.dirty || wurf1.touched)) {
@@ -231,33 +208,15 @@
                   type="number"
                   id="total"
                   formControlName="total"
-                  class="wurf input-styling pr-1"
+                  class="wurf pr-1"
                 />
               </div>
             </div>
           }
         </div>
-        <div class="mb-4 w-full md:w-full md:mb-0">
-          <p-button
-            type="submit"
-            label="Sichern"
-            icon="pi pi-save"
-            [disabled]="teilnehmername.value === null"
-            severity="primary"
-            [outlined]="true"
-            id="save"
-            (click)="save()"
-          ></p-button>
-          <p-button
-            type="reset"
-            label="Reset"
-            icon="pi pi-reset"
-            [disabled]="teilnehmername.value === null"
-            severity="secondary"
-            [outlined]="true"
-            id="reset"
-            (click)="reset()"
-          ></p-button>
+        <div class="w-full md:w-full md:mb-0">
+          <button pButton type="submit" [disabled]="teilnehmername.value === null" severity="primary" [outlined]="true" id="save" (click)="save()"><i class="pi pi-save"></i> Sichern</button>
+          <button pButton type="reset" [disabled]="teilnehmername.value === null" severity="secondary" [outlined]="true" id="reset" (click)="reset()"><i class="pi pi-reset"></i> Reset</button>
         </div>
       </form>
     </div>

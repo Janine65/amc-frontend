@@ -7,7 +7,7 @@ import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { Select } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { Splitter } from 'primeng/splitter';
 import { TableModule } from 'primeng/table';
 
@@ -21,7 +21,7 @@ import { TableModule } from 'primeng/table';
     Toast,
     Select,
     FormsModule,
-    Button,
+    ButtonDirective,
     Splitter,
     TableModule,
   ],

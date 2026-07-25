@@ -8,38 +8,14 @@
     <p-tabpanel value="0">
       <div class="pb-2">
         <p-toolbar>
-          <p-button
-            label="Zwischenspeichern"
-            severity="secondary"
-            [outlined]="true"
-            (click)="saveJournal(false)"
-            [disabled]="isButtonAllowed('user') || kegelkasse.journal"
-          ></p-button>
-          <p-button
-            label="Leeren"
-            severity="secondary"
-            [outlined]="true"
-            (click)="clearTotal()"
-            [disabled]="isButtonAllowed('user') || kegelkasse.journal"
-          ></p-button>
-          <p-button
-            [label]="
+          <button pButton severity="secondary" [outlined]="true" (click)="saveJournal(false)" [disabled]="isButtonAllowed('user') || kegelkasse.journal">Zwischenspeichern</button>
+          <button pButton severity="secondary" [outlined]="true" (click)="clearTotal()" [disabled]="isButtonAllowed('user') || kegelkasse.journal">Leeren</button>
+          <button pButton severity="primary" [outlined]="true" (click)="saveJournal(true)" [disabled]="isButtonAllowed('admin')">{{ 
               kegelkasse.journal
                 ? 'Journaleintrag ändern'
                 : 'Journaleintrag erstellen'
-            "
-            severity="primary"
-            [outlined]="true"
-            (click)="saveJournal(true)"
-            [disabled]="isButtonAllowed('admin')"
-          ></p-button>
-          <p-button
-            label="Beleg erstellen"
-            severity="secondary"
-            [outlined]="true"
-            (click)="createReceipt()"
-            [disabled]="isButtonAllowed('admin') || !kegelkasse.journal"
-          ></p-button>
+             }}</button>
+          <button pButton severity="secondary" [outlined]="true" (click)="createReceipt()" [disabled]="isButtonAllowed('admin') || !kegelkasse.journal">Beleg erstellen</button>
         </p-toolbar>
       </div>
       <form [formGroup]="fgKasse" autocomplete="off">

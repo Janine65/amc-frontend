@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
+ 
+ 
 import {
   Component,
   DestroyRef,
@@ -33,7 +33,7 @@ import { Subscription, map, zip } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { Splitter } from 'primeng/splitter';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { Toolbar } from 'primeng/toolbar';
 
@@ -53,7 +53,7 @@ interface AutoCompleteCompleteEvent {
     Toast,
     Splitter,
     FormsModule,
-    Button,
+    ButtonDirective,
     TableModule,
     ReactiveFormsModule,
     AutoComplete,

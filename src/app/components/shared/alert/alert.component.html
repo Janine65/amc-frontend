@@ -1,10 +1,6 @@
 @for (alert of alerts(); track alert) {
   <div class="{{ cssClass(alert) }}">
-    <p-button
-      icon="pi pi-times"
-      styleClass="{{ cssButtonClass(alert) }}"
-      (onClick)="removeAlert(alert)"
-    ></p-button>
+    <button pButton class="{{ cssButtonClass(alert) }}" (click)="removeAlert(alert)"><i class="pi pi-times"></i></button>
     <span [innerHTML]="alert.message"></span>
   </div>
 }

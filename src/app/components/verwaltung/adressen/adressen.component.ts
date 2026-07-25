@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { from, Subscription } from 'rxjs';
 import { BackendService } from '@app/service';
@@ -271,9 +271,9 @@ export class AdressenComponent implements OnInit {
     switch (field) {
       case 'eintritt':
       case 'austritt': {
-        // eslint-disable-next-line no-case-declarations
+         
         const dt: Date = new Date(value as string);
-        // eslint-disable-next-line no-case-declarations
+         
         const retValue = dt.getFullYear();
         if (retValue === 3000) return null;
         return retValue;
@@ -285,7 +285,7 @@ export class AdressenComponent implements OnInit {
   }
 
   emailSelected = (selRec?: Adresse, lstData?: Adresse[]) => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const thisRef: AdressenComponent = this;
     thisRef.messageService.clear();
     const emailBody = new EmailBody({

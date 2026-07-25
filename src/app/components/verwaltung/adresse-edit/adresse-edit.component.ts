@@ -16,7 +16,7 @@ import {
 } from '@app/components/shared/email-dialog/email-dialog.types';
 import { environment } from '@environments/environment';
 import { Bind } from 'primeng/bind';
-import { ScrollPanel } from 'primeng/scrollpanel';
+import { ScrollArea, ScrollAreaViewport, ScrollAreaContent, ScrollAreaScrollbar, ScrollAreaHandle } from 'primeng/scrollarea';
 import { SelectButton } from 'primeng/selectbutton';
 import { InputText } from 'primeng/inputtext';
 import { IconField } from 'primeng/iconfield';
@@ -24,7 +24,7 @@ import { InputIcon } from 'primeng/inputicon';
 import { DatePicker } from 'primeng/datepicker';
 import { Select } from 'primeng/select';
 import { Toolbar } from 'primeng/toolbar';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-adresse-edit',
@@ -34,7 +34,11 @@ import { Button } from 'primeng/button';
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     Bind,
-    ScrollPanel,
+    ScrollArea,
+    ScrollAreaViewport,
+    ScrollAreaContent,
+    ScrollAreaScrollbar,
+    ScrollAreaHandle,
     FormsModule,
     SelectButton,
     InputText,
@@ -43,7 +47,7 @@ import { Button } from 'primeng/button';
     DatePicker,
     Select,
     Toolbar,
-    Button,
+    ButtonDirective,
   ],
 })
 export class AdresseEditComponent {
@@ -290,7 +294,7 @@ export class AdresseEditComponent {
     });
   }
   exportEmpty = () => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+     
     const str = sessionStorage.getItem('parameter');
     const parameter: ParamData[] = str ? (JSON.parse(str) as ParamData[]) : [];
     const paramJahr = parameter.find(
@@ -321,7 +325,7 @@ export class AdresseEditComponent {
     });
   };
   exportFull = () => {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, @typescript-eslint/no-unused-vars
+     
     const str = sessionStorage.getItem('parameter');
     const parameter: ParamData[] = str ? (JSON.parse(str) as ParamData[]) : [];
     const paramJahr = parameter.find(

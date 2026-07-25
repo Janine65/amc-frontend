@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Account, ParamData } from '@model/datatypes';
 import { BackendService, RetData } from '@app/service';
@@ -16,7 +16,7 @@ import { BaseTableComponent } from '../../shared/basetable/basetable.component';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
 import { Select } from 'primeng/select';
-import { Button } from 'primeng/button';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-konten',
@@ -31,7 +31,7 @@ import { Button } from 'primeng/button';
     FormsModule,
     InputText,
     Select,
-    Button,
+    ButtonDirective,
   ],
 })
 export class KontenComponent implements OnInit {
@@ -281,7 +281,7 @@ export class KontenComponent implements OnInit {
     }
     sub.subscribe({
       complete: () => {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+         
         this.backendService
           .getOneDataByOrder(this.selAccount.order!)
           .subscribe({

@@ -8,12 +8,7 @@
       (onChange)="chgJahr()"
     ></p-select>
   </div>
-  <p-button
-    icon="pi pi-export"
-    [outlined]="true"
-    (click)="export()"
-    label="Exportieren"
-  ></p-button>
+  <button pButton [outlined]="true" (click)="export()"><i class="pi pi-export"></i> Exportieren</button>
 </p-toolbar>
 <div class="card">
   <p-tabs value="0">

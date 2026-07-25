@@ -1,23 +1,10 @@
 <p-toast key="local"></p-toast>
 <div class="mb-1">
   @if (checkFiltering()) {
-    <p-button
-      label="Clear"
-      severity="secondary"
-      [outlined]="true"
-      styleClass="mb-1"
-      icon="pi pi-filter-slash"
-      (click)="clear(basetable)"
-    ></p-button>
+    <button pButton severity="secondary" [outlined]="true" class="mb-1" (click)="clear(basetable)"><i class="pi pi-filter-slash"></i> Clear</button>
   }
   @for (but of tableToolbar(); track but; let ind = $index) {
-    <p-button
-      [label]="but.label!"
-      [icon]="but.icon!"
-      [styleClass]="but.btnClass! + ' mb-1'"
-      (click)="clickOnToolbar(ind)"
-      [disabled]="isButtonDisabled(ind)"
-    ></p-button>
+    <button pButton [class]="but.btnClass! + ' mb-1'" (click)="clickOnToolbar(ind)" [disabled]="isButtonDisabled(ind)"><i [class]="but.icon!"></i> {{ but.label! }}</button>
   }
 </div>
 <p-table
@@ -94,14 +81,7 @@
       }
       @if (isEditable()) {
         <td>
-          <p-button
-            type="button"
-            pRipple
-            icon="pi pi-file-edit"
-            [rounded]="true"
-            [text]="true"
-            (click)="editData(data)"
-          ></p-button>
+          <button pButton type="button" pRipple [rounded]="true" [text]="true" (click)="editData(data)"><i class="pi pi-file-edit"></i></button>
         </td>
       }
     </tr>

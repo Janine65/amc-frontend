@@ -6,28 +6,8 @@
       [(ngModel)]="selJahr"
       (onChange)="chgJahr()"
     ></p-select>
-    <p-button
-      pRipple
-      type="button"
-      icon="pi pi-plus"
-      label="Neuen Eintrag hinzufügen"
-      (click)="onAddNewRow()"
-      [disabled]="!isEditable()"
-      severity="secondary"
-      [outlined]="true"
-      styleClass="ml-5"
-    ></p-button>
-    <p-button
-      pRipple
-      type="button"
-      icon="pi pi-copy"
-      label="Auf nächstes Jahr kopieren"
-      (click)="copyYear()"
-      [disabled]="!isEditable()"
-      severity="secondary"
-      [outlined]="true"
-      styleClass="ml-5"
-    ></p-button>
+    <button pButton pRipple type="button" (click)="onAddNewRow()" [disabled]="!isEditable()" severity="secondary" [outlined]="true" class="ml-5"><i class="pi pi-plus"></i> Neuen Eintrag hinzufügen</button>
+    <button pButton pRipple type="button" (click)="copyYear()" [disabled]="!isEditable()" severity="secondary" [outlined]="true" class="ml-5"><i class="pi pi-copy"></i> Auf nächstes Jahr kopieren</button>
     <hr />
   </div>
   @if (!loading()) {
@@ -143,53 +123,16 @@
           </td>
           <td>
             @if (!rowIsEditing(data)) {
-              <p-button
-                pRipple
-                type="button"
-                pInitEditableRow
-                icon="pi pi-pencil"
-                (click)="onRowEditInit(data)"
-                [disabled]="!isEditable()"
-                [rounded]="true"
-                [text]="true"
-              ></p-button>
+              <button pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(data)" [disabled]="!isEditable()" [rounded]="true" [text]="true"><i class="pi pi-pencil"></i></button>
             }
             @if (rowIsEditing(data)) {
-              <p-button
-                pRipple
-                type="button"
-                pSaveEditableRow
-                icon="pi pi-check"
-                (click)="onRowEditSave(data)"
-                [disabled]="!isEditable()"
-                [rounded]="true"
-                [text]="true"
-                severity="success"
-                styleClass="mr-2"
-              ></p-button>
+              <button pButton pRipple type="button" pSaveEditableRow (click)="onRowEditSave(data)" [disabled]="!isEditable()" [rounded]="true" [text]="true" severity="success" class="mr-2"><i class="pi pi-check"></i></button>
             }
             @if (rowIsEditing(data)) {
-              <p-button
-                pRipple
-                type="button"
-                pCancelEditableRow
-                icon="pi pi-times"
-                (click)="onRowEditCancel(data, ri)"
-                [rounded]="true"
-                [text]="true"
-                severity="danger"
-              ></p-button>
+              <button pButton pRipple type="button" pCancelEditableRow (click)="onRowEditCancel(data, ri)" [rounded]="true" [text]="true" severity="danger"><i class="pi pi-times"></i></button>
             }
             @if (!rowIsEditing(data)) {
-              <p-button
-                pRipple
-                type="button"
-                [disabled]="!isEditable()"
-                icon="pi pi-times"
-                (click)="onRowEditDelete(data)"
-                [rounded]="true"
-                [text]="true"
-              ></p-button>
+              <button pButton pRipple type="button" [disabled]="!isEditable()" (click)="onRowEditDelete(data)" [rounded]="true" [text]="true"><i class="pi pi-times"></i></button>
             }
           </td>
         </tr>
