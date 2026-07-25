@@ -67,7 +67,7 @@ import { EditorModule } from 'primeng/editor';
 import { FileUploadModule } from 'primeng/fileupload';
 import { SplitterModule } from 'primeng/splitter';
 import { TextareaModule } from 'primeng/textarea';
-import { ChartModule } from 'primeng/chart';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TabsModule } from 'primeng/tabs';
 import { StyleClassModule } from 'primeng/styleclass';
@@ -115,7 +115,6 @@ bootstrapApplication(AppComponent, {
       SplitterModule,
       ReactiveFormsModule,
       TextareaModule,
-      ChartModule,
       AutoCompleteModule,
       TabsModule,
       StyleClassModule,
@@ -141,6 +140,7 @@ bootstrapApplication(AppComponent, {
     },
     provideHttpClient(withXhr(), withInterceptorsFromDi()),
     provideAnimationsAsync(),
+    provideCharts(withDefaultRegisterables()),
     providePrimeNG({
       ripple: true,
       license: 'eyJpZCI6IjkyYzFjYTlmLWY0NDQtNDA1Yy1iZThjLTliYWViZTM2MDJhNiIsInByb2R1Y3QiOiJwcmltZXVpIiwidGllciI6ImNvbW11bml0eSIsInR5cGUiOiJkZXYiLCJpYXQiOjE3ODQ5NzkyODksImV4cCI6MTgxNjUxNTI4OX0.hZ_pHnFRtNmqGT9u2C-335MBsqeLIiiO0MsDJAQCAqPwklSQY44M8_UHHJ-pzsis3NKdsNyxDyPOSCNwmNnDBw',

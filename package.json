@@ -19,10 +19,10 @@
   "author": "Janine Franken",
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.16.0+sha512.8066e7b034217b700a9a4dbb3a005061d641ba130a89915213a10b3ca4919c19c037bec8066afdc559b89635fdb806b16ea673f2468fbb28aabfa13c53e3f769",
   "engines": {
     "node": ">=22.12.0",
-    "pnpm": ">=9.15.0"
+    "pnpm": ">=10.0.0"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "22.0.8",
@@ -40,6 +40,7 @@
     "@angular/router": "22.0.8",
     "@primeuix/themes": "^3.0.0",
     "chart.js": "4.5.1",
+    "ng2-charts": "^10.0.0",
     "primeicons": "8.0.0",
     "primeng": "22.0.0",
     "quill": "^2.0.3",

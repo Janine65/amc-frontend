@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MeisterschaftAuswertung, ParamData } from '@model/datatypes';
 import { BackendService } from '@app/service';
@@ -7,7 +5,7 @@ import { MessageService } from 'primeng/api';
 import { Bind } from 'primeng/bind';
 import { Select } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
-import { UIChart } from 'primeng/chart';
+import { BaseChartDirective } from 'ng2-charts';
 import type { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
@@ -15,7 +13,7 @@ import type { ChartData, ChartOptions } from 'chart.js';
   templateUrl: './auswertung.component.html',
   styleUrls: ['./auswertung.component.scss'],
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [Bind, Select, FormsModule, UIChart],
+  imports: [Bind, Select, FormsModule, BaseChartDirective],
 })
 export class AuswertungComponent implements OnInit {
   private backendService = inject(BackendService);

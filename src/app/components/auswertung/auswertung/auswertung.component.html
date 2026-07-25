@@ -11,5 +11,10 @@
   ></p-select>
 </h2>
 <div class="card" style="height: 80%; overflow-y: auto">
-  <p-chart type="bar" [data]="data()" [options]="options()"></p-chart>
+  <canvas
+    baseChart
+    type="bar"
+    [data]="data() ?? { labels: [], datasets: [] }"
+    [options]="options() ?? {}"
+  ></canvas>
 </div>

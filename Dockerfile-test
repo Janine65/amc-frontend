@@ -11,7 +11,7 @@ WORKDIR /app
 
 # pnpm via corepack (offizieller Node-Mechanismus, reproduzierbar)
 # Version entspricht "packageManager" in package.json
-RUN corepack enable && corepack prepare pnpm@9.15.0 --activate
+RUN corepack enable && corepack prepare pnpm@10.16.0 --activate
 
 # Erst nur Lockfiles kopieren -> bessere Layer-Caching für Dependencies
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
