@@ -1,1 +1,11 @@
 <router-outlet></router-outlet>
+
+@if (isLoading()) {
+  <div class="global-loading-overlay" role="status" aria-live="polite" aria-label="Lade Daten">
+    <p-progress-spinner
+      styleClass="global-loading-spinner"
+      strokeWidth="4"
+      animationDuration="1s"
+    ></p-progress-spinner>
+  </div>
+}

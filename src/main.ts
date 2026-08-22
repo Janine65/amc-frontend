@@ -24,7 +24,7 @@ import {
   withInterceptorsFromDi,
   withXhr
 } from '@angular/common/http';
-import { JwtInterceptor, ErrorInterceptor } from './app/service';
+import { JwtInterceptor, ErrorInterceptor, LoadingInterceptor } from './app/service';
 import { MessageService } from 'primeng/api';
 import {
   NG_VALUE_ACCESSOR,
@@ -129,6 +129,7 @@ bootstrapApplication(AppComponent, {
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: MessageService, useClass: MessageService },
     {
       provide: NG_VALUE_ACCESSOR,
