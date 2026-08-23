@@ -51,6 +51,9 @@ export class BackendService {
       'Access-Control-Allow-Headers':
         'Access-Control-Allow-Headers,Access-Control-Allow-Methods,Access-Control-Allow-Origin, Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Disposition',
       'Content-Type': 'application/json',
+      // Verhindert veraltete Antworten hinter Reverse-Proxies (z.B. Synology DSM).
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
     });
     this.backendApiUrl = environment.apiUrl;
   }
