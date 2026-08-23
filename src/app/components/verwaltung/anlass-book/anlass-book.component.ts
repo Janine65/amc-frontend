@@ -1,6 +1,3 @@
- 
- 
- 
 import {
   Component,
   DestroyRef,
@@ -29,7 +26,7 @@ import {
   DynamicDialogConfig,
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
-import { Subscription, map, zip } from 'rxjs';
+import { Subscription, map, switchMap, zip } from 'rxjs';
 import { Bind } from 'primeng/bind';
 import { Toast } from 'primeng/toast';
 import { Splitter } from 'primeng/splitter';
@@ -336,7 +333,7 @@ export class AnlassBookComponent implements OnInit {
   }
 
   selTeilnehmerTable() {
-    this.newMeisterschaft = this.selMeisterschaft;
+    this.newMeisterschaft = { ...this.selMeisterschaft };
     this.unsubscribeList();
     this.lstFilteredAdressen.set([]);
     const adr = this.lstAdressen.find(
@@ -494,34 +491,18 @@ export class AnlassBookComponent implements OnInit {
       ? this.total.value
       : null;
 
-    if (
-      this.newMeisterschaft.id == undefined ||
-      this.newMeisterschaft.id == 0
-    ) {
-      this.backendService.addMeisterschaft(this.newMeisterschaft).subscribe({
-        next: () => {
-          this.clearTeilnehmer();
-          this.backendService
-            .getMeisterschaft(this.anlass.id!)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((list) => {
-              this.lstMeisterschaft.set(list.data as Meisterschaft[]);
-            });
-        },
-      });
-    } else {
-      this.backendService.updMeisterschaft(this.newMeisterschaft).subscribe({
-        next: () => {
-          this.clearTeilnehmer();
-          this.backendService
-            .getMeisterschaft(this.anlass.id!)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((list) => {
-              this.lstMeisterschaft.set(list.data as Meisterschaft[]);
-            });
-        },
-      });
-    }
+    const req$ = (this.newMeisterschaft.id)
+      ? this.backendService.updMeisterschaft(this.newMeisterschaft)
+      : this.backendService.addMeisterschaft(this.newMeisterschaft);
+
+    req$.pipe(
+      switchMap(() => this.backendService.getMeisterschaft(this.anlass.id!)),
+      takeUntilDestroyed(this.destroyRef),
+    ).subscribe(list => {
+      this.selMeisterschaft = { /* leere Instanz */ };   // wichtig!
+      this.lstMeisterschaft.set([...(list.data as Meisterschaft[])]);
+      this.clearTeilnehmer();
+    });
   }
   reset() {
     this.clearTeilnehmer();
