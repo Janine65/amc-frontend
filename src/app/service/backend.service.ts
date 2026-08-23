@@ -262,7 +262,11 @@ export class BackendService {
 
   getMeisterschaft(eventid: number): Observable<RetData> {
     const apiURL =
-      this.backendApiUrl + '/meisterschaft/listevent?eventid=' + eventid;
+      this.backendApiUrl +
+      '/meisterschaft/listevent?eventid=' +
+      eventid +
+      '&_ts=' +
+      Date.now();
     return this.http.get<RetData>(apiURL, { headers: this.header });
   }
 
