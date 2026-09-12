@@ -1,6 +1,11 @@
 @if (!loading()) {
   <div>
-    <p-fieldset legend="Mitglieder">
+    <p-fieldset
+      legend="Mitglieder"
+      class="dashboard-link"
+      title="Doppelklick öffnet die Adressverwaltung"
+      (dblclick)="navigateTo('/verwaltung/adressen')"
+    >
       <div class="flex flex-wrap">
         <p-fieldset legend="Aktive Mitglieder" class="w-1/3">
           {{ getAnzahlForKey("Aktive Mitglieder") }}
@@ -13,7 +18,12 @@
         </p-fieldset>
       </div>
     </p-fieldset>
-    <p-fieldset legend="Anlässe">
+    <p-fieldset
+      legend="Anlässe"
+      class="dashboard-link"
+      title="Doppelklick öffnet die Anlässe"
+      (dblclick)="navigateTo('/verwaltung/anlaesse')"
+    >
       <div class="flex flex-wrap">
         <p-fieldset legend="Total Anlässe" class="w-1/2">
           {{ getAnzahlForKey("Total Anlässe") }}
@@ -23,7 +33,12 @@
         </p-fieldset>
       </div>
     </p-fieldset>
-    <p-fieldset legend="Meisterschaft">
+    <p-fieldset
+      legend="Meisterschaft"
+      class="dashboard-link"
+      title="Doppelklick öffnet die Meisterschaft"
+      (dblclick)="navigateTo('/auswertung/meisterschaft')"
+    >
       <div class="flex flex-wrap">
         <p-fieldset legend="Clubmeisterschaft" class="w-1/2">
           {{ getAnzahlForKey("Clubmeisterschaft") }}
@@ -33,7 +48,12 @@
         </p-fieldset>
       </div>
     </p-fieldset>
-    <p-fieldset legend="Journal">
+    <p-fieldset
+      legend="Journal"
+      class="dashboard-link"
+      title="Doppelklick öffnet das Journal"
+      (dblclick)="navigateTo('/buchhaltung/journal')"
+    >
       <p-fieldset legend="Buchhaltung" class="w-1/2">
         <div
           [class]="

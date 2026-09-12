@@ -98,7 +98,7 @@ export class JournalComponent implements OnInit {
     this.cols.set([
       {
         field: 'journalno',
-        header: 'No.',
+        header: 'Nr.',
         format: false,
         sortable: true,
         filtering: false,
@@ -154,7 +154,7 @@ export class JournalComponent implements OnInit {
 
     this.toolbarRW = [
       {
-        label: 'Edit',
+        label: 'Bearbeiten',
         btnClass: 'p-button-primary p-button-outlined',
         icon: 'pi pi-file-edit',
         isDefault: true,
@@ -165,7 +165,7 @@ export class JournalComponent implements OnInit {
         isEditFunc: true,
       },
       {
-        label: 'Delete',
+        label: 'Löschen',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-minus',
         isDefault: false,
@@ -176,7 +176,7 @@ export class JournalComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'New',
+        label: 'Neu',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-plus',
         isDefault: false,
@@ -187,7 +187,7 @@ export class JournalComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'Copy',
+        label: 'Kopieren',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-plus',
         isDefault: false,

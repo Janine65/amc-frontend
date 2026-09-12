@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 1rem;
-  border-top: 1px solid var(--p-surface-700);
+  border-top: 3px solid transparent;
+  border-image: variables.$amcAccentGradient 1;
   z-index: 999;
 }

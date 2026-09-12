@@ -4,3 +4,10 @@ $borderRadius: 12px; /* border radius of layout element e.g. card, sidebar */
 $transitionDuration: 0.2s; /* transition duration of layout elements e.g. sidebar, overlay menus */
 $textColor: var(--p-primary-color);
 $backgroundColor: var(--p-surface-50);
+
+/* AMC brand colors (aus dem Logo) */
+$amcBlue: #0056d6;
+$amcBlueDark: #003c96;
+$amcRed: #d90429;
+$amcRedDark: #a4001b;
+$amcAccentGradient: linear-gradient(90deg, #{$amcBlue} 0%, #{$amcRed} 100%);

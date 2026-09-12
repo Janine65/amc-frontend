@@ -106,7 +106,7 @@ export class GeschaeftsjahrComponent implements OnInit {
 
     this.toolbar.set([
       {
-        label: 'Edit',
+        label: 'Bearbeiten',
         btnClass: 'p-button-primary p-button-outlined',
         icon: 'pi pi-file-edit',
         isDefault: true,
@@ -117,7 +117,7 @@ export class GeschaeftsjahrComponent implements OnInit {
         isEditFunc: true,
       },
       {
-        label: 'Delete',
+        label: 'Löschen',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-minus',
         isDefault: false,
@@ -128,7 +128,7 @@ export class GeschaeftsjahrComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'New',
+        label: 'Neu',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-plus',
         isDefault: false,

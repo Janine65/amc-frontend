@@ -1,1 +1,15 @@
-/* intentionally empty — input styles come from shared/input-validation/input.css */
+/* Input-Styles kommen aus shared/input-validation/input.css */
+@use "../../../../assets/layout/styles/layout/variables";
+
+.surface-card {
+  border-top: 4px solid transparent;
+  border-image: variables.$amcAccentGradient 1;
+}
+
+/* Titel "Willkommen zurück" im Marken-Verlauf wie die Topbar */
+.text-900 {
+  background: variables.$amcAccentGradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

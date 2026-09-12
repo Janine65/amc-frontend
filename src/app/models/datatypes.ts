@@ -53,6 +53,7 @@ export class Adresse extends TableData {
   public adressenid?: NumberEmpty;
   public adressen?: Adresse;
   public allianz?: BooleanEmpty;
+  public unsubscribe?: BooleanEmpty;
   public notes?: StringEmpty;
 }
 

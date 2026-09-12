@@ -171,7 +171,7 @@ export class AdressenComponent implements OnInit {
 
     this.toolbar.set([
       {
-        label: 'Email',
+        label: 'E-Mail',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-send',
         isDefault: false,
@@ -182,7 +182,7 @@ export class AdressenComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'Edit',
+        label: 'Bearbeiten',
         btnClass: 'p-button-primary p-button-outlined',
         icon: 'pi pi-file-edit',
         isDefault: true,
@@ -193,7 +193,7 @@ export class AdressenComponent implements OnInit {
         isEditFunc: true,
       },
       {
-        label: 'Delete',
+        label: 'Löschen',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-minus',
         isDefault: false,
@@ -204,7 +204,7 @@ export class AdressenComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'New',
+        label: 'Neu',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-plus',
         isDefault: false,
@@ -237,7 +237,7 @@ export class AdressenComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'Billing',
+        label: 'Rechnungsstellung',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-file-excel',
         isDefault: false,
@@ -301,10 +301,14 @@ export class AdressenComponent implements OnInit {
       ] as unknown as EmailSignature,
     });
 
-    lstData?.forEach(
-      (adresse) =>
-        (emailBody.email_bcc += adresse.email != '' ? adresse.email + ';' : ''),
-    );
+    // Adressen mit unsubscribe erhalten keine Massen-E-Mails
+    lstData
+      ?.filter((adresse) => !adresse.unsubscribe)
+      .forEach(
+        (adresse) =>
+          (emailBody.email_bcc +=
+            adresse.email != '' ? adresse.email + ';' : ''),
+      );
     this.dialogRef = this.dialogService.open(EmailDialogComponent, {
       data: {
         emailBody: emailBody,
@@ -331,6 +335,7 @@ export class AdressenComponent implements OnInit {
     newAdr.austritt_date = new Date('3000-01-01');
     newAdr.sam_mitglied = true;
     newAdr.allianz = false;
+    newAdr.unsubscribe = false;
     newAdr.ehrenmitglied = false;
     newAdr.revisor = false;
     newAdr.vorstand = false;

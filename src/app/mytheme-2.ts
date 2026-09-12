@@ -1,6 +1,14 @@
 import Lara from '@primeuix/themes/lara';
 import { definePreset } from '@primeuix/themes';
 
+// AMC-Markenfarben (aus dem Logo, siehe auch _variables.scss)
+const amcRed = '#d90429';
+const amcRedDark = '#a4001b';
+const amcRedDarker = '#7a0014';
+// hellere Varianten für lesbaren Kontrast auf dunklem Hintergrund
+const amcRedLight = '#ff7d92';
+const amcBlueLight = '#6196e6';
+
 export const MyTheme2 = definePreset(Lara, {
   primitive: {
     fontFamily: 'Arial, sans-serif',
@@ -382,6 +390,149 @@ export const MyTheme2 = definePreset(Lara, {
             color: '{surface.500}',
             focusColor: '{surface.400}',
             activeColor: '{surface.400}',
+          },
+        },
+      },
+    },
+  },
+  components: {
+    // Buttons: primary in AMC-Rot, secondary in AMC-Blau
+    button: {
+      colorScheme: {
+        light: {
+          root: {
+            primary: {
+              background: amcRed,
+              hoverBackground: amcRedDark,
+              activeBackground: amcRedDarker,
+              borderColor: amcRed,
+              hoverBorderColor: amcRedDark,
+              activeBorderColor: amcRedDarker,
+              color: '#ffffff',
+              hoverColor: '#ffffff',
+              activeColor: '#ffffff',
+            },
+            secondary: {
+              background: '{primary.500}',
+              hoverBackground: '{primary.600}',
+              activeBackground: '{primary.700}',
+              borderColor: '{primary.500}',
+              hoverBorderColor: '{primary.600}',
+              activeBorderColor: '{primary.700}',
+              color: '#ffffff',
+              hoverColor: '#ffffff',
+              activeColor: '#ffffff',
+            },
+          },
+          outlined: {
+            primary: {
+              borderColor: amcRed,
+              color: amcRed,
+              hoverBackground: 'rgba(217, 4, 41, 0.08)',
+              activeBackground: 'rgba(217, 4, 41, 0.16)',
+            },
+            secondary: {
+              borderColor: '{primary.500}',
+              color: '{primary.500}',
+              hoverBackground: 'rgba(0, 86, 214, 0.08)',
+              activeBackground: 'rgba(0, 86, 214, 0.16)',
+            },
+          },
+          text: {
+            primary: {
+              color: amcRed,
+              hoverBackground: 'rgba(217, 4, 41, 0.08)',
+              activeBackground: 'rgba(217, 4, 41, 0.16)',
+            },
+            secondary: {
+              color: '{primary.500}',
+              hoverBackground: 'rgba(0, 86, 214, 0.08)',
+              activeBackground: 'rgba(0, 86, 214, 0.16)',
+            },
+          },
+        },
+        dark: {
+          root: {
+            primary: {
+              background: amcRed,
+              hoverBackground: '#ff3d5e',
+              activeBackground: amcRedLight,
+              borderColor: amcRed,
+              hoverBorderColor: '#ff3d5e',
+              activeBorderColor: amcRedLight,
+              color: '#ffffff',
+              hoverColor: '#ffffff',
+              activeColor: '#ffffff',
+            },
+            secondary: {
+              background: '{primary.500}',
+              hoverBackground: '{primary.400}',
+              activeBackground: '{primary.300}',
+              borderColor: '{primary.500}',
+              hoverBorderColor: '{primary.400}',
+              activeBorderColor: '{primary.300}',
+              color: '#ffffff',
+              hoverColor: '#ffffff',
+              activeColor: '#ffffff',
+            },
+          },
+          outlined: {
+            primary: {
+              borderColor: amcRedLight,
+              color: amcRedLight,
+              hoverBackground: 'rgba(255, 125, 146, 0.16)',
+              activeBackground: 'rgba(255, 125, 146, 0.24)',
+            },
+            secondary: {
+              borderColor: amcBlueLight,
+              color: amcBlueLight,
+              hoverBackground: 'rgba(97, 150, 230, 0.16)',
+              activeBackground: 'rgba(97, 150, 230, 0.24)',
+            },
+          },
+          text: {
+            primary: {
+              color: amcRedLight,
+              hoverBackground: 'rgba(255, 125, 146, 0.16)',
+              activeBackground: 'rgba(255, 125, 146, 0.24)',
+            },
+            secondary: {
+              color: amcBlueLight,
+              hoverBackground: 'rgba(97, 150, 230, 0.16)',
+              activeBackground: 'rgba(97, 150, 230, 0.24)',
+            },
+          },
+        },
+      },
+    },
+    badge: {
+      colorScheme: {
+        light: {
+          secondary: {
+            background: amcRed,
+            color: '#ffffff',
+          },
+        },
+        dark: {
+          secondary: {
+            background: amcRed,
+            color: '#ffffff',
+          },
+        },
+      },
+    },
+    tag: {
+      colorScheme: {
+        light: {
+          secondary: {
+            background: 'rgba(217, 4, 41, 0.1)',
+            color: amcRedDark,
+          },
+        },
+        dark: {
+          secondary: {
+            background: 'rgba(217, 4, 41, 0.24)',
+            color: '#ff8fa3',
           },
         },
       },

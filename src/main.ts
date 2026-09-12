@@ -35,6 +35,7 @@ import { CrInputPartial } from './app/components/shared/input-validation/input.p
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import { MyTheme2 } from './app/mytheme-2';
+import { primeNgDe } from './app/primeng-locale.de';
 import { AppRoutingModule } from './app/app-routing.module';
 import { DrawerModule } from 'primeng/drawer';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -141,6 +142,7 @@ bootstrapApplication(AppComponent, {
     provideCharts(withDefaultRegisterables()),
     providePrimeNG({
       ripple: true,
+      translation: primeNgDe,
       license: 'eyJpZCI6IjkyYzFjYTlmLWY0NDQtNDA1Yy1iZThjLTliYWViZTM2MDJhNiIsInByb2R1Y3QiOiJwcmltZXVpIiwidGllciI6ImNvbW11bml0eSIsInR5cGUiOiJkZXYiLCJpYXQiOjE3ODQ5NzkyODksImV4cCI6MTgxNjUxNTI4OX0.hZ_pHnFRtNmqGT9u2C-335MBsqeLIiiO0MsDJAQCAqPwklSQY44M8_UHHJ-pzsis3NKdsNyxDyPOSCNwmNnDBw',
       theme: {
         preset: MyTheme2,

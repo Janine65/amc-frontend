@@ -91,7 +91,7 @@ export class KontenComponent implements OnInit {
 
     this.toolbar.set([
       {
-        label: 'Edit',
+        label: 'Bearbeiten',
         btnClass: 'p-button-primary p-button-outlined',
         icon: 'pi pi-file-edit',
         isDefault: true,
@@ -102,7 +102,7 @@ export class KontenComponent implements OnInit {
         isEditFunc: true,
       },
       {
-        label: 'Delete',
+        label: 'Löschen',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-minus',
         isDefault: false,
@@ -113,7 +113,7 @@ export class KontenComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'New',
+        label: 'Neu',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-plus',
         isDefault: false,

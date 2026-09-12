@@ -59,7 +59,7 @@ export class KontoBewegungenComponent implements OnInit {
     this.cols.set([
       {
         field: 'journalno',
-        header: 'No.',
+        header: 'Nr.',
         format: false,
         sortable: true,
         filtering: true,

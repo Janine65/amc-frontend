@@ -17,40 +17,101 @@
 }
 
 // dashboard
+.open,
+.prov-closed,
+.closed {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 6px 6px 0;
+  border-left: 4px solid;
+}
+
 .open {
-  background-color: #91e991;
+  background-color: #e6f7e9;
+  border-left-color: #1d8a3a;
+  color: #14532d;
 }
 
 .prov-closed {
-  background-color: #fafaac;
+  background-color: #fdf6d8;
+  border-left-color: #d6a400;
+  color: #713f12;
 }
 
 .closed {
-  background-color: #fdbebe;
+  background-color: #fde5e8;
+  border-left-color: variables.$amcRed;
+  color: variables.$amcRedDark;
 }
 
 // basetable
 .p-datatable .p-datatable-header {
   background-color: transparent !important;
+  border-bottom: 2px solid transparent;
+  border-image: variables.$amcAccentGradient 1;
 }
 
 .p-datatable > .p-datatable-wrapper {
-  border: 1px solid #007ad9;
+  border: 1px solid variables.$amcBlue;
   border-width: 1px 1px 0 1px;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  border-bottom: 2px solid variables.$amcRed !important;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-datatable-row-selected,
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+  background-color: rgba(217, 4, 41, 0.08) !important;
+  color: variables.$amcRedDark !important;
+}
+
+/* Dark Mode: helleres Rot für selektierte Zeilen */
+.my-app-dark .p-datatable .p-datatable-tbody > tr.p-datatable-row-selected,
+.my-app-dark .p-datatable .p-datatable-tbody > tr.p-highlight {
+  background-color: rgba(255, 143, 163, 0.16) !important;
+  color: #ff8fa3 !important;
 }
 
 .p-toolbar {
   background-color: transparent !important;
+  border-bottom: 1px solid variables.$amcBlue !important;
 }
 
 .p-tabs .p-tabs-nav li.p-highlight .p-tabs-nav-link {
-  background-color: #007ad9;
+  background-color: variables.$amcBlue;
   color: white;
+  border-bottom: 3px solid variables.$amcRed;
 }
 
 .p-tabs .p-tabs-nav li .p-tabs-nav-link {
   background-color: transparent;
-  color: black;
+  color: var(--p-text-color);
+}
+
+// Dialoge und Fieldsets an die Markenfarben angleichen
+.p-dialog {
+  border-top: 4px solid transparent;
+  border-image: variables.$amcAccentGradient 1;
+}
+
+.p-dialog .p-dialog-header {
+  border-bottom: 2px solid variables.$amcRed;
+}
+
+.p-fieldset > .p-fieldset-legend {
+  border-left: 3px solid variables.$amcRed;
+}
+
+// PrimeNG-Buttons mit severity="danger" auf AMC-Rot ausrichten
+.p-button.p-button-danger,
+.p-button-danger.p-button {
+  background: variables.$amcRed;
+  border-color: variables.$amcRed;
+
+  &:hover {
+    background: variables.$amcRedDark;
+    border-color: variables.$amcRedDark;
+  }
 }
 
 .inactive {

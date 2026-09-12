@@ -1,5 +1,6 @@
  
 import { Component, OnDestroy, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription, from, map, zip } from 'rxjs';
 import { BackendService } from '@app/service';
 import { Fiscalyear, OverviewData, ParamData } from '@model/datatypes';
@@ -15,6 +16,7 @@ import { Fieldset } from 'primeng/fieldset';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   private backendService = inject(BackendService);
+  private router = inject(Router);
 
   readonly dashboarData = signal<OverviewData[]>([]);
   readonly fiscalyear = signal<Fiscalyear | undefined>(undefined);
@@ -91,5 +93,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if (element) return element.value;
 
     return 'not found';
+  }
+
+  navigateTo(url: string) {
+    this.router.navigateByUrl(url);
   }
 }

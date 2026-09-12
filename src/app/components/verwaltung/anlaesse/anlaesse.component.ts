@@ -169,7 +169,7 @@ export class AnlaesseComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'Edit',
+        label: 'Bearbeiten',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-file-edit',
         isDefault: false,
@@ -180,7 +180,7 @@ export class AnlaesseComponent implements OnInit {
         isEditFunc: true,
       },
       {
-        label: 'Copy',
+        label: 'Kopieren',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-copy',
         isDefault: false,
@@ -191,7 +191,7 @@ export class AnlaesseComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'Delete',
+        label: 'Löschen',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-minus',
         isDefault: false,
@@ -202,7 +202,7 @@ export class AnlaesseComponent implements OnInit {
         isEditFunc: false,
       },
       {
-        label: 'New',
+        label: 'Neu',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-plus',
         isDefault: false,

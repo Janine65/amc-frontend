@@ -1,7 +1,7 @@
 <p-toast key="local"></p-toast>
 <div class="mb-1">
   @if (checkFiltering()) {
-    <button pButton severity="secondary" [outlined]="true" class="mb-1" (click)="clear(basetable)"><i class="pi pi-filter-slash"></i> Clear</button>
+    <button pButton severity="secondary" [outlined]="true" class="mb-1" (click)="clear(basetable)"><i class="pi pi-filter-slash"></i> Filter löschen</button>
   }
   @for (but of tableToolbar(); track but; let ind = $index) {
     <button pButton [class]="but.btnClass! + ' mb-1'" (click)="clickOnToolbar(ind)" [disabled]="isButtonDisabled(ind)"><i [class]="but.icon!"></i> {{ but.label! }}</button>
