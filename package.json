@@ -12,7 +12,8 @@
     "test": "nx test",
     "lint": "nx lint",
     "postversion": "git push && git push --tags && pnpm docker:dev && pnpm docker:dev:run",
-    "docker": "APP_VERSION=$(node -p \"require('./package.json').version\") BACKEND_VERSION=$(sed -nE 's/^PACKAGE_VERSION[[:space:]]*=[[:space:]]*\"([^\"]+)\".*/\\1/p' ../amc-backend-py/app/core/config.py) sh -c 'docker compose build && docker tag janine65/amcbackend:latest janine65/amcbackend:$BACKEND_VERSION && docker tag janine65/amcfrontend:latest janine65/amcfrontend:$APP_VERSION && docker push --all-tags janine65/amcbackend && docker push --all-tags janine65/amcfrontend'",
+    "docker": "APP_VERSION=$(node -p \"require('./package.json').version\") BACKEND_VERSION=$(sed -nE 's/^PACKAGE_VERSION[[:space:]]*=[[:space:]]*\"([^\"]+)\".*/\\1/p' ../amc-backend-py/app/core/config.py) sh -c 'docker compose build && docker tag janine65/amcbackend:latest janine65/amcbackend:$BACKEND_VERSION && docker tag janine65/amcfrontend:latest janine65/amcfrontend:$APP_VERSION && docker push --all-tags janine65/amcbackend && docker push --all-tags janine65/amcfrontend && pnpm docker:readme'",
+    "docker:readme": "sh -c 'docker pushrm janine65/amcbackend --file ../amc-backend-py/README.docker.md && docker pushrm janine65/amcfrontend --file README.docker.md'",
     "docker:dev": "sh -c 'docker compose -f docker-compose-test.yml build'",
     "docker:dev:run": "sh -c 'docker compose -f docker-compose-test.yml down && docker compose -f docker-compose-test.yml up -d'"
   },
