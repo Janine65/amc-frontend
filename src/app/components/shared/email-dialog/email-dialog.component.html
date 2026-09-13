@@ -31,7 +31,7 @@
         id="cc"
         [(ngModel)]="emailBody.email_cc"
         name="cc"
-        class="text-base text-color border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        class="text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       ></textarea>
     </div>
   </div>
@@ -45,7 +45,7 @@
         id="bbc"
         [(ngModel)]="emailBody.email_bcc"
         name="bcc"
-        class="text-base text-color border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        class="text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       ></textarea>
     </div>
   </div>
@@ -60,6 +60,7 @@
         [(ngModel)]="emailBody.email_signature"
         name="from"
         [required]="true"
+        (onChange)="changeSignature()"
       >
       </p-select>
     </div>
@@ -72,23 +73,22 @@
         [(ngModel)]="emailBody.email_subject"
         name="subject"
         [required]="true"
-        class="p-2 text-base text-color border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        class="p-2 text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
   </div>
   <div class="mb-4 flex flex-wrap">
     <div class="w-full md:w-full">
-      <p-editor
+      <quill-editor
         [(ngModel)]="emailBody.email_body"
-        [disabled]="false"
         [placeholder]="'Hier kommt die Meldung'"
         name="body"
         [modules]="modules"
-        [style]="{ height: '150px' }"
-        class=""
+        [styles]="{ height: '150px' }"
+        format="html"
+        class="w-full"
       >
-        <ng-template #header></ng-template>
-      </p-editor>
+      </quill-editor>
     </div>
   </div>
   <div class="card">

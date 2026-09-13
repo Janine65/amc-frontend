@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AccountService, BackendService } from '@app/service';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EmailBody, EmailSignature } from './email-dialog.types';
@@ -12,7 +12,7 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 import { FormsModule } from '@angular/forms';
 import { Textarea } from 'primeng/textarea';
 import { Select } from 'primeng/select';
-import { Editor } from 'primeng/editor';
+import { QuillEditorComponent } from 'ngx-quill';
 import { FileUpload } from 'primeng/fileupload';
 
 @Component({
@@ -28,7 +28,7 @@ import { FileUpload } from 'primeng/fileupload';
     FormsModule,
     Textarea,
     Select,
-    Editor,
+    QuillEditorComponent,
     FileUpload,
   ],
 })
@@ -52,6 +52,13 @@ export class EmailDialogComponent {
     },
     { label: 'Janine Franken', value: EmailSignature.JanineFranken },
   ]);
+
+  // Default-Absenderadresse pro Signatur (entspricht email_from in config.json des Backends)
+  private readonly signatureEmails: Record<EmailSignature, string> = {
+    [EmailSignature.JanineFranken]: 'janine@automoto-sr.info',
+    [EmailSignature.HansjoergDutler]: 'info@automoto-sr.info',
+  };
+  private prevSignature: EmailSignature | undefined;
 
   quillFormats = [
     ['bold', 'italic', 'underline', 'strike'], // toggled buttons
@@ -85,6 +92,26 @@ export class EmailDialogComponent {
     const config = this.config;
 
     this.emailBody = config.data.emailBody;
+    this.prevSignature =
+      this.emailBody.email_signature ??
+      (environment.defaultSignature as EmailSignature);
+  }
+
+  changeSignature() {
+    const prevEmail = this.prevSignature
+      ? this.signatureEmails[this.prevSignature]
+      : undefined;
+    const newSignature = this.emailBody.email_signature;
+
+    // To-Adresse nur ersetzen, wenn sie noch der Default-Adresse der alten Signatur entspricht
+    if (
+      newSignature &&
+      prevEmail &&
+      this.emailBody.email_an?.trim().toLowerCase() === prevEmail.toLowerCase()
+    ) {
+      this.emailBody.email_an = this.signatureEmails[newSignature];
+    }
+    this.prevSignature = newSignature;
   }
 
   prepareFiles(files: File[]) {
@@ -175,9 +202,11 @@ export class EmailDialogComponent {
         )
       ] as unknown as EmailSignature;
     }
-    let textStrap = this.emailBody.email_body.replace('<p>', '');
-    textStrap = textStrap.replace('</p>', '</br>');
-    this.emailBody.email_body = textStrap;
+    // Quill erzeugt <p>-Absätze; ohne margin:0 rendern Mail-Clients grosse Abstände.
+    // Leere Absätze (<p></p>, <p><br></p>, ...) als <br> senden, da Outlook leere <p> verschluckt.
+    this.emailBody.email_body = this.emailBody.email_body
+      .replace(/<p(\s[^>]*)?>(\s|&nbsp;|<br\s*\/?>)*<\/p>/g, '<br>')
+      .replace(/<p(\s|>)/g, '<p style="margin:0"$1');
 
     // alles bereit zum Senden der Email
     this.backendService.sendEmail(this.emailBody).subscribe({

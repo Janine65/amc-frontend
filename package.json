@@ -41,6 +41,7 @@
     "@primeuix/themes": "^3.0.0",
     "chart.js": "4.5.1",
     "ng2-charts": "^10.0.0",
+    "ngx-quill": "^31.0.1",
     "primeicons": "8.0.0",
     "primeng": "22.0.0",
     "quill": "^2.0.3",

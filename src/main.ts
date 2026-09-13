@@ -61,7 +61,6 @@ import { PasswordModule } from 'primeng/password';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
-import { EditorModule } from 'primeng/editor';
 import { FileUploadModule } from 'primeng/fileupload';
 import { SplitterModule } from 'primeng/splitter';
 import { TextareaModule } from 'primeng/textarea';
@@ -108,7 +107,6 @@ bootstrapApplication(AppComponent, {
       ContextMenuModule,
       ConfirmDialogModule,
       DialogModule,
-      EditorModule,
       FileUploadModule,
       SplitterModule,
       ReactiveFormsModule,
