@@ -18,6 +18,10 @@ import { KtoAuswertungComponent } from './components/buchhaltung/kto-auswertung/
 import { BudgetComponent } from './components/buchhaltung/budget/budget.component';
 import { KegelkasseComponent } from './components/buchhaltung/kegelkasse/kegelkasse.component';
 import { AppAboutComponent } from './layout/app.about.component';
+import { HomepageNewsComponent } from './components/homepage/news/news.component';
+import { HomepageBerichteComponent } from './components/homepage/berichte/berichte.component';
+import { HomepageAnmeldungenComponent } from './components/homepage/anmeldungen/anmeldungen.component';
+import { HomepageFreigabeComponent } from './components/homepage/freigabe/freigabe.component';
 
 @NgModule({
   imports: [RouterModule.forRoot([
@@ -39,6 +43,15 @@ import { AppAboutComponent } from './layout/app.about.component';
         },
         { path: 'auswertung/meisterschaft', component: MeisterschaftComponent, canActivate: [AuthGuard], data: { role: 'user' } },
         { path: 'auswertung/auswertung', component: AuswertungComponent, canActivate: [AuthGuard], data: { role: 'user' } },
+        {
+          path: 'homepage',
+          children: [
+            { path: 'news', component: HomepageNewsComponent, canActivate: [AuthGuard], data: { role: 'user' } },
+            { path: 'berichte', component: HomepageBerichteComponent, canActivate: [AuthGuard], data: { role: 'user' } },
+            { path: 'anmeldungen', component: HomepageAnmeldungenComponent, canActivate: [AuthGuard], data: { role: 'user' } },
+            { path: 'freigabe', component: HomepageFreigabeComponent, canActivate: [AuthGuard], data: { role: 'admin' } },
+          ]
+        },
         {
           path: 'buchhaltung',
           children: [

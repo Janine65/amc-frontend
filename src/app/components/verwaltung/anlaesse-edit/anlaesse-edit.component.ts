@@ -124,6 +124,9 @@ export class AnlaesseEditComponent implements OnInit {
       this.anlass.anlaesse = null;
       this.anlass.anlaesseid = null;
     }
+    // Leere Zeitfelder nicht als "" senden (Backend erwartet Zeit oder null)
+    if (!this.anlass.zeit_von) this.anlass.zeit_von = null;
+    if (!this.anlass.zeit_bis) this.anlass.zeit_bis = null;
     const prom =
       this.anlass.id == undefined || this.anlass.id == 0
         ? this.backendService.addAnlaesseData(this.anlass)

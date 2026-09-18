@@ -1,0 +1,57 @@
+<div class="card">
+  <p-toast key="local"></p-toast>
+  <div class="flex items-center gap-2 mb-2">
+    <p-select
+      [options]="anlaesse()"
+      optionLabel="value"
+      [(ngModel)]="selectedAnlass"
+      [showClear]="true"
+      placeholder="Anlass filtern"
+      [style]="{ 'min-width': '20rem' }"
+      (onChange)="loadAnmeldungen()"
+    />
+  </div>
+  @if (!loading()) {
+    <p-table [value]="anmeldungen()" dataKey="id" showGridlines>
+      <ng-template #header>
+        <tr>
+          <th style="width: 25%">Anlass</th>
+          <th style="width: 12%">Name</th>
+          <th style="width: 12%">Vorname</th>
+          <th style="width: 17%">E-Mail</th>
+          <th style="width: 14%">Bemerkung</th>
+          <th style="width: 10%">Angemeldet</th>
+          <th style="width: 8%">Status</th>
+          <th style="width: 2%"></th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-item>
+        <tr>
+          <td>{{ anlassName(item.anlassid) }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.vorname }}</td>
+          <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
+          <td>{{ item.bemerkung }}</td>
+          <td>{{ item.createdAt | date: 'dd.MM.yyyy HH:mm' }}</td>
+          <td>
+            <p-select
+              [options]="statusOptions"
+              optionLabel="label"
+              optionValue="value"
+              [(ngModel)]="item.status"
+              (onChange)="onStatusChange(item)"
+            />
+          </td>
+          <td>
+            <button pButton pRipple type="button" (click)="onDelete(item)" [rounded]="true" [text]="true"><i class="pi pi-trash"></i></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template #emptymessage>
+        <tr>
+          <td colspan="8">Keine Anmeldungen vorhanden.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  }
+</div>

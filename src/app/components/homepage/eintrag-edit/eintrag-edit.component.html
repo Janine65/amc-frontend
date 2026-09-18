@@ -1,0 +1,65 @@
+<p-toolbar>
+  <button pButton (click)="back()" severity="secondary" [outlined]="true"><i class="pi pi-times"></i> Abbruch</button>
+  <button pButton (click)="save()" severity="primary" [outlined]="true"><i class="pi pi-check"></i> Speichern</button>
+</p-toolbar>
+<div class="card">
+  <div class="mb-4 flex flex-wrap items-center">
+    <label for="datum" class="w-full md:w-1/6 md:mb-0">Datum:</label>
+    <div class="w-full md:w-10/12">
+      <p-datepicker
+        id="datum"
+        [(ngModel)]="datumDate"
+        dateFormat="dd.mm.yy"
+        [showIcon]="true"
+        appendTo="body"
+      />
+    </div>
+  </div>
+  <div class="mb-4 flex flex-wrap items-center">
+    <label for="titel" class="w-full md:w-1/6 md:mb-0">Titel:</label>
+    <div class="w-full md:w-10/12">
+      <input
+        pInputText
+        id="titel"
+        [(ngModel)]="eintrag.titel"
+        maxlength="150"
+        required
+        class="w-full"
+      />
+    </div>
+  </div>
+  @if (istBericht) {
+    <div class="mb-4 flex flex-wrap items-center">
+      <label for="datei" class="w-full md:w-1/6 md:mb-0">Datei (URL):</label>
+      <div class="w-full md:w-10/12">
+        <input
+          pInputText
+          id="datei"
+          [(ngModel)]="bericht.datei"
+          maxlength="255"
+          class="w-full"
+        />
+      </div>
+    </div>
+  }
+  <div class="mb-4 flex flex-wrap items-center">
+    <label for="publiziert" class="w-full md:w-1/6 md:mb-0">Publiziert:</label>
+    <div class="w-full md:w-10/12">
+      <p-toggleswitch id="publiziert" [(ngModel)]="eintrag.publiziert" />
+    </div>
+  </div>
+  <div class="mb-4 flex flex-wrap">
+    <div class="w-full">
+      <quill-editor
+        [(ngModel)]="eintrag.text"
+        [placeholder]="'Hier kommt der Inhalt'"
+        name="text"
+        [modules]="quillModules"
+        [styles]="{ height: '300px' }"
+        format="html"
+        class="w-full"
+      >
+      </quill-editor>
+    </div>
+  </div>
+</div>

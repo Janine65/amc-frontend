@@ -42,6 +42,27 @@ services:
     networks:
       - front-tier
 
+  amchomepage:
+    container_name: amchomepage
+    image: janine65/amchomepage
+    platform: linux/amd64
+    build:
+      context: ../amc-homepage/
+      dockerfile: ../amc-homepage/Dockerfile
+      tags:
+        - "janine65/amchomepage:${HOMEPAGE_VERSION:-latest}"
+    depends_on:
+      - amcbackend
+    environment:
+      - COMPOSE_PROJECT_NAME
+      - NODE_ENV=production
+      - API_URL=http://amcbackend:3001
+    ports:
+      - 4321:4321
+    hostname: amchomepage
+    networks:
+      - front-tier
+
 volumes:
   documents:
     driver: local

@@ -1,0 +1,37 @@
+<div class="card">
+  <p-toast key="local"></p-toast>
+  <p class="mb-2">
+    Freigegebene Jahre werden auf der Homepage in der Rubrik «Meisterschaft» angezeigt.
+  </p>
+  <div class="flex items-center gap-2 mb-3">
+    <input pInputText type="text" [(ngModel)]="neuesJahr" placeholder="Jahr (JJJJ)" maxlength="4" />
+    <button pButton pRipple type="button" (click)="onAdd()" severity="secondary" [outlined]="true"><i class="pi pi-plus"></i> Jahr hinzufügen</button>
+  </div>
+  @if (!loading()) {
+    <p-table [value]="freigaben()" dataKey="id" showGridlines>
+      <ng-template #header>
+        <tr>
+          <th style="width: 40%">Jahr</th>
+          <th style="width: 30%">Clubmeisterschaft</th>
+          <th style="width: 30%">Kegelmeisterschaft</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-item>
+        <tr>
+          <td>{{ item.jahr }}</td>
+          <td>
+            <p-toggleswitch [(ngModel)]="item.clubmeister" (onChange)="onSave(item)" />
+          </td>
+          <td>
+            <p-toggleswitch [(ngModel)]="item.kegelmeister" (onChange)="onSave(item)" />
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template #emptymessage>
+        <tr>
+          <td colspan="3">Noch keine Jahre erfasst.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  }
+</div>

@@ -122,6 +122,33 @@ export class AppMenuComponent implements OnInit, OnChanges {
               },
             ],
           },
+          {
+            label: 'Homepage',
+            items: [
+              {
+                label: 'News',
+                icon: 'pi pi-fw pi-megaphone',
+                routerLink: ['/homepage/news'],
+              },
+              {
+                label: 'Berichte',
+                icon: 'pi pi-fw pi-file-edit',
+                routerLink: ['/homepage/berichte'],
+              },
+              {
+                label: 'Anmeldungen',
+                icon: 'pi pi-fw pi-user-plus',
+                routerLink: ['/homepage/anmeldungen'],
+              },
+              user.role === 'admin'
+                ? {
+                    label: 'Jahr-Freigabe',
+                    icon: 'pi pi-fw pi-unlock',
+                    routerLink: ['/homepage/freigabe'],
+                  }
+                : { visible: false },
+            ],
+          },
         );
       }
       model.push({

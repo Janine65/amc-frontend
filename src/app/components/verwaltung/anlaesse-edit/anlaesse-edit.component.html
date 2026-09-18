@@ -55,6 +55,41 @@
             class="text-base text-color surface-overlay p-2 appearance-none outline-none w-full"
           ></textarea>
         </div>
+        <div class="mb-4 w-full md:w-1/2">
+          <label for="zeit_von">Zeit von (Homepage)</label>
+          <input
+            type="time"
+            id="zeit_von"
+            pInputText
+            name="zeit_von"
+            class="text-base text-color surface-overlay p-2 appearance-none outline-none w-full"
+            [(ngModel)]="anlass.zeit_von"
+          />
+        </div>
+        <div class="mb-4 w-full md:w-1/2">
+          <label for="zeit_bis">Zeit bis (Homepage)</label>
+          <input
+            type="time"
+            id="zeit_bis"
+            pInputText
+            name="zeit_bis"
+            class="text-base text-color surface-overlay p-2 appearance-none outline-none w-full"
+            [(ngModel)]="anlass.zeit_bis"
+          />
+        </div>
+        <div class="mb-4 w-full">
+          <label for="ort">Ort (Homepage)</label>
+          <input
+            type="text"
+            id="ort"
+            pInputText
+            name="ort"
+            maxlength="150"
+            placeholder="z. B. Restaurant Hirschen, Zürich"
+            class="text-base text-color surface-overlay p-2 appearance-none outline-none w-full"
+            [(ngModel)]="anlass.ort"
+          />
+        </div>
         <div class="flex items-center flex-wrap mb-4 w-full">
           <div class="flex items-center gap-2 mb-2">
             <input

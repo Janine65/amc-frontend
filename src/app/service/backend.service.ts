@@ -12,6 +12,10 @@ import {
   Kegelkasse,
   Receipt,
   Budget,
+  HomepageNews,
+  HomepageBericht,
+  AnlassAnmeldung,
+  JahrFreigabe,
 } from '@model/index';
 import { Package } from '@model/user';
 import { EmailBody } from '@app/components/shared/email-dialog/email-dialog.types';
@@ -586,5 +590,92 @@ export class BackendService {
       jahr +
       '&all=false';
     return this.http.get<RetDataFile>(apiURL, { headers: this.header });
+  }
+
+  // ---------------------------------------------------------------------
+  // Homepage: News, Berichte, Anmeldungen, Jahr-Freigabe
+  // ---------------------------------------------------------------------
+
+  getNewsData(): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/news';
+    return this.http.get<RetData>(apiURL, { headers: this.header });
+  }
+
+  addNewsData(news: HomepageNews): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/news';
+    return this.http.post<RetData>(apiURL, JSON.stringify(news), {
+      headers: this.header,
+    });
+  }
+
+  updNewsData(news: HomepageNews): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/news/' + news.id;
+    return this.http.patch<RetData>(apiURL, JSON.stringify(news), {
+      headers: this.header,
+    });
+  }
+
+  delNewsData(news: HomepageNews): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/news/' + news.id;
+    return this.http.delete<RetData>(apiURL, { headers: this.header });
+  }
+
+  getBerichteData(): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/berichte';
+    return this.http.get<RetData>(apiURL, { headers: this.header });
+  }
+
+  addBerichtData(bericht: HomepageBericht): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/berichte';
+    return this.http.post<RetData>(apiURL, JSON.stringify(bericht), {
+      headers: this.header,
+    });
+  }
+
+  updBerichtData(bericht: HomepageBericht): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/berichte/' + bericht.id;
+    return this.http.patch<RetData>(apiURL, JSON.stringify(bericht), {
+      headers: this.header,
+    });
+  }
+
+  delBerichtData(bericht: HomepageBericht): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/berichte/' + bericht.id;
+    return this.http.delete<RetData>(apiURL, { headers: this.header });
+  }
+
+  getAnmeldungen(anlassid?: number): Observable<RetData> {
+    let apiURL = this.backendApiUrl + '/anmeldungen';
+    if (anlassid) apiURL += '?anlassid=' + anlassid;
+    return this.http.get<RetData>(apiURL, { headers: this.header });
+  }
+
+  updAnmeldung(anmeldung: AnlassAnmeldung): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anmeldungen/' + anmeldung.id;
+    const body = JSON.stringify({
+      status: anmeldung.status,
+      bemerkung: anmeldung.bemerkung,
+    });
+    return this.http.patch<RetData>(apiURL, body, { headers: this.header });
+  }
+
+  delAnmeldung(anmeldung: AnlassAnmeldung): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anmeldungen/' + anmeldung.id;
+    return this.http.delete<RetData>(apiURL, { headers: this.header });
+  }
+
+  getJahrFreigaben(): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/jahrfreigabe';
+    return this.http.get<RetData>(apiURL, { headers: this.header });
+  }
+
+  upsertJahrFreigabe(freigabe: JahrFreigabe): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/jahrfreigabe';
+    const body = JSON.stringify({
+      jahr: freigabe.jahr,
+      clubmeister: freigabe.clubmeister,
+      kegelmeister: freigabe.kegelmeister,
+    });
+    return this.http.put<RetData>(apiURL, body, { headers: this.header });
   }
 }

@@ -72,6 +72,9 @@ export class Anlass extends TableData {
   public status?: NumberEmpty;
   public vorjahr?: StringEmpty;
   public anlaesse?: Anlass;
+  public zeit_von?: StringEmpty;
+  public zeit_bis?: StringEmpty;
+  public ort?: StringEmpty;
   public _count?: { meisterschaft: number };
 }
 
@@ -242,4 +245,41 @@ export class AccountAuswertung {
   name = '';
   order = 0;
   status = 0;
+}
+
+export class HomepageNews {
+  public id = 0;
+  public titel = '';
+  public text = '';
+  public bild?: StringEmpty;
+  public datum = '';
+  public publiziert = false;
+}
+
+export class HomepageBericht {
+  public id = 0;
+  public titel = '';
+  public text = '';
+  public datei?: StringEmpty;
+  public datum = '';
+  public publiziert = false;
+}
+
+export class AnlassAnmeldung {
+  public id = 0;
+  public anlassid = 0;
+  public name = '';
+  public vorname = '';
+  public email = '';
+  public bemerkung?: StringEmpty;
+  // 1 = neu, 2 = bestätigt, 0 = abgelehnt
+  public status = 1;
+  public createdAt?: StringEmpty;
+}
+
+export class JahrFreigabe {
+  public id = 0;
+  public jahr = '';
+  public clubmeister = false;
+  public kegelmeister = false;
 }
