@@ -34,6 +34,8 @@ export class HomepageAnmeldungenComponent implements OnInit {
   readonly statusOptions = [
     { label: 'Neu', value: 1 },
     { label: 'Bestätigt', value: 2 },
+    { label: 'war anwesend', value: 3 },
+    { label: 'war abwesend', value: 4 },
     { label: 'Abgelehnt', value: 0 },
   ];
 
