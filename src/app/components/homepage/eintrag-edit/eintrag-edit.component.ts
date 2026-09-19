@@ -83,6 +83,8 @@ export class EintragEditComponent {
       });
       return;
     }
+    // Quill 2 (getSemanticHTML) ersetzt Leerzeichen durch &nbsp; – verhindert Zeilenumbruch auf der Homepage
+    this.eintrag.text = this.eintrag.text.replace(/&nbsp;|\u00a0/g, ' ');
     this.eintrag.datum = this.datumDate.toLocaleDateString('fr-CA', {
       year: 'numeric',
       month: '2-digit',
