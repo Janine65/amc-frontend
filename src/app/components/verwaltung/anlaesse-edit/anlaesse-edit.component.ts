@@ -73,6 +73,10 @@ export class AnlaesseEditComponent implements OnInit {
     this.ref.close();
   }
 
+  chgMotorrad(checked: boolean) {
+    this.anlass.punkte = checked ? 0 : 50;
+  }
+
   getAnlaesse() {
     this.subs = from(
       this.backendService.getAnlaesseFKData(

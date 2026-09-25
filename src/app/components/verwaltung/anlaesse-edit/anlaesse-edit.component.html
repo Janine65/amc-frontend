@@ -123,6 +123,7 @@
               type="checkbox"
               id="motorrad"
               [(ngModel)]="anlass.istmotorrad"
+              (ngModelChange)="chgMotorrad($event)"
               name="motorrad"
             />
             <label for="motorrad">Motorrad? (nur Homepage)</label>
