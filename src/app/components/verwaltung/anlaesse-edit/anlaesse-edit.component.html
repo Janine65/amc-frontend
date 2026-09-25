@@ -118,6 +118,15 @@
             />
             <label for="sam">SAM-Anlass?</label>
           </div>
+          <div class="flex items-center gap-2 mb-2">
+            <input
+              type="checkbox"
+              id="motorrad"
+              [(ngModel)]="anlass.istmotorrad"
+              name="motorrad"
+            />
+            <label for="motorrad">Motorrad? (nur Homepage)</label>
+          </div>
         </div>
         <div class="mb-4 w-full md:w-1/2">
           <label for="punkte">Punkte</label>

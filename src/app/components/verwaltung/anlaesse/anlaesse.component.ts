@@ -114,6 +114,14 @@ export class AnlaesseComponent implements OnInit {
         filter: 'boolean',
       },
       {
+        field: 'istmotorrad',
+        header: 'Motorrad?',
+        format: false,
+        sortable: false,
+        filtering: true,
+        filter: 'boolean',
+      },
+      {
         field: 'vorjahr',
         header: 'Vorjahres Termin',
         format: false,

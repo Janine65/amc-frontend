@@ -66,6 +66,7 @@ export class Anlass extends TableData {
   public istkegeln?: BooleanEmpty;
   public nachkegeln?: BooleanEmpty;
   public istsamanlass?: BooleanEmpty;
+  public istmotorrad?: BooleanEmpty;
   public gaeste?: NumberEmpty;
   public anlaesseid?: NumberEmpty;
   public longname?: StringEmpty;
