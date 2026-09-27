@@ -19,6 +19,8 @@ import { environment } from '@environments/environment';
 import { MessageService } from 'primeng/api';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { AdresseShowComponent } from '../adresse-show/adresse-show.component';
+import { AnlassAnmeldenComponent } from './anlass-anmelden.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class AdresseFilter {
   public name: string | null;
@@ -226,6 +228,17 @@ export class AdressenComponent implements OnInit {
         isEditFunc: false,
       },
       {
+        label: 'Anmelden',
+        btnClass: 'p-button-secondary p-button-outlined',
+        icon: 'pi pi-user-plus',
+        isDefault: false,
+        disabledWhenEmpty: true,
+        disabledNoSelection: true,
+        clickfnc: this.anmeldenAdresse,
+        roleNeeded: '',
+        isEditFunc: false,
+      },
+      {
         label: 'Export',
         btnClass: 'p-button-secondary p-button-outlined',
         icon: 'pi pi-file-excel',
@@ -390,6 +403,37 @@ export class AdressenComponent implements OnInit {
           return [...list];
         });
       }
+    });
+  };
+
+  anmeldenAdresse = (selRec?: Adresse) => {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const thisRef: AdressenComponent = this;
+    if (!selRec) return;
+    thisRef.messageService.clear();
+    thisRef.dialogRef = thisRef.dialogService.open(AnlassAnmeldenComponent, {
+      header: `Anmeldung für ${selRec.vorname} ${selRec.name}`,
+      width: '30rem',
+      modal: true,
+    });
+    thisRef.dialogRef.onClose.subscribe((anlassid?: number) => {
+      if (!anlassid) return;
+      thisRef.backendService.addAnmeldungManuell(anlassid, selRec.id).subscribe({
+        next: () => {
+          thisRef.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: `${selRec.vorname} ${selRec.name} wurde angemeldet`,
+          });
+        },
+        error: (err: HttpErrorResponse) => {
+          thisRef.messageService.add({
+            severity: 'error',
+            summary: 'Fehler',
+            detail: err.error?.detail ?? 'Anmeldung fehlgeschlagen',
+          });
+        },
+      });
     });
   };
 

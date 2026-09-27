@@ -269,12 +269,24 @@ export class HomepageBericht {
 export class AnlassAnmeldung {
   public id = 0;
   public anlassid = 0;
+  public anlass_longname?: StringEmpty;
+  public adresseid?: number | null;
   public name = '';
   public vorname = '';
   public email = '';
   public bemerkung?: StringEmpty;
   // 1 = neu, 2 = bestätigt, 0 = abgelehnt
   public status = 1;
+  public createdAt?: StringEmpty;
+}
+
+export class Kontakt {
+  public id = 0;
+  public name = '';
+  public vorname = '';
+  public email = '';
+  public betreff = '';
+  public nachricht = '';
   public createdAt?: StringEmpty;
 }
 

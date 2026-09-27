@@ -16,6 +16,7 @@ import {
   HomepageBericht,
   AnlassAnmeldung,
   JahrFreigabe,
+  Kontakt,
 } from '@model/index';
 import { Package } from '@model/user';
 import { EmailBody } from '@app/components/shared/email-dialog/email-dialog.types';
@@ -208,6 +209,11 @@ export class BackendService {
     if (jahr) params.append('jahr', jahr);
     const apiURL =
       this.backendApiUrl + '/anlaesse/getFkData?' + params.toString();
+    return this.http.get<RetData>(apiURL, { headers: this.header });
+  }
+
+  getAnlaesseAnmeldbar(): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anlaesse/anmeldbar';
     return this.http.get<RetData>(apiURL, { headers: this.header });
   }
 
@@ -659,8 +665,45 @@ export class BackendService {
     return this.http.patch<RetData>(apiURL, body, { headers: this.header });
   }
 
+  linkAnmeldung(anmeldungId: number, adresseid: number): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anmeldungen/' + anmeldungId;
+    const body = JSON.stringify({ adresseid });
+    return this.http.patch<RetData>(apiURL, body, { headers: this.header });
+  }
+
   delAnmeldung(anmeldung: AnlassAnmeldung): Observable<RetData> {
     const apiURL = this.backendApiUrl + '/anmeldungen/' + anmeldung.id;
+    return this.http.delete<RetData>(apiURL, { headers: this.header });
+  }
+
+  addAnmeldungManuell(anlassid: number, adresseid: number): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anmeldungen';
+    const body = JSON.stringify({ anlassid, adresseid });
+    return this.http.post<RetData>(apiURL, body, { headers: this.header });
+  }
+
+  confirmAlleAnmeldungen(anlassid: number): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anmeldungen/bestaetigen?anlassid=' + anlassid;
+    return this.http.post<RetData>(apiURL, null, { headers: this.header });
+  }
+
+  attendAlleAnmeldungen(anlassid: number): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/anmeldungen/anwesend?anlassid=' + anlassid;
+    return this.http.post<RetData>(apiURL, null, { headers: this.header });
+  }
+
+  exportAnmeldungen(anlassid: number): Observable<RetDataFile> {
+    const apiURL = this.backendApiUrl + '/anmeldungen/export?anlassid=' + anlassid;
+    return this.http.get<RetDataFile>(apiURL, { headers: this.header });
+  }
+
+  getKontakte(): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/kontakte';
+    return this.http.get<RetData>(apiURL, { headers: this.header });
+  }
+
+  delKontakt(kontakt: Kontakt): Observable<RetData> {
+    const apiURL = this.backendApiUrl + '/kontakte/' + kontakt.id;
     return this.http.delete<RetData>(apiURL, { headers: this.header });
   }
 

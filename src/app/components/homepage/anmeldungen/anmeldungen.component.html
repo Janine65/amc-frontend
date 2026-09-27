@@ -1,6 +1,7 @@
 <div class="card">
   <p-toast key="local"></p-toast>
-  <div class="flex items-center gap-2 mb-2">
+  <p-confirmdialog></p-confirmdialog>
+  <div class="flex items-center gap-2 mb-2 flex-wrap">
     <p-select
       [options]="anlaesse()"
       optionLabel="value"
@@ -10,24 +11,45 @@
       [style]="{ 'min-width': '20rem' }"
       (onChange)="loadAnmeldungen()"
     />
+    <p-select
+      [options]="statusOptions"
+      optionLabel="label"
+      optionValue="value"
+      [(ngModel)]="selectedStatus"
+      [showClear]="true"
+      placeholder="Status filtern"
+      [style]="{ 'min-width': '12rem' }"
+    />
+    @if (selectedAnlass) {
+      <button pButton pRipple type="button" class="p-button-outlined" (click)="confirmAll()">
+        <i class="pi pi-check mr-2"></i>Neue bestätigen
+      </button>
+      <button pButton pRipple type="button" class="p-button-outlined" (click)="attendAll()">
+        <i class="pi pi-users mr-2"></i>Alle anwesend + buchen
+      </button>
+      <button pButton pRipple type="button" class="p-button-outlined" (click)="exportExcel()">
+        <i class="pi pi-file-excel mr-2"></i>Export
+      </button>
+    }
   </div>
   @if (!loading()) {
-    <p-table [value]="anmeldungen()" dataKey="id" showGridlines>
+    <p-table [value]="filteredAnmeldungen()" dataKey="id" showGridlines>
       <ng-template #header>
         <tr>
-          <th style="width: 25%">Anlass</th>
+          <th style="width: 23%">Anlass</th>
           <th style="width: 12%">Name</th>
           <th style="width: 12%">Vorname</th>
-          <th style="width: 17%">E-Mail</th>
-          <th style="width: 14%">Bemerkung</th>
+          <th style="width: 16%">E-Mail</th>
+          <th style="width: 13%">Bemerkung</th>
           <th style="width: 10%">Angemeldet</th>
           <th style="width: 8%">Status</th>
+          <th style="width: 4%">Adresse</th>
           <th style="width: 2%"></th>
         </tr>
       </ng-template>
       <ng-template #body let-item>
-        <tr>
-          <td>{{ anlassName(item.anlassid) }}</td>
+        <tr [class.row-inactive]="isInactive(item)">
+          <td>{{ anlassName(item) }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.vorname }}</td>
           <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
@@ -39,9 +61,28 @@
               optionLabel="label"
               optionValue="value"
               [(ngModel)]="item.status"
+              [disabled]="isReadonly(item)"
               (onChange)="onStatusChange(item)"
               appendTo="body"
             />
+          </td>
+          <td>
+            @if (item.adresseid) {
+              <i class="pi pi-check-circle" style="color: var(--p-green-500, #22c55e)" title="Mit Adresse verknüpft"></i>
+            } @else {
+              <button
+                pButton
+                pRipple
+                type="button"
+                (click)="verknuepfen(item)"
+                [rounded]="true"
+                [text]="true"
+                [disabled]="isReadonly(item)"
+                title="Keine Adresse verknüpft – jetzt verknüpfen"
+              >
+                <i class="pi pi-exclamation-triangle" style="color: var(--p-orange-500, #f97316)"></i>
+              </button>
+            }
           </td>
           <td>
             <button pButton pRipple type="button" (click)="onDelete(item)" [rounded]="true" [text]="true"><i class="pi pi-trash"></i></button>
@@ -50,7 +91,7 @@
       </ng-template>
       <ng-template #emptymessage>
         <tr>
-          <td colspan="8">Keine Anmeldungen vorhanden.</td>
+          <td colspan="9">Keine Anmeldungen vorhanden.</td>
         </tr>
       </ng-template>
     </p-table>

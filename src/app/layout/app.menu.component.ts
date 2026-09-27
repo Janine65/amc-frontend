@@ -140,6 +140,11 @@ export class AppMenuComponent implements OnInit, OnChanges {
                 icon: 'pi pi-fw pi-user-plus',
                 routerLink: ['/homepage/anmeldungen'],
               },
+              {
+                label: 'Kontakte',
+                icon: 'pi pi-fw pi-envelope',
+                routerLink: ['/homepage/kontakte'],
+              },
               user.role === 'admin'
                 ? {
                     label: 'Jahr-Freigabe',
