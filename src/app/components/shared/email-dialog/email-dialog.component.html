@@ -49,6 +49,24 @@
       ></textarea>
     </div>
   </div>
+  @if (unsubscribedEmails.length > 0) {
+    <div class="mb-4 flex flex-wrap">
+      <div class="w-full md:w-1/6 md:mb-0"></div>
+      <div class="w-full md:w-10/12 flex items-center gap-2">
+        <p-checkbox
+          inputId="includeUnsubscribed"
+          [binary]="true"
+          [(ngModel)]="includeUnsubscribed"
+          name="includeUnsubscribed"
+          (onChange)="toggleUnsubscribed()"
+        ></p-checkbox>
+        <label for="includeUnsubscribed">
+          Abmeldungen übersteuern – {{ unsubscribedEmails.length }} abgemeldete Adresse(n) einbeziehen (z.B. Einladung zur
+          Generalversammlung)
+        </label>
+      </div>
+    </div>
+  }
   <div class="mb-4 flex flex-wrap">
     <label for="from" class="w-full md:w-1/6 md:mb-0">Absender:</label>
     <div class="w-full md:w-10/12">

@@ -314,17 +314,18 @@ export class AdressenComponent implements OnInit {
       ] as unknown as EmailSignature,
     });
 
-    // Adressen mit unsubscribe erhalten keine Massen-E-Mails
-    lstData
-      ?.filter((adresse) => !adresse.unsubscribe)
-      .forEach(
-        (adresse) =>
-          (emailBody.email_bcc +=
-            adresse.email != '' ? adresse.email + ';' : ''),
-      );
+    // Adressen mit unsubscribe erhalten keine Massen-E-Mails;
+    // im Dialog kann dies übersteuert werden (z.B. Einladung zur GV)
+    const unsubscribedEmails: string[] = [];
+    lstData?.forEach((adresse) => {
+      if (!adresse.email) return;
+      if (adresse.unsubscribe) unsubscribedEmails.push(adresse.email);
+      else emailBody.email_bcc += adresse.email + ';';
+    });
     this.dialogRef = this.dialogService.open(EmailDialogComponent, {
       data: {
         emailBody: emailBody,
+        unsubscribedEmails: unsubscribedEmails,
       },
       header: 'Email senden',
       width: '70%',

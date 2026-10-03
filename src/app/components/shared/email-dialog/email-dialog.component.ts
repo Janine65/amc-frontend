@@ -14,6 +14,7 @@ import { Textarea } from 'primeng/textarea';
 import { Select } from 'primeng/select';
 import { QuillEditorComponent } from 'ngx-quill';
 import { FileUpload } from 'primeng/fileupload';
+import { Checkbox } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-email-dialog',
@@ -30,6 +31,7 @@ import { FileUpload } from 'primeng/fileupload';
     Select,
     QuillEditorComponent,
     FileUpload,
+    Checkbox,
   ],
 })
 export class EmailDialogComponent {
@@ -40,6 +42,9 @@ export class EmailDialogComponent {
   private accountService = inject(AccountService);
 
   emailBody: EmailBody;
+  // Abgemeldete Adressen (unsubscribe); können per Checkbox übersteuert werden
+  unsubscribedEmails: string[] = [];
+  includeUnsubscribed = false;
   readonly uploadFiles = signal<File[]>([]);
   uploadProgress: number | null = null;
   uploadSub?: Subscription;
@@ -92,6 +97,7 @@ export class EmailDialogComponent {
     const config = this.config;
 
     this.emailBody = config.data.emailBody;
+    this.unsubscribedEmails = config.data.unsubscribedEmails ?? [];
     this.prevSignature =
       this.emailBody.email_signature ??
       (environment.defaultSignature as EmailSignature);
@@ -112,6 +118,24 @@ export class EmailDialogComponent {
       this.emailBody.email_an = this.signatureEmails[newSignature];
     }
     this.prevSignature = newSignature;
+  }
+
+  toggleUnsubscribed() {
+    const bcc = (this.emailBody.email_bcc ?? '')
+      .split(';')
+      .map((e) => e.trim())
+      .filter((e) => e !== '');
+    if (this.includeUnsubscribed) {
+      for (const email of this.unsubscribedEmails) {
+        if (!bcc.includes(email)) bcc.push(email);
+      }
+    } else {
+      const remove = new Set(this.unsubscribedEmails);
+      for (let i = bcc.length - 1; i >= 0; i--) {
+        if (remove.has(bcc[i])) bcc.splice(i, 1);
+      }
+    }
+    this.emailBody.email_bcc = bcc.length ? bcc.join(';') + ';' : '';
   }
 
   prepareFiles(files: File[]) {
