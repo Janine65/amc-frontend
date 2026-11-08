@@ -60,8 +60,8 @@ export class EmailDialogComponent {
 
   // Default-Absenderadresse pro Signatur (entspricht email_from in config.json des Backends)
   private readonly signatureEmails: Record<EmailSignature, string> = {
-    [EmailSignature.JanineFranken]: 'janine@automoto-sr.info',
-    [EmailSignature.HansjoergDutler]: 'info@automoto-sr.info',
+    [EmailSignature.JanineFranken]: 'kassier@automoto-sr.ch',
+    [EmailSignature.HansjoergDutler]: 'info@automoto-sr.ch',
   };
   private prevSignature: EmailSignature | undefined;
 

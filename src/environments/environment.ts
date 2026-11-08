@@ -7,7 +7,7 @@ export const environment = {
   apiUrl: '/amcbackend',
   apiUrlSelf: 'http://localhost:4201',
   defaultSignature: 'JanineFranken',
-  defaultEmail: 'janine@automoto-sr.info',
+  defaultEmail: 'kassier@automoto-sr.ch',
   samEmail: 'info@s-a-m.ch',
 };
 
