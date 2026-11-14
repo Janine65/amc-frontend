@@ -1,5 +1,20 @@
 # amcfrontend
 
+## Dependency security checks
+
+Run `pnpm audit` after dependency updates and commit both `package.json` and
+`pnpm-lock.yaml`. Validate updates with `pnpm build` and `pnpm test --runInBand`.
+
+The Nx-scoped `pnpm.overrides` entries replace vulnerable exact pins with fixed
+versions in the same major release. The version-scoped glob and minimatch
+overrides apply security fixes that are only available in newer major releases;
+older callback-based glob/minimatch APIs are deliberately left untouched.
+Validate these overrides with builds and tests, and remove them when upstream
+callers declare safe versions themselves.
+
+Quill and deepmerge currently have advisories without a published fix.
+These advisories are not excluded from `pnpm audit`.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
 ## Development server
