@@ -7,7 +7,7 @@ services:
         - "janine65/amcbackend:${BACKEND_VERSION:-latest}"
     image: janine65/amcbackend
     env_file:
-      - ../amc-backend-py/.env-prod
+      - ../amc-backend-py/.env.prod
     platform: linux/amd64
     ports:
       - "3001:3001"
