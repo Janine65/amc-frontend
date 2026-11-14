@@ -53,11 +53,12 @@ services:
         - "janine65/amchomepage:${HOMEPAGE_VERSION:-latest}"
     depends_on:
       - amcbackend
+    env_file:
+      - ../amc-homepage/.env.analytics.prod
     environment:
       - COMPOSE_PROJECT_NAME
       - NODE_ENV=production
       - API_URL=http://amcbackend:3001
-      - ANALYTICS_SECRET=4e2ca46444c73994bcd4ee8649f37da49352714c561669cb8cf28263bdec8a76
       - ANALYTICS_PUBLIC_ORIGIN=http://www.automoto-sr.ch
     ports:
       - 4321:4321

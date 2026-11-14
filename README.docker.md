@@ -53,3 +53,34 @@ docker run -d -p 4200:4200 janine65/amcfrontend:latest
 ## Zusammenspiel
 
 Backend-Image: [`janine65/amcbackend`](https://hub.docker.com/r/janine65/amcbackend)
+
+## Privater Statistik-Schlüssel
+
+Die Compose-Dateien enthalten keinen `ANALYTICS_SECRET`-Wert mehr.
+Die Homepage lädt ausschließlich diesen Schlüssel aus einer separaten Datei:
+
+| Compose-Datei | Private Datei neben der Compose-Datei | Backend-Konfiguration |
+|---|---|---|
+| `docker-compose.yml` | `.env.analytics.prod` | `../amc-backend-py/.env.prod` |
+| `docker-compose-test.yml` | `.env.analytics.test` | `../amc-backend-py/.env.test` |
+
+Die private Datei enthält genau eine Variable:
+
+```dotenv
+ANALYTICS_SECRET=HIER_DEN_PRIVATEN_SCHLUESSEL_EINTRAGEN
+```
+
+Der Wert muss mit `ANALYTICS_SECRET` in der jeweiligen Backend-Konfiguration
+übereinstimmen. Die Backend-Env-Datei nicht komplett an die Homepage weitergeben:
+Sie enthält weitere Zugangsdaten, die die Homepage nicht benötigt.
+
+Beide privaten Dateien werden durch die bestehenden `.env*`-Regeln von Git
+und vom Docker-Build ausgeschlossen. Die Dateien auf der Synology separat
+bereitstellen, im Ordner der dort verwendeten Compose-Datei, und nur für den
+ausführenden Benutzer lesbar machen. Die vorhandenen Build-/Compose-Befehle
+bleiben unverändert.
+
+Bereits in Git veröffentlichte Schlüssel gelten als offengelegt: einen neuen
+Schlüssel erzeugen, in beiden zugehörigen Env-Dateien ersetzen und Backend
+sowie Homepage neu erstellen. Das Entfernen aus der aktuellen Compose-Datei
+entfernt den alten Wert nicht aus der Git-Historie.
