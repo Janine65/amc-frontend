@@ -1,0 +1,77 @@
+<div class="card">
+  <h1>Besucherstatistik</h1>
+  <form class="filters" (ngSubmit)="load()">
+    <label for="besucher-von">Von
+      <input id="besucher-von" name="von" type="date" [(ngModel)]="von" required [disabled]="loading()" />
+    </label>
+    <label for="besucher-bis">Bis
+      <input id="besucher-bis" name="bis" type="date" [(ngModel)]="bis" required [disabled]="loading()" />
+    </label>
+    <button pButton type="submit" [disabled]="loading()">Auswerten</button>
+  </form>
+  <p>
+    Neue Daten ab Aktivierung der Erfassung; der bisherige Gesamtzähler enthält keine Details.
+    Besuche sind Sitzungen, keine eindeutig identifizierten Personen.
+    Nach 30 Minuten ohne erfasste Aktivität beginnt eine neue Sitzung.
+    Aufbewahrung: 365 Tage. Zeitzone: Europe/Zurich.
+  </p>
+  <p>
+    Besuchsdauer: Zeit zwischen dem ersten Aufruf und der letzten erfassten Aktivität,
+    nicht reine Lesezeit. Hintergrund-Tabs senden keine regelmäßigen Signale.
+    Ohne weitere Aktivität ist die Dauer nicht messbar; solche Besuche fehlen im Durchschnitt.
+    „Direkt / unbekannt“ kann auch Links ohne übermittelten Referrer enthalten.
+    Länderkennung und Browsererkennung sind näherungsweise; Suchbegriffe werden nicht erfasst.
+  </p>
+  @if (error()) {
+    <p role="alert" class="error">{{ error() }}</p>
+  }
+  @if (loading()) {
+    <p role="status">Statistik wird geladen …</p>
+  }
+  @if (data(); as stats) {
+    <p>Zeitraum: {{ stats.von | date: 'dd.MM.yyyy' }} bis {{ stats.bis | date: 'dd.MM.yyyy' }}</p>
+    <div class="summary">
+      <div><strong>{{ stats.visits | number }}</strong><span>Besuche</span></div>
+      <div><strong>{{ stats.pageviews | number }}</strong><span>Seitenaufrufe</span></div>
+      <div>
+        <strong>
+          @if (stats.average_duration_seconds !== null) {
+            {{ stats.average_duration_seconds | number: '1.0-0' }} s
+          } @else { Nicht messbar }
+        </strong>
+        <span>Durchschnittliche Besuchsdauer ({{ stats.measured_visits | number }} messbare Besuche)</span>
+      </div>
+    </div>
+    @if (stats.visits === 0) {
+      <p>Keine erfassten Besuche in diesem Zeitraum.</p>
+    } @else {
+      <div class="statistics">
+        @for (section of sections(); track section.title) {
+          <section>
+            <h2>{{ section.title }}</h2>
+            <div class="table-scroll">
+              <table>
+                <thead><tr><th>Merkmal</th><th>Anzahl</th><th>Anteil</th></tr></thead>
+                <tbody>
+                  @for (row of section.rows; track row.label) {
+                    <tr>
+                      <td>{{ row.label }}</td>
+                      <td>{{ row.count | number }}</td>
+                      <td>
+                        <meter [value]="row.count" min="0" [max]="section.total || 1"
+                          [attr.aria-label]="row.label"></meter>
+                        {{ (section.total ? row.count / section.total * 100 : 0) | number: '1.0-1' }} %
+                      </td>
+                    </tr>
+                  } @empty {
+                    <tr><td colspan="3">Keine Daten vorhanden.</td></tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </section>
+        }
+      </div>
+    }
+  }
+</div>

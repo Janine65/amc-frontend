@@ -296,3 +296,30 @@ export class JahrFreigabe {
   public clubmeister = false;
   public kegelmeister = false;
 }
+
+export interface BesucherGruppe {
+  label: string;
+  count: number;
+}
+
+export interface BesucherStatistik {
+  von: string;
+  bis: string;
+  timezone: string;
+  retention_days: number;
+  visits: number;
+  pageviews: number;
+  measured_visits: number;
+  average_duration_seconds: number | null;
+  countries: BesucherGruppe[];
+  sources: BesucherGruppe[];
+  referrers: BesucherGruppe[];
+  weekdays: BesucherGruppe[];
+  hours: BesucherGruppe[];
+  days: BesucherGruppe[];
+  durations: BesucherGruppe[];
+  pages: BesucherGruppe[];
+  entry_pages: BesucherGruppe[];
+  devices: BesucherGruppe[];
+  browsers: BesucherGruppe[];
+}

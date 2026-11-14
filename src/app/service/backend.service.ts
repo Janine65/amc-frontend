@@ -17,6 +17,7 @@ import {
   AnlassAnmeldung,
   JahrFreigabe,
   Kontakt,
+  BesucherStatistik,
 } from '@model/index';
 import { Package } from '@model/user';
 import { EmailBody } from '@app/components/shared/email-dialog/email-dialog.types';
@@ -66,6 +67,15 @@ export class BackendService {
   getAbout(): Observable<Package> {
     const apiURL = this.backendApiUrl + '/about';
     return this.http.get<Package>(apiURL, { headers: this.header });
+  }
+
+  getBesucherStatistik(von: string, bis: string): Observable<{
+    data: BesucherStatistik; message: string; type: string;
+  }> {
+    return this.http.get<{ data: BesucherStatistik; message: string; type: string }>(
+      this.backendApiUrl + '/besucher/statistik',
+      { headers: this.header, params: { von, bis } },
+    );
   }
 
   uploadFiles(file: File): Observable<RetData> {

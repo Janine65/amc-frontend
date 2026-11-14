@@ -23,6 +23,7 @@ import { HomepageBerichteComponent } from './components/homepage/berichte/berich
 import { HomepageAnmeldungenComponent } from './components/homepage/anmeldungen/anmeldungen.component';
 import { HomepageKontakteComponent } from './components/homepage/kontakte/kontakte.component';
 import { HomepageFreigabeComponent } from './components/homepage/freigabe/freigabe.component';
+import { HomepageBesucherComponent } from './components/homepage/besucher/besucher.component';
 
 @NgModule({
   imports: [RouterModule.forRoot([
@@ -51,6 +52,7 @@ import { HomepageFreigabeComponent } from './components/homepage/freigabe/freiga
             { path: 'berichte', component: HomepageBerichteComponent, canActivate: [AuthGuard], data: { role: 'user' } },
             { path: 'anmeldungen', component: HomepageAnmeldungenComponent, canActivate: [AuthGuard], data: { role: 'user' } },
             { path: 'kontakte', component: HomepageKontakteComponent, canActivate: [AuthGuard], data: { role: 'user' } },
+            { path: 'besucher', component: HomepageBesucherComponent, canActivate: [AuthGuard], data: { role: 'user' } },
             { path: 'freigabe', component: HomepageFreigabeComponent, canActivate: [AuthGuard], data: { role: 'admin' } },
           ]
         },

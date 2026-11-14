@@ -1,0 +1,27 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+  label { display: grid; gap: 0.5rem; }
+  input { padding: 0.5rem; }
+}
+.summary, .statistics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1.5rem;
+}
+.summary {
+  margin: 1.5rem 0;
+  strong { display: block; font-size: 1.8rem; }
+}
+.table-scroll { overflow-x: auto; max-height: 32rem; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th, td { padding: 0.5rem; text-align: left; overflow-wrap: anywhere; }
+  tr { border-bottom: 1px solid var(--p-content-border-color); }
+  td:last-child { min-width: 9rem; }
+}
+meter { width: 4rem; margin-right: 0.5rem; }
+.error { color: var(--p-red-600); }
