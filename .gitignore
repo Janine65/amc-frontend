@@ -49,3 +49,4 @@ package-lock.json
 .claude/worktrees
 pnpm-lock.yaml
 docker-compose-test.yml
+docker-compose-synology.yml

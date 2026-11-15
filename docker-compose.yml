@@ -14,8 +14,6 @@ services:
     stdin_open: true
     container_name: amcbackend
     tty: true # Keeps the container running for debugging
-    volumes:
-      - documents:/usr/src/app/dist/src/documents:rw
     networks:
       - back-tier
       - front-tier
