@@ -57,7 +57,7 @@ services:
       - COMPOSE_PROJECT_NAME
       - NODE_ENV=production
       - API_URL=http://amcbackend:3001
-      - ANALYTICS_PUBLIC_ORIGIN=http://www.automoto-sr.ch
+      - ANALYTICS_PUBLIC_ORIGIN=https://www.automoto-sr.ch
     ports:
       - 4321:4321
     hostname: amchomepage
