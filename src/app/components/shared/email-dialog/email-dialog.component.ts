@@ -12,7 +12,7 @@ import { ProgressSpinner } from 'primeng/progressspinner';
 import { FormsModule } from '@angular/forms';
 import { Textarea } from 'primeng/textarea';
 import { Select } from 'primeng/select';
-import { QuillEditorComponent } from 'ngx-quill';
+import { RichTextEditorComponent } from '../rich-text-editor/rich-text-editor.component';
 import { FileUpload } from 'primeng/fileupload';
 import { Checkbox } from 'primeng/checkbox';
 
@@ -29,7 +29,7 @@ import { Checkbox } from 'primeng/checkbox';
     FormsModule,
     Textarea,
     Select,
-    QuillEditorComponent,
+    RichTextEditorComponent,
     FileUpload,
     Checkbox,
   ],
@@ -64,34 +64,6 @@ export class EmailDialogComponent {
     [EmailSignature.HansjoergDutler]: 'info@automoto-sr.ch',
   };
   private prevSignature: EmailSignature | undefined;
-
-  quillFormats = [
-    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-    ['blockquote', 'code-block'],
-    ['link', 'image'],
-
-    [{ header: 1 }, { header: 2 }], // custom button values
-    [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-    [{ script: 'sub' }, { script: 'super' }], // superscript/subscript
-    [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
-
-    [{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
-
-    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-    [{ font: [] }],
-    [{ align: [] }],
-
-    ['clean'], // remove formatting button
-  ];
-
-  modules = {
-    toolbar: this.quillFormats,
-    history: {
-      delay: 2000,
-      maxStack: 500,
-      userOnly: true,
-    },
-  };
 
   constructor() {
     const config = this.config;

@@ -50,16 +50,12 @@
   </div>
   <div class="mb-4 flex flex-wrap">
     <div class="w-full">
-      <quill-editor
+      <app-rich-text-editor
         [(ngModel)]="eintrag.text"
-        [placeholder]="'Hier kommt der Inhalt'"
+        placeholder="Hier kommt der Inhalt"
         name="text"
-        [modules]="quillModules"
-        [styles]="{ height: '300px' }"
-        format="html"
-        class="w-full"
-      >
-      </quill-editor>
+        [height]="300"
+      />
     </div>
   </div>
 </div>

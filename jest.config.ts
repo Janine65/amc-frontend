@@ -23,7 +23,7 @@ const config: Config = {
       },
     ],
   },
-  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|(?:\\.pnpm/)?(?:@angular|@ngrx|primeng|@primeuix|@primeui|@primeicons|@floating-ui|chart\\.js|ng2-charts|quill|@noble|tslib|rxjs|zone\\.js))'],
+  transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$|(?:\\.pnpm/)?(?:@angular|@ngrx|primeng|@primeuix|@primeui|@primeicons|@floating-ui|chart\\.js|ng2-charts|jodit|@noble|tslib|rxjs|zone\\.js))'],
   moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
   coverageDirectory: '<rootDir>/coverage',
   collectCoverageFrom: [

@@ -12,8 +12,10 @@ older callback-based glob/minimatch APIs are deliberately left untouched.
 Validate these overrides with builds and tests, and remove them when upstream
 callers declare safe versions themselves.
 
-Quill and deepmerge currently have advisories without a published fix.
-These advisories are not excluded from `pnpm audit`.
+The homepage entry and email editors use Jodit instead of Quill because
+[the Quill HTML export advisory](https://github.com/advisories/GHSA-v3m3-f69x-jf25)
+has no published fix. Both editors still exchange HTML with the API;
+DOMPurify sanitizes HTML passed into and emitted by the editor.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 

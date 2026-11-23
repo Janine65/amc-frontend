@@ -51,11 +51,11 @@
     "@angular/router": "22.2.6",
     "@primeuix/themes": "^3.0.1",
     "chart.js": "4.5.1",
+    "dompurify": "^3.5.0",
+    "jodit": "^4.21.0",
     "ng2-charts": "^10.0.0",
-    "ngx-quill": "^31.0.1",
     "primeicons": "8.0.2",
     "primeng": "22.1.1",
-    "quill": "^2.0.3",
     "rxjs": "~7.8.2",
     "tslib": "2.8.1",
     "zone.js": "0.16.3"

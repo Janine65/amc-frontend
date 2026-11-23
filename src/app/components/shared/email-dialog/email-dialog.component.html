@@ -97,16 +97,13 @@
   </div>
   <div class="mb-4 flex flex-wrap">
     <div class="w-full md:w-full">
-      <quill-editor
+      <app-rich-text-editor
         [(ngModel)]="emailBody.email_body"
-        [placeholder]="'Hier kommt die Meldung'"
+        placeholder="Hier kommt die Meldung"
         name="body"
-        [modules]="modules"
-        [styles]="{ height: '150px' }"
-        format="html"
-        class="w-full"
-      >
-      </quill-editor>
+        [height]="150"
+        [email]="true"
+      />
     </div>
   </div>
   <div class="card">

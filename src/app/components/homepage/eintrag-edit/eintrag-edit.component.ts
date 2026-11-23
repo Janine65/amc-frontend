@@ -10,7 +10,7 @@ import { ButtonDirective } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { DatePicker } from 'primeng/datepicker';
 import { ToggleSwitch } from 'primeng/toggleswitch';
-import { QuillEditorComponent } from 'ngx-quill';
+import { RichTextEditorComponent } from '../../shared/rich-text-editor/rich-text-editor.component';
 
 @Component({
   selector: 'app-eintrag-edit',
@@ -23,7 +23,7 @@ import { QuillEditorComponent } from 'ngx-quill';
     InputText,
     DatePicker,
     ToggleSwitch,
-    QuillEditorComponent,
+    RichTextEditorComponent,
   ],
 })
 export class EintragEditComponent {
@@ -35,25 +35,6 @@ export class EintragEditComponent {
   eintrag: HomepageNews | HomepageBericht;
   typ: 'news' | 'bericht';
   datumDate: Date;
-
-  quillModules = {
-    toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],
-      ['blockquote'],
-      ['link', 'image'],
-      [{ header: 1 }, { header: 2 }],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ size: ['small', false, 'large', 'huge'] }],
-      [{ color: [] }, { background: [] }],
-      [{ align: [] }],
-      ['clean'],
-    ],
-    history: {
-      delay: 2000,
-      maxStack: 500,
-      userOnly: true,
-    },
-  };
 
   constructor() {
     this.eintrag = this.config.data.eintrag;
@@ -83,7 +64,7 @@ export class EintragEditComponent {
       });
       return;
     }
-    // Quill 2 (getSemanticHTML) ersetzt Leerzeichen durch &nbsp; – verhindert Zeilenumbruch auf der Homepage
+    // Geschuetzte Leerzeichen in Editor-HTML koennen Umbrueche auf der Homepage verhindern.
     this.eintrag.text = this.eintrag.text.replace(/&nbsp;|\u00a0/g, ' ');
     this.eintrag.datum = this.datumDate.toLocaleDateString('fr-CA', {
       year: 'numeric',

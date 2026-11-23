@@ -39,8 +39,7 @@
           "node_modules/chart.js/dist/chart.umd.js"
         ],
         "allowedCommonJsDependencies": [
-          "lodash",
-          "quill-delta"
+          "lodash"
         ],
         "browser": "src/main.ts"
       },

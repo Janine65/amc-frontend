@@ -5,8 +5,7 @@
 
 @import "primeicons/primeicons.css";
 @import "./app/components/shared/input-validation/input.css";
-@import "quill/dist/quill.core.css";
-@import "quill/dist/quill.snow.css";
+@import "jodit/es2021/jodit.min.css";
 
 /*
  * Feine Umrandung fuer native Formularelemente, damit sie visuell den PrimeNG-
