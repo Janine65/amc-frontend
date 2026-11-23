@@ -8,7 +8,7 @@
       <p-progress-spinner></p-progress-spinner>
     </div>
   }
-  <div class="mb-4 flex flex-wrap">
+  <div class="mb-1 flex flex-wrap items-center">
     <label for="to" class="w-full md:w-1/6 md:mb-0">TO:</label>
     <div class="w-full md:w-10/12">
       <textarea
@@ -17,11 +17,11 @@
         cols="30"
         pTextarea
         [(ngModel)]="emailBody.email_an"
-        class="text-base text-color border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        class="block text-base text-color border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       ></textarea>
     </div>
   </div>
-  <div class="mb-4 flex flex-wrap">
+  <div class="mb-1 flex flex-wrap items-center">
     <label for="cc" class="w-full md:w-1/6 md:mb-0">CC:</label>
     <div class="w-full md:w-10/12">
       <textarea
@@ -31,11 +31,11 @@
         id="cc"
         [(ngModel)]="emailBody.email_cc"
         name="cc"
-        class="text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        class="block text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       ></textarea>
     </div>
   </div>
-  <div class="mb-4 flex flex-wrap">
+  <div class="mb-1 flex flex-wrap items-center">
     <label for="bbc" class="w-full md:w-1/6 md:mb-0">BBC:</label>
     <div class="w-full md:w-10/12">
       <textarea
@@ -45,12 +45,12 @@
         id="bbc"
         [(ngModel)]="emailBody.email_bcc"
         name="bcc"
-        class="text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        class="block text-base text-color border border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       ></textarea>
     </div>
   </div>
   @if (unsubscribedEmails.length > 0) {
-    <div class="mb-4 flex flex-wrap">
+    <div class="mb-1 flex flex-wrap">
       <div class="w-full md:w-1/6 md:mb-0"></div>
       <div class="w-full md:w-10/12 flex items-center gap-2">
         <p-checkbox
@@ -67,7 +67,7 @@
       </div>
     </div>
   }
-  <div class="mb-4 flex flex-wrap">
+  <div class="mb-1 flex flex-wrap items-center">
     <label for="from" class="w-full md:w-1/6 md:mb-0">Absender:</label>
     <div class="w-full md:w-10/12">
       <p-select
@@ -83,7 +83,7 @@
       </p-select>
     </div>
   </div>
-  <div class="mb-4 flex flex-wrap">
+  <div class="mb-2 flex flex-wrap items-center">
     <label for="subject" class="w-full md:w-1/6 md:mb-0">Subject:</label>
     <div class="w-full md:w-10/12">
       <input
@@ -95,19 +95,17 @@
       />
     </div>
   </div>
-  <div class="mb-4 flex flex-wrap">
-    <div class="w-full md:w-full">
-      <app-rich-text-editor
-        [(ngModel)]="emailBody.email_body"
-        placeholder="Hier kommt die Meldung"
-        name="body"
-        [height]="150"
-        [email]="true"
-      />
-    </div>
+  <div class="mb-2">
+    <app-rich-text-editor
+      [(ngModel)]="emailBody.email_body"
+      placeholder="Hier kommt die Meldung"
+      name="body"
+      [height]="220"
+      [email]="true"
+    />
   </div>
   <div class="card">
-    <div class="mb-4 flex flex-wrap">
+    <div class="flex flex-wrap">
       <label for="uploadfiles" class="w-full md:w-1/6 md:mb-0">Anhänge:</label>
       <div class="w-full md:w-10/12">
         <p-fileupload
